@@ -29,8 +29,8 @@ export const Login = ({navigation}: any) => {
                     }}
                     onSubmit={async (values) => {
                         try{
-                            console.log(values)
-                            // navigation.navigate('StudentBottomTab');
+                            // console.log(values)
+                            navigation.navigate('StudentBottomTab');
                             // const res = await handleLogin(values);
                             // if (res) {
                             //     console.log(res.data);
