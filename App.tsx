@@ -8,6 +8,7 @@ import {
   StatusBar,
 } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
+import Icon from 'react-native-vector-icons/Feather';
 
 import {
   Header,
@@ -40,6 +41,7 @@ const App = () => {
                 Edit <Text style={styles.highlight}>App.tsx</Text> to change this
                 screen and then come back to see your edits.
               </Text>
+              <Icon name='home' size={25} />
             </View>
             <View style={styles.sectionContainer}>
               <Text style={styles.sectionTitle}>See Your Changes</Text>
