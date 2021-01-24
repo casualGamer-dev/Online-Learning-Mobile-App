@@ -26,7 +26,7 @@ export const IntroScreen = ({navigation}: any) => {
           <Text style={ styles.accountText }>Wants to create an account? 
             <Text 
               style={ styles.LoginText } 
-              // onPress={() => navigation.navigate('Login')}
+              onPress={() => navigation.navigate('Signup')}
               > Click Here
             </Text>
           </Text>

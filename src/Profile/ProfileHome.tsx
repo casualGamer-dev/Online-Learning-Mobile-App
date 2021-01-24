@@ -1,5 +1,6 @@
-import * as React from 'react';
-import { View, StyleSheet, SafeAreaView, ScrollView, StatusBar, Dimensions, Alert } from 'react-native';
+import React, { useContext } from 'react';
+import { View, StyleSheet, SafeAreaView, ScrollView, StatusBar, Dimensions, Alert, Text } from 'react-native';
+import { Button } from 'react-native-paper';
 import CommonHeader from '../components/StudentCommonHeader';
 import SecondHeader from '../components/SecondHeader';
 import ProfileTop from './components/ProfileTopSection';
@@ -9,7 +10,9 @@ import DegreeSection from './components/DegreeSection';
 import Colors from '../utils/Color';
 import UserFab from './components/UserFab';
 const {width, height} = Dimensions.get('screen');
+import { AuthContext } from '../Context';
 const ProfileHome = ({navigation}: any) => {
+  const { signOut } = useContext(AuthContext);
   return (
     <>
       <StatusBar backgroundColor={Colors.headerBlue()} barStyle='light-content' />
@@ -30,6 +33,9 @@ const ProfileHome = ({navigation}: any) => {
                 <ProfileTop />
                 <SummarySectionTeacher />
                 <AboutMe />
+                <Button onPress={() => signOut()}>
+                  <Text>LOGOUT</Text>
+                </Button>
                 {/* <DegreeSection /> */}
               </View>
             </ScrollView>

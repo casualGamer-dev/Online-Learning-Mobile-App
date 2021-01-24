@@ -4,23 +4,21 @@ import {
 } from 'react-native';
 import {Button} from 'react-native-paper';
 import {Formik} from 'formik';
+import { AuthContext } from '../../Context';
 import TextField from '../../components/TextInput';
-// import {Store} from '../../contexts/Store';
 import {capitalize} from '../../utils/Utilities';
-// import {handleLogin} from '../../api/handleLogin';
-
 const width = Dimensions.get('screen').width;
 const height = Dimensions.get('screen').height;
 
 export const Signup = ({navigation}: any) => {
     const [showLoading, setShowLoading] = useState(false);
-    // const {setUser} = useContext(Store);
+    const { signUp } = useContext(AuthContext);
 
     return (
       <KeyboardAvoidingView style={ styles.FullBody }>
         <SafeAreaView>
-          <View style={ styles.MainContainer }>
-            <Text style={ styles.MainHeading }>Crack<Text style={ styles.ColorHeading }>IT</Text></Text>
+          <View>
+            <Text style={ styles.MainHeading }>Padhai</Text>
             <Text></Text>
             <View style={ styles.FormArea }>
               <>
@@ -30,20 +28,27 @@ export const Signup = ({navigation}: any) => {
                     fullname: '',
                     email: '',
                     password: '',
-                    zipcode: '',
-                    contact: '',
                     type: 'Student',
                 }}
                 onSubmit={async (values) => {
-                    navigation.navigate('TeacherBottomTab')
-                    // const res = await handleSignup(values);
-                    // if (res.data) {
-                    //   values.uid = res.data.id;
-                    //   values.credits = 1000;
-                    //   setUser({...values, token: res.data.token});
-                    //   storeData('user', {...values, token: res.data.token});
-                    //   navigation.navigate(capitalize(values.type));
-                    // }
+                  try{
+                    if(values.email === '' || values.fullname === '' || values.password === '') {
+                      Alert.alert('Empty Field');
+                    } else {
+                      signUp(values)
+                      // navigation.navigate('TeacherBottomTab')
+                      // const res = await handleSignup(values);
+                      // if (res.data) {
+                      //   values.uid = res.data.id;
+                      //   values.credits = 1000;
+                      //   setUser({...values, token: res.data.token});
+                      //   storeData('user', {...values, token: res.data.token});
+                      //   navigation.navigate(capitalize(values.type));
+                      // }
+                    }
+                  } catch(e) {
+                    console.log(e)
+                  }
                 }}>
                 {({handleChange, handleSubmit, setFieldValue, values}) => (
                     <View>
@@ -53,16 +58,11 @@ export const Signup = ({navigation}: any) => {
                                 handleChange={handleChange('fullname')}
                                 value={values.fullname}
                             />
-                            <TextField
+                            {/* <TextField
                                 label="Mobile No."
                                 handleChange={handleChange('contact')}
                                 value={values.contact}
-                            />
-                            <TextField
-                                label="Zipcode"
-                                handleChange={handleChange('zipcode')}
-                                value={values.zipcode}
-                            />
+                            /> */}
 
                             <TextField
                                 label="Email Id"
@@ -105,16 +105,14 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     paddingLeft: '5%',
     paddingRight: '5.5%',
-  },
-  MainContainer: {
     justifyContent: 'center',
     alignItems: 'center',
-    marginTop: '30%',
   },
   MainHeading: {
     color: '#000',
     fontSize: 44,
     letterSpacing: 2.5,
+    textAlign: 'center'
   },
   ColorHeading: {
     fontSize: 44,

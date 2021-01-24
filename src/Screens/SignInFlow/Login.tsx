@@ -1,18 +1,17 @@
 import React, { useState, useContext } from 'react';
 import { 
-    View, Text, StyleSheet, Dimensions, Alert, SafeAreaView, KeyboardAvoidingView
+  View, Text, StyleSheet, Dimensions, Alert, SafeAreaView, KeyboardAvoidingView
 } from 'react-native';
 import {Button} from 'react-native-paper';
 import {Formik} from 'formik';
 import TextField from '../../components/TextInput';
-// import {Store} from '../../contexts/Store';
+import { AuthContext } from '../../Context';
 import {capitalize} from '../../utils/Utilities';
-// import {handleLogin} from '../../api/handleLogin';
 const width = Dimensions.get('screen').width;
 
 export const Login = ({navigation}: any) => {
     const [showLoading, setShowLoading] = useState(false);
-    // const {setUser} = useContext(Store);
+    const { signIn } = useContext(AuthContext);
 
     return (
       <KeyboardAvoidingView style={ styles.FullBody }>
@@ -29,19 +28,24 @@ export const Login = ({navigation}: any) => {
                     }}
                     onSubmit={async (values) => {
                         try{
-                            // console.log(values)
-                            navigation.navigate('StudentBottomTab');
-                            // const res = await handleLogin(values);
-                            // if (res) {
-                            //     console.log(res.data);
-                            //     setUser(res.data);
-                            //     // navigation.reset({
-                            //     //   index: 0,
-                            //     //   routes: [{name: capitalize(`${res.data.type}`)}],
-                            //     // });
-                            // }
+                          if(values.email === '' || values.password === '') {
+                            Alert.alert('Empty Field')
+                          } else {
+                              signIn(values.email, values.password)
+                              // console.log(values)
+                              // navigation.navigate('StudentBottomTab');
+                              // const res = await handleLogin(values);
+                              // if (res) {
+                              //     console.log(res.data);
+                              //     setUser(res.data);
+                              //     // navigation.reset({
+                              //     //   index: 0,
+                              //     //   routes: [{name: capitalize(`${res.data.type}`)}],
+                              //     // });
+                              // }
+                          }
                         } catch(err) {
-                            Alert.alert(err);
+                          Alert.alert(err);
                         }
                     }}>
                     {({handleChange, handleSubmit, values}) => (
