@@ -17,18 +17,6 @@ const ProfileTopSection = (props: any) => {
           <Text style={{textAlign: 'center'}}>Teacher Name</Text>
           <Text>Work Expericnce uyuiyi</Text>
           <Text style={{marginTop: 3}}></Text>
-          <Text>
-            <Button 
-              mode="contained"
-              style={styles.btnFill}
-              >
-              <Text style={{color: Colors.appWhite()}}>E-mail Me</Text>
-            </Button>
-            &nbsp;&nbsp;&nbsp;&nbsp;
-            <View style={styles.btnIcon}>
-              <FeatherIcon name="phone" size={22} style={styles.btnIconInside} />
-            </View>
-          </Text>
     </View>
   );
 };
@@ -40,25 +28,5 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         backgroundColor: Colors.white(),
-        height: 240,
-    },
-    btnFill: {
-        borderRadius: 30, 
-        borderColor: Colors.darkBlue(), 
-        borderWidth: 1,
-        backgroundColor: Colors.darkBlue(),
-    },
-    btnIcon: {
-        width: 45, 
-        height: 40, 
-        borderRadius: 20, 
-        borderWidth: 1, 
-        borderColor: Colors.darkBlue(),
-    },
-    btnIconInside: {
-        position: 'relative', 
-        top: 7, 
-        paddingLeft: 10, 
-        color: Colors.darkBlue()
     },
 });

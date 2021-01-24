@@ -1,12 +1,15 @@
-import * as React from 'react';
+import React, {useContext} from 'react';
 import { Text, View, StyleSheet, SafeAreaView, ScrollView, Dimensions, StatusBar } from 'react-native';
+import { AuthContext } from '../../Context';
 import CommonHeader from '../../components/StudentCommonHeader';
 import Category from '../../components/CategoryScreen';
 import SecondHeader from '../../components/SecondHeader';
 import Colors from '../../utils/Color';
-
 const {width, height} = Dimensions.get('screen');
+
 export const StudentDashboard = ({navigation}: any) => {
+  const { user } = useContext(AuthContext);
+  console.log(user)
   const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sept", "Oct", "Nov", "Dec" ];
   const getCurrentDate = () => {
     const today: Date = new Date();
@@ -24,15 +27,15 @@ export const StudentDashboard = ({navigation}: any) => {
           navigation={navigation}
         />
         <SecondHeader 
-          welcomeMSG='Mr. Rupam'
+          welcomeMSG={`${user.displayName}`}
         />
         <View style={styles.mainBody}>
           <ScrollView style={{}}>
               <View style={styles.IntroductionMsg}>
                 <Text style={{fontSize: 0}}></Text>
-                <Text style={styles.bodyHeading}>Let's Learn Something</Text>
-                <Text style={styles.currentDate}>{getCurrentDate()}</Text>
-                <Text></Text>
+                {/* <Text style={styles.bodyHeading}>{`Welcome, ${user.displayName}`}</Text> */}
+                {/* <Text style={styles.currentDate}>{getCurrentDate()}</Text> */}
+                {/* <Text></Text> */}
               </View>
               <View style={styles.categoryBody}>
                 <Category 

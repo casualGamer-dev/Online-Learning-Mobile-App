@@ -15,7 +15,6 @@ const ProfileHome = ({navigation}: any) => {
   const { signOut } = useContext(AuthContext);
   return (
     <>
-      <StatusBar backgroundColor={Colors.headerBlue()} barStyle='light-content' />
       <SafeAreaView style={styles.container}>
         <CommonHeader
           back={false}
@@ -31,8 +30,6 @@ const ProfileHome = ({navigation}: any) => {
             <ScrollView style={{}}>
               <View style={styles.categoryBody}>
                 <ProfileTop />
-                <SummarySectionTeacher />
-                <AboutMe />
                 <Button onPress={() => signOut()}>
                   <Text>LOGOUT</Text>
                 </Button>
@@ -54,6 +51,7 @@ export default ProfileHome;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: Colors.white()
   },
   IntroductionMsg: {
     paddingLeft: 15,

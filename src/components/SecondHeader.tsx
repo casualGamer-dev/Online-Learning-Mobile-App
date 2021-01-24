@@ -45,7 +45,7 @@ const styles = StyleSheet.create({
         paddingLeft: 15
     },
     nameMessage: {
-        color: Colors.extremeBlue(),
+        color: Colors.black(),
         marginTop: 5,
         fontSize: 17,
         fontWeight: '600',
