@@ -11,6 +11,7 @@ import { IntroScreen, Login, Signup } from './src/Screens/SignInFlow';
 import Colors from './src/utils/Color';
 import StudentMainNavigator from './src/Navigator/StudentMainNavigator';
 import auth from '@react-native-firebase/auth';
+import firestore from '@react-native-firebase/firestore';
 const Stack = createStackNavigator();
 
 const App = () => {
@@ -34,11 +35,30 @@ const App = () => {
       try{
         await auth()
           .createUserWithEmailAndPassword(userSignInData.email, userSignInData.password)
-          .then( userCredentials => {
-            return userCredentials.user.updateProfile({
-              displayName: userSignInData.fullname,
-            })
+          .then( userCredentials => {  
+            firestore()
+              .collection('Users')
+              .add({
+                user_id: userCredentials.user.uid,
+                batch_id: userSignInData.batchId,
+                type: userSignInData.type
+              })
+              .then(() => {
+                
+                console.log('DATA ADDED AT THE TIME OF REG')
+                return userCredentials.user.updateProfile({
+                  displayName: userSignInData.fullname,
+                })
+              })
+              .catch((Regerror) => Alert.alert(Regerror));
+              storeData('extra', {
+                batch_id: userSignInData.batchId, 
+                type: userSignInData.type
+              });
           })
+          // .then(() => {
+            
+          // })
           .catch((error: any) => {
             if (error.code === 'auth/email-already-in-use') {
               Alert.alert('That email address is already in use!');

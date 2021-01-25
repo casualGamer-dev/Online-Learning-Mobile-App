@@ -28,6 +28,7 @@ export const Signup = ({navigation}: any) => {
                     fullname: '',
                     email: '',
                     password: '',
+                    batchId: '123',
                     type: 'Student',
                 }}
                 onSubmit={async (values) => {
