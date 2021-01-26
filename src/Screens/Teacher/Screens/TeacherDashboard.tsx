@@ -28,7 +28,7 @@ export const TeacherDashboard = ({navigation}: any) => {
           welcomeMSG='Mr. Teacher'
         />
         <View style={styles.mainBody}>
-          <ScrollView style={{}}>
+          {/* <ScrollView style={{}}> */}
               <View style={styles.IntroductionMsg}>
                 <Text style={{fontSize: 0}}></Text>
                 <Text style={styles.bodyHeading}>Let's Learn Something</Text>
@@ -41,7 +41,7 @@ export const TeacherDashboard = ({navigation}: any) => {
                   name='SeperateSubjectDetails'
                 />
               </View>
-          </ScrollView>
+          {/* </ScrollView> */}
         </View>
         <AddNewSubject 
           navigation={navigation}

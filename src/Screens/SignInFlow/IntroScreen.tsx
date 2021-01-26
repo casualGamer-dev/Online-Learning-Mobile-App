@@ -23,11 +23,15 @@ export const IntroScreen = ({navigation}: any) => {
           >
             <Text style={ styles.btnText }>Login</Text>
           </Button>
-          <Text style={ styles.accountText }>Wants to create an account? 
-            <Text 
+          <Text style={ styles.accountText }>Wants to join? 
+            {/* <Text 
               style={ styles.LoginText } 
               onPress={() => navigation.navigate('Signup')}
               > Click Here
+            </Text> */}
+            <Text 
+              style={ styles.LoginText }
+              > Contact Admin
             </Text>
           </Text>
         </View>

@@ -27,9 +27,15 @@ const App = () => {
         await auth()
         .signInWithEmailAndPassword(userName, password)
         .then(() => console.log('LOGIN DONE'))
-        .catch( (error) => Alert.alert(error));
-      } catch(e) {
-        Alert.alert(e)
+        .catch( (error) => {
+          if (error.code === 'auth/wrong-password') {
+            Alert.alert('WRONG Details!');
+          } else {
+            console.log(error)
+          }
+        });
+      } catch(error) {
+        console.log(error)
       }
     },
     signUp: async (userSignInData: any) => {
