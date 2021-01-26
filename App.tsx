@@ -7,7 +7,6 @@ import auth from '@react-native-firebase/auth';
 import firestore from '@react-native-firebase/firestore';
 import { AuthContext } from './src/Context';
 import {storeData} from './src/AsyncActivities/storeData';
-import {getData} from './src/AsyncActivities/getData';
 import {clearCache} from './src/AsyncActivities/clearCache';
 import { IntroScreen, Login, Signup } from './src/Screens/SignInFlow';
 import StudentMainNavigator from './src/Navigator/StudentMainNavigator';
@@ -43,7 +42,7 @@ const App = () => {
               .collection('Users')
               .add({
                 user_id: userCredentials.user.uid,
-                name: userSignInData.fullName,
+                name: userSignInData.fullname,
                 batch_id: userSignInData.batchId,
               })
               .then(() => {

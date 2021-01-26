@@ -1,13 +1,14 @@
 import React, {useContext, useEffect, useState} from 'react';
-import { Text, View, StyleSheet, SafeAreaView, ScrollView, Dimensions, StatusBar, ActivityIndicator } from 'react-native';
+import { Text, View, StyleSheet, SafeAreaView, Dimensions, StatusBar, Alert } from 'react-native';
+import firestore from '@react-native-firebase/firestore';
+import { getData } from '../../AsyncActivities/getData';
+import {storeData} from '../../AsyncActivities/storeData';
 import { AuthContext } from '../../Context';
 import CommonHeader from '../../components/StudentCommonHeader';
 import Category from '../../components/CategoryScreen';
 import SecondHeader from '../../components/SecondHeader';
 import Colors from '../../utils/Color';
-
-import firestore from '@react-native-firebase/firestore';
-import { getData } from '../../AsyncActivities/getData';
+import Loader from '../../components/Loader';
 const {width, height} = Dimensions.get('screen');
 
 export const StudentDashboard = ({navigation}: any) => {
@@ -24,24 +25,30 @@ export const StudentDashboard = ({navigation}: any) => {
 
   const getStudentInformation = async () => {
     setLoading(true)
-    let studentCourseDetails;
-    try{
-      studentCourseDetails = await getData('extra')
-    } catch(e) {
-      console.log(e)
-    }
-    if(studentCourseDetails.batch_id) {
+    let batchId;
+    const _uid = user.uid;
+    const userRemainingDetails = 
+      await firestore()
+        .collection('Users')
+        .where('user_id', '==',_uid.toString())
+        .get();
+        userRemainingDetails.forEach(_batchId => {
+          storeData('extra', {
+            name: _batchId._data.name,
+            batch_id: _batchId._data.batch_id
+          })
+          batchId = _batchId._data.batch_id;
+        })
+    // console.log('AA', batchId)
+    // Batch Details
+    if(batchId) {
       const subjectArray: any = [];
       try {
         const allSubjects = 
           await firestore()
           .collection('subject_details')
-          .where('batch_id', '==',studentCourseDetails.batch_id)
+          .where('batch_id', '==',batchId)
           .get();
-        // console.log('TESTING 123',data.forEach((a) => console.log(a._data.subject_name)))
-        // const abcd2 = await getData('user')
-        // console.log('hjhkj',abcd)
-        // console.log('abcd2',user.uid)
         allSubjects.forEach((res: any) => {
           const { subject_name, teacher_name, subject_id } = res.data();
           subjectArray.push({
@@ -66,32 +73,10 @@ export const StudentDashboard = ({navigation}: any) => {
     }
   }, []);
 
-  // useEffect(() => {
-  //   firestore()
-  //     .collection('subject_details')
-  //     .add({
-  //       batch_id: 125,
-  //       teacher_id: 156,
-  //       subject_name: 'abcd'
-  //     })
-  //     .then(() => {
-  //       console.log('DONE')
-  //     })
-  //     .catch((error) => console.log(error));
-  // });
-
-  
-
   return (
     <>
     {loading ? (
-    <View style={{
-      flex: 1,
-      justifyContent: 'center',
-      alignItems: 'center'
-    }}>
-      <ActivityIndicator size='large' color='red' />
-    </View>
+      <Loader />
     ) : (
       <>
         <StatusBar backgroundColor={Colors.headerBlue()} barStyle='light-content' />
@@ -118,6 +103,12 @@ export const StudentDashboard = ({navigation}: any) => {
                       name='SeperateCourseDetails'
                       allSubjectInfo={allSubject}
                     />
+                  : null}
+
+                  {allSubject.length === 0 ? 
+                    <View>
+                      <Text style={{textAlign: 'center'}}>You don't have any Course</Text>
+                    </View>
                   : null}
                 </View>
       

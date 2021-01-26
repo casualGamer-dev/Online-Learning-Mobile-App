@@ -2,20 +2,21 @@ import React from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import AntIcon from 'react-native-vector-icons/AntDesign';
 import Feather from 'react-native-vector-icons/Feather';
+import { AdminHome } from '../Screens/Admin';
 import { ProfileStack } from '../Profile';
 import Colors from '../utils/Color';
-import { Signup } from '../Screens/SignInFlow';
 const Tab = createBottomTabNavigator();
+
 export const AdminBottomTab = ({navigation}: any) => {
   return (
     <Tab.Navigator
       screenOptions={({ route }) => ({
         tabBarIcon: ({ focused, color }) => {
           let iconName;
-          if (route.name === 'AllSignup') {
+          if (route.name === 'AdminHome') {
             iconName = focused ? 'home' : 'home';
             return <AntIcon name={iconName} size={28} color={color} />;
-          } else if (route.name === 'StudentProfile') {
+          } else if (route.name === 'AdminProfile') {
             iconName = focused ? 'user' : 'user';
             return <Feather name={iconName} size={28} color={color} />;
           }
@@ -28,20 +29,18 @@ export const AdminBottomTab = ({navigation}: any) => {
       }}
       >
       <Tab.Screen 
-        name="AllSignup" 
-        component={Signup} 
+        name="AdminHome" 
+        component={AdminHome} 
         options={{
-          tabBarLabel: 'Add User',
-          // tabBarBadge: number
+          tabBarLabel: 'Home',
         }} 
       />
 
       <Tab.Screen 
-        name="StudentProfile" 
+        name="AdminProfile" 
         component={ProfileStack} 
         options={{
           tabBarLabel: 'Profile',
-          // tabBarBadge: number
         }} 
       />
     </Tab.Navigator>
