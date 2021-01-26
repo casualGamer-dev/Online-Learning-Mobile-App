@@ -1,18 +1,16 @@
 import * as React from 'react';
-import { Text, View, StyleSheet, SafeAreaView, ScrollView, StatusBar, Dimensions } from 'react-native';
+import { Text, View, StyleSheet, SafeAreaView, ScrollView, StatusBar, Dimensions, Alert } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import SimpleLineIcons from 'react-native-vector-icons/SimpleLineIcons';
 import Feather from 'react-native-vector-icons/Feather';
 import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
-import CommonHeader from '../../components/StudentCommonHeader';
-import SecondHeader from '../../components/SecondHeader';
-import BottomRightFab from '../../components/StudentBottomRightFab';
-import Colors from '../../utils/Color';
-import { Button } from 'react-native-paper';
+import CommonHeader from '../components/TeacherCommonHeader';
+import SecondHeader from '../../../components/SecondHeader';
+import BottomRightFab from '../components/TeacherBottomRightFab';
+import Colors from '../../../utils/Color';
 
 const {width, height} = Dimensions.get('screen');
-export const SeperateCourseDetails = ({route, navigation}: any) => {
-    // console.log(route.params)
+export const SeperateSubjectDetails = ({navigation}: any) => {
   return (
     <>
       <StatusBar backgroundColor={Colors.headerBlue()} barStyle='light-content' />
@@ -25,27 +23,22 @@ export const SeperateCourseDetails = ({route, navigation}: any) => {
             navigation={navigation}
         />
         <SecondHeader 
-            mainText='By Teacher Name ' 
-            secondText='Last Activity: 25th May 2020' 
+            mainText='By Teacher Name' 
+            secondText='Last Updated : 24th May 1999' 
         />
         <View style={styles.mainBody}>
             <ScrollView style={{}}>
                 <View style={styles.categoryBody}>
                     <View style={{}}>
                         <View style={[styles.liveNowStyle]}>
-                            <Text>Live Class Details</Text>
-                            <Button
-                                onPress={() => navigation.navigate('SubjectVideo')}
-                                >
-                                <Text>Click to Join Live Class</Text>
-                            </Button>
+                            <Text>Live class Details</Text>
                         </View>
                     </View>
                     <View style={{padding: 15, marginTop: 10}}>
                         <View style={styles.mainRow}>
                             <View style={styles.categoryViewStyle}>
-                                <TouchableWithoutFeedback onPress={() => navigation.navigate('StudentSavedLectureTopBar')}>
-                                    <Text style={styles.mainHeading}>Saved Lecture</Text>
+                                <TouchableWithoutFeedback onPress={() => navigation.navigate('TeacherSavedLectureTopBar')}>
+                                    <Text style={styles.mainHeading}>Upload Lecture</Text>
                                     <Text style={styles.description}>Teacher Name</Text>
                                     <Text></Text>
                                     <View style={styles.iconDiv}>
@@ -57,9 +50,9 @@ export const SeperateCourseDetails = ({route, navigation}: any) => {
                             </View>
                             <View style={styles.categoryViewStyle}>
                                 <TouchableWithoutFeedback onPress={() => navigation.navigate('StudentBlogPost', {
-                                        teacher: false
+                                        teacher: true
                                     })}>
-                                    <Text style={styles.mainHeading}>Questions</Text>
+                                    <Text style={styles.mainHeading}>Subject Doubts</Text>
                                     <Text style={styles.description}>Teacher Name</Text>
                                     <Text></Text>
                                     <View style={styles.iconDiv}>
@@ -73,7 +66,7 @@ export const SeperateCourseDetails = ({route, navigation}: any) => {
                         <View style={{marginTop: 20}}></View>
                         <View style={styles.mainRow}>
                             <View style={styles.categoryViewStyle}>
-                                <TouchableWithoutFeedback onPress={() => navigation.navigate('StudentCourseAssignment')}>
+                                <TouchableWithoutFeedback onPress={() => navigation.navigate('TeacherAssignment')}>
                                     <Text style={styles.mainHeading}>Assignments</Text>
                                     <Text style={styles.description}>Teacher Name</Text>
                                     <Text></Text>
@@ -85,7 +78,7 @@ export const SeperateCourseDetails = ({route, navigation}: any) => {
                                 </TouchableWithoutFeedback>
                             </View>
                             <View style={styles.categoryViewStyle}>
-                                <TouchableWithoutFeedback onPress={() => navigation.navigate('StudentSeperateExam')}>
+                                <TouchableWithoutFeedback onPress={() => Alert.alert('Coming Soon...')}>
                                     <Text style={styles.mainHeading}>Exam</Text>
                                     <Text style={styles.description}>Teacher Name</Text>
                                     <Text></Text>

@@ -1,17 +1,20 @@
 import * as React from 'react';
-import { StatusBar, View, ActivityIndicator, Text, Alert } from 'react-native';
+import { StatusBar, Alert } from 'react-native';
 import {Provider} from 'react-native-paper';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
+import auth from '@react-native-firebase/auth';
+import firestore from '@react-native-firebase/firestore';
 import { AuthContext } from './src/Context';
 import {storeData} from './src/AsyncActivities/storeData';
 import {getData} from './src/AsyncActivities/getData';
 import {clearCache} from './src/AsyncActivities/clearCache';
 import { IntroScreen, Login, Signup } from './src/Screens/SignInFlow';
-import Colors from './src/utils/Color';
 import StudentMainNavigator from './src/Navigator/StudentMainNavigator';
-import auth from '@react-native-firebase/auth';
-import firestore from '@react-native-firebase/firestore';
+import TeacherMainNavigator from './src/Navigator/TeacherMainNavigator';
+import AdminMainNavigator from './src/Navigator/AdminMainNavigator';
+import Loader from './src/components/Loader';
+import Colors from './src/utils/Color';
 const Stack = createStackNavigator();
 
 const App = () => {
@@ -27,7 +30,7 @@ const App = () => {
         .then(() => console.log('LOGIN DONE'))
         .catch( (error) => Alert.alert(error));
       } catch(e) {
-        console.log(e)
+        Alert.alert(e)
       }
     },
     signUp: async (userSignInData: any) => {
@@ -40,25 +43,21 @@ const App = () => {
               .collection('Users')
               .add({
                 user_id: userCredentials.user.uid,
+                name: userSignInData.fullName,
                 batch_id: userSignInData.batchId,
-                type: userSignInData.type
               })
               .then(() => {
-                
                 console.log('DATA ADDED AT THE TIME OF REG')
                 return userCredentials.user.updateProfile({
-                  displayName: userSignInData.fullname,
+                  displayName: userSignInData.type,
                 })
               })
               .catch((Regerror) => Alert.alert(Regerror));
               storeData('extra', {
-                batch_id: userSignInData.batchId, 
-                type: userSignInData.type
+                name: userSignInData.fullName,
+                batch_id: userSignInData.batchId
               });
           })
-          // .then(() => {
-            
-          // })
           .catch((error: any) => {
             if (error.code === 'auth/email-already-in-use') {
               Alert.alert('That email address is already in use!');
@@ -70,7 +69,7 @@ const App = () => {
             Alert.alert(error);
           });
       } catch(e) {
-        console.log(e)
+        Alert.alert(e)
       }
     },
     signOut: async () => {
@@ -79,7 +78,7 @@ const App = () => {
         await auth().signOut();
         clearCache();
       } catch(e) {
-        console.log(e)
+        Alert.alert(e)
       }
     },
   };
@@ -97,21 +96,13 @@ const App = () => {
 
   if(initialization) {
     return(
-      <View style={{
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center'
-      }}>
-        <ActivityIndicator size='large' color='red' />
-      </View>
+      <Loader />
     );
   }
 
   return (
     <>
-    <AuthContext.Provider value={authContext}>
-    {/* // {/* // <StoreProvider> */}
-      {/* //  <StudentProvider> */}
+      <AuthContext.Provider value={authContext}>
         <Provider>
           <StatusBar backgroundColor={Colors.F9Background()} barStyle='dark-content' />
           <NavigationContainer>
@@ -124,14 +115,18 @@ const App = () => {
                 <Stack.Screen name="Login" component={Login} />
                 <Stack.Screen name="Signup" component={Signup} />
               </Stack.Navigator>
-            ) : (
+            ) : user && user.displayName === 'student' ? (
               <StudentMainNavigator />
+            ) : user && user.displayName === 'teacher' ? (
+              <TeacherMainNavigator />
+            ) : user && user.displayName === 'admin' ? (
+              <AdminMainNavigator />
+            ) : (
+              <Loader />
             )}
           </NavigationContainer>
         </Provider>
-      {/* // {/* </StudentProvider>  */}
-     {/* // </StoreProvider> */}
-    </AuthContext.Provider>
+      </AuthContext.Provider>
     </>
   );
 };

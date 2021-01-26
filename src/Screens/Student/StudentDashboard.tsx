@@ -1,5 +1,5 @@
-import React, {useContext, useEffect} from 'react';
-import { Text, View, StyleSheet, SafeAreaView, ScrollView, Dimensions, StatusBar } from 'react-native';
+import React, {useContext, useEffect, useState} from 'react';
+import { Text, View, StyleSheet, SafeAreaView, ScrollView, Dimensions, StatusBar, ActivityIndicator } from 'react-native';
 import { AuthContext } from '../../Context';
 import CommonHeader from '../../components/StudentCommonHeader';
 import Category from '../../components/CategoryScreen';
@@ -12,6 +12,8 @@ const {width, height} = Dimensions.get('screen');
 
 export const StudentDashboard = ({navigation}: any) => {
   const { user } = useContext(AuthContext);
+  const [loading, setLoading] = useState(false);
+  const [allSubject, setAllSubject] = useState([]);
   // console.log(user.providerData)
   const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sept", "Oct", "Nov", "Dec" ];
   const getCurrentDate = () => {
@@ -20,29 +22,49 @@ export const StudentDashboard = ({navigation}: any) => {
     return date;
   }
 
-  const data123 = async () => {
-    let abcd;
+  const getStudentInformation = async () => {
+    setLoading(true)
+    let studentCourseDetails;
     try{
-      abcd = await getData('extra')
+      studentCourseDetails = await getData('extra')
     } catch(e) {
       console.log(e)
     }
-    
-      if(abcd.batch_id) {
-        try {
-          // console.log(abcd)
-    const data = await firestore().collection('subject_details').where('batch_id', '==',abcd.batch_id).get();
-    // const abcd2 = await getData('user')
-    // console.log('hjhkj',abcd)
-    // console.log('abcd2',user.uid)
-    console.log('TESTING',data.forEach((a) => console.log(a._data.subject_name)))
-    } catch(e) {
-      console.log(e)
+    if(studentCourseDetails.batch_id) {
+      const subjectArray: any = [];
+      try {
+        const allSubjects = 
+          await firestore()
+          .collection('subject_details')
+          .where('batch_id', '==',studentCourseDetails.batch_id)
+          .get();
+        // console.log('TESTING 123',data.forEach((a) => console.log(a._data.subject_name)))
+        // const abcd2 = await getData('user')
+        // console.log('hjhkj',abcd)
+        // console.log('abcd2',user.uid)
+        allSubjects.forEach((res: any) => {
+          const { subject_name, teacher_name, subject_id } = res.data();
+          subjectArray.push({
+            subject_name,
+            teacher_name,
+            subject_id
+          });
+        })
+        setAllSubject(subjectArray);
+        setLoading(false);
+      } catch(e) {
+        console.log(e)
+      }
     }
-  }
   };
 
-  // useEffect(() => {try{data123()} catch(e){console.log(e)}});
+  useEffect(() => {
+    try{
+      getStudentInformation()
+    } catch(e){
+      console.log(e)
+    }
+  }, []);
 
   // useEffect(() => {
   //   firestore()
@@ -62,34 +84,48 @@ export const StudentDashboard = ({navigation}: any) => {
 
   return (
     <>
-      <StatusBar backgroundColor={Colors.headerBlue()} barStyle='light-content' />
-      <SafeAreaView style={styles.container}>
-        <CommonHeader
-          backgroundColor={Colors.headerBlue()}
-          title="My Dashboard"
-          fontColor={Colors.headerFontColor()}
-          navigation={navigation}
-        />
-        <SecondHeader 
-          welcomeMSG={`${user.displayName}`}
-        />
-        <View style={styles.mainBody}>
-          <ScrollView style={{}}>
-              <View style={styles.IntroductionMsg}>
-                <Text style={{fontSize: 0}}></Text>
-                {/* <Text style={styles.bodyHeading}>{`Welcome, ${user.displayName}`}</Text> */}
-                {/* <Text style={styles.currentDate}>{getCurrentDate()}</Text> */}
-                {/* <Text></Text> */}
-              </View>
-              <View style={styles.categoryBody}>
-                <Category 
-                  navigation={navigation} 
-                  name='SeperateCourseDetails'
-                />
-              </View>
-          </ScrollView>
-        </View>
-      </SafeAreaView>
+    {loading ? (
+    <View style={{
+      flex: 1,
+      justifyContent: 'center',
+      alignItems: 'center'
+    }}>
+      <ActivityIndicator size='large' color='red' />
+    </View>
+    ) : (
+      <>
+        <StatusBar backgroundColor={Colors.headerBlue()} barStyle='light-content' />
+        <SafeAreaView style={styles.container}>
+          <CommonHeader
+            backgroundColor={Colors.headerBlue()}
+            title="My Dashboard"
+            fontColor={Colors.headerFontColor()}
+            navigation={navigation}
+          />
+          <SecondHeader 
+            welcomeMSG={`${user.displayName}`}
+          />
+          <View style={styles.mainBody}>
+            {/* <ScrollView style={{}}> */}
+                <View style={styles.IntroductionMsg}>
+                  <Text style={{fontSize: 0}}></Text>
+                </View>
+
+                <View style={styles.categoryBody}>
+                  {allSubject ?
+                    <Category 
+                      navigation={navigation} 
+                      name='SeperateCourseDetails'
+                      allSubjectInfo={allSubject}
+                    />
+                  : null}
+                </View>
+      
+            {/* </ScrollView> */}
+          </View>
+        </SafeAreaView>
+      </>
+    )}
     </>
   );
 };

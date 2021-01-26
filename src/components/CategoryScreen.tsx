@@ -1,97 +1,41 @@
 import * as React from 'react';
-import { Text, View, StyleSheet, Alert } from 'react-native';
+import { Text, View, StyleSheet, Alert, FlatList, Dimensions } from 'react-native';
 import CustomIcon from 'react-native-vector-icons/Feather';
 import MaterialIcon from 'react-native-vector-icons/MaterialCommunityIcons';
 import Fontisto from 'react-native-vector-icons/Fontisto';
 import Colors from '../utils/Color';
 import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
-// Icons -> book-open (Feather), file-text (Feather), book, book-reader, book-open (Fontawesome5)
 const CategoryScreen = (props: any) => {
-  const {navigation, name} = props;
+  const {navigation, name, allSubjectInfo} = props;
   return (
     <View style={styles.categoryScreen}>
-        <View style={styles.mainRow}>
-            <View style={styles.categoryViewStyle}>
-                <TouchableWithoutFeedback onPress={() => navigation.navigate({name})}>
-                    <Text style={styles.subjectName}>Subject Name</Text>
-                    <Text style={styles.teacherName}>Teacher Name</Text>
-                    <Text></Text>
-                    <View style={styles.iconView}>
-                        <Text style={styles.icon}>
-                            <MaterialIcon name='laptop' size={40} color={Colors.darkColor()} />
-                        </Text>
+        <FlatList 
+            data={allSubjectInfo}
+            showsVerticalScrollIndicator={false}
+            horizontal={false}
+            numColumns={2}
+            renderItem={ ({ item: subjectInformation }) => {
+                return(
+                    <>
+                    <View> 
+                       <View style={styles.categoryViewStyle}>
+                            <TouchableWithoutFeedback onPress={() => navigation.navigate({name}, {subjectId: subjectInformation.subject_id})}>
+                                <Text style={styles.subjectName}>{subjectInformation.subject_name}</Text>
+                                <Text style={styles.teacherName}>{subjectInformation.teacher_name}</Text>
+                                <Text></Text>
+                                <View style={styles.iconView}>
+                                    <Text style={styles.icon}>
+                                        <MaterialIcon name='laptop' size={40} color={Colors.darkColor()} />
+                                    </Text>
+                                </View>
+                            </TouchableWithoutFeedback>
+                        </View>
                     </View>
-                </TouchableWithoutFeedback>
-            </View>
-            <View style={styles.categoryViewStyle}>
-                <TouchableWithoutFeedback onPress={() => navigation.navigate({name})}>
-                    <Text style={styles.subjectName}>Subject Name</Text>
-                    <Text style={styles.teacherName}>Teacher Name</Text>
-                    <Text></Text>
-                    <View style={styles.iconView}>
-                        <Text style={styles.icon}>
-                            <MaterialIcon name='cloud-outline' size={40} color={Colors.darkColor()} />
-                        </Text>
-                    </View>
-                </TouchableWithoutFeedback>
-            </View>
-        </View>
-        <View style={{marginTop: 30}}></View>
-        <View style={styles.mainRow}>
-            <View style={styles.categoryViewStyle}>
-                <TouchableWithoutFeedback onPress={() => navigation.navigate({name})}>
-                    <Text style={styles.subjectName}>Subject Name</Text>
-                    <Text style={styles.teacherName}>Teacher Name</Text>
-                    <Text></Text>
-                    <View style={styles.iconView}>
-                        <Text style={styles.icon}>
-                            <Fontisto name='laboratory' size={35} color={Colors.darkColor()} />
-                        </Text>
-                    </View>
-                </TouchableWithoutFeedback>
-            </View>
-            <View style={styles.categoryViewStyle}>
-                <TouchableWithoutFeedback onPress={() => navigation.navigate({name})}>
-                    <Text style={styles.subjectName}>Subject Name</Text>
-                    <Text style={styles.teacherName}>Teacher Name</Text>
-                    <Text></Text>
-                    <View style={styles.iconView}>
-                        <Text style={styles.icon}>
-                            <MaterialIcon name='math-compass' size={40} color={Colors.darkColor()} />
-                        </Text>
-                    </View>
-                </TouchableWithoutFeedback>
-            </View>
-        </View>
-        
-        <View style={{marginTop: 30}}></View>
-        <View style={styles.mainRow}>
-            <View style={styles.categoryViewStyle}>
-                <TouchableWithoutFeedback onPress={() => navigation.navigate({name})}>
-                    <Text style={styles.subjectName}>Subject Name</Text>
-                    <Text style={styles.teacherName}>Teacher Name</Text>
-                    <Text></Text>
-                    <View style={styles.iconView}>
-                        <Text style={styles.icon}>
-                            <MaterialIcon name='format-letter-case' size={40} color={Colors.darkColor()} />
-                        </Text>
-                    </View>
-                </TouchableWithoutFeedback>
-            </View>
-            <View style={styles.categoryViewStyle}>
-                <TouchableWithoutFeedback onPress={() => navigation.navigate({name})}>
-                    <Text style={styles.subjectName}>Subject Name</Text>
-                    <Text style={styles.teacherName}>Teacher Name</Text>
-                    <Text></Text>
-                    <View style={styles.iconView}>
-                        <Text style={styles.icon}>
-                            <MaterialIcon name='earth' size={40} color={Colors.darkColor()} />
-                        </Text>
-                    </View>
-                </TouchableWithoutFeedback>
-            </View>
-        </View>
-
+                    </>
+                )
+            }}
+            keyExtractor={ (item, index) => index.toString() }
+        />
     </View>
   );
 };
@@ -99,11 +43,11 @@ const CategoryScreen = (props: any) => {
 const styles = StyleSheet.create({
     categoryScreen: {
     },
-    mainRow: {
-        display: 'flex', 
-        flexDirection: 'row', 
-        justifyContent: 'space-between'
-    },
+    // mainRow: {
+    //     display: 'flex', 
+    //     flexDirection: 'row', 
+    //     justifyContent: 'space-between'
+    // },
     subjectName: {
         fontSize: 16, 
         color: Colors.black(), 
@@ -124,7 +68,7 @@ const styles = StyleSheet.create({
     },
     categoryViewStyle: {
         backgroundColor: '#F2F2FA',
-        width: '47%',
+        width: Dimensions.get('screen').width/2.25,
         height: 160,
         borderRadius: 10,
         padding: 10,
@@ -138,6 +82,7 @@ const styles = StyleSheet.create({
         shadowOpacity: 0.22,
         shadowRadius: 2.22,
         elevation: 3,
+        marginRight: 15,
     },
 });
 
