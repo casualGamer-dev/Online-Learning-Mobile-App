@@ -11,7 +11,7 @@ import Colors from '../../utils/Color';
 import Loader from '../../components/Loader';
 const {width, height} = Dimensions.get('screen');
 
-export const StudentDashboard = ({navigation}: any) => {
+export const StudentDashboard = ({route, navigation}: any) => {
   const { user } = useContext(AuthContext);
   const [loading, setLoading] = useState(false);
   const [allSubject, setAllSubject] = useState([]);
@@ -100,6 +100,7 @@ export const StudentDashboard = ({navigation}: any) => {
                   {allSubject ?
                     <Category 
                       navigation={navigation} 
+                      route={route}
                       name='SeperateCourseDetails'
                       allSubjectInfo={allSubject}
                     />

@@ -6,7 +6,7 @@ import Fontisto from 'react-native-vector-icons/Fontisto';
 import Colors from '../utils/Color';
 import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
 const CategoryScreen = (props: any) => {
-  const {navigation, name, allSubjectInfo} = props;
+  const {navigation, route, name, allSubjectInfo} = props;
   return (
     <View style={styles.categoryScreen}>
         <FlatList 
@@ -19,7 +19,7 @@ const CategoryScreen = (props: any) => {
                     <>
                     <View> 
                        <View style={styles.categoryViewStyle}>
-                            <TouchableWithoutFeedback onPress={() => navigation.navigate({name}, {subjectId: subjectInformation.subject_id})}>
+                            <TouchableWithoutFeedback onPress={() => navigation.navigate(`${name}`, {subjectId: subjectInformation.subject_id})}>
                                 <Text style={styles.subjectName}>{subjectInformation.subject_name}</Text>
                                 <Text style={styles.teacherName}>{subjectInformation.teacher_name}</Text>
                                 <Text></Text>

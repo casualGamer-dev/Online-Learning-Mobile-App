@@ -1,113 +1,140 @@
-import * as React from 'react';
+import React, {useEffect, useState} from 'react';
 import { Text, View, StyleSheet, SafeAreaView, ScrollView, StatusBar, Dimensions } from 'react-native';
+import { Button } from 'react-native-paper';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import SimpleLineIcons from 'react-native-vector-icons/SimpleLineIcons';
 import Feather from 'react-native-vector-icons/Feather';
 import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
+import firestore from '@react-native-firebase/firestore';
 import CommonHeader from '../../components/StudentCommonHeader';
 import SecondHeader from '../../components/SecondHeader';
 import BottomRightFab from '../../components/StudentBottomRightFab';
 import Colors from '../../utils/Color';
-import { Button } from 'react-native-paper';
-
 const {width, height} = Dimensions.get('screen');
+
 export const SeperateCourseDetails = ({route, navigation}: any) => {
-    // console.log(route.params)
-  return (
-    <>
-      <StatusBar backgroundColor={Colors.headerBlue()} barStyle='light-content' />
-      <SafeAreaView style={styles.container}>
-        <CommonHeader
-            back={false}
-            backgroundColor={Colors.headerBlue()}
-            title="Subject Name"
-            fontColor={Colors.headerFontColor()}
-            navigation={navigation}
-        />
-        <SecondHeader 
-            mainText='By Teacher Name ' 
-            secondText='Last Activity: 25th May 2020' 
-        />
-        <View style={styles.mainBody}>
-            <ScrollView style={{}}>
-                <View style={styles.categoryBody}>
-                    <View style={{}}>
-                        <View style={[styles.liveNowStyle]}>
-                            <Text>Live Class Details</Text>
-                            <Button
-                                onPress={() => navigation.navigate('SubjectVideo')}
-                                >
-                                <Text>Click to Join Live Class</Text>
-                            </Button>
+    const [singleSubjectDetails, setSingleSubjectdetails] = useState([]);
+    const subjectId = route.params.subjectId;
+
+    const getParticularCourseDetails = async () => {
+        console.log(subjectId)
+        const particularSubject: any = [];
+        const fullSubjectDetails = 
+            await firestore()
+                .collection('subject_details')
+                .where('subject_id', '==',subjectId.toString())
+                .get();
+
+        fullSubjectDetails.forEach((res: any) => {
+            const { subject_name, subject_id } = res.data();
+            particularSubject.push({
+                subject_name,
+                subject_id
+            });
+        })
+        setSingleSubjectdetails(particularSubject)
+        console.log('SUBJECT',singleSubjectDetails)
+    }   
+
+    useEffect(() => {
+        getParticularCourseDetails()
+    }, []);
+
+    return (
+        <>
+        <StatusBar backgroundColor={Colors.headerBlue()} barStyle='light-content' />
+        <SafeAreaView style={styles.container}>
+            <CommonHeader
+                back={false}
+                backgroundColor={Colors.headerBlue()}
+                title='Subject Name'
+                fontColor={Colors.headerFontColor()}
+                navigation={navigation}
+            />
+            <SecondHeader 
+                mainText='By Teacher Name ' 
+                secondText='Last Activity: 25th May 2020' 
+            />
+            <View style={styles.mainBody}>
+                <ScrollView style={{}}>
+                    <View style={styles.categoryBody}>
+                        <View style={{}}>
+                            <View style={[styles.liveNowStyle]}>
+                                <Text>Live Class Details</Text>
+                                <Button
+                                    onPress={() => navigation.navigate('SubjectVideo')}
+                                    >
+                                    <Text>Click to Join Live Class</Text>
+                                </Button>
+                            </View>
+                        </View>
+                        <View style={{padding: 15, marginTop: 10}}>
+                            <View style={styles.mainRow}>
+                                <View style={styles.categoryViewStyle}>
+                                    <TouchableWithoutFeedback onPress={() => navigation.navigate('StudentSavedLectureTopBar')}>
+                                        <Text style={styles.mainHeading}>Saved Lecture</Text>
+                                        <Text style={styles.description}>Teacher Name</Text>
+                                        <Text></Text>
+                                        <View style={styles.iconDiv}>
+                                            <Text style={styles.mainIcon}>
+                                                <Ionicons name='ios-videocam-outline' size={45} color={Colors.darkColor()} />
+                                            </Text>
+                                        </View>
+                                    </TouchableWithoutFeedback>
+                                </View>
+                                <View style={styles.categoryViewStyle}>
+                                    <TouchableWithoutFeedback onPress={() => navigation.navigate('StudentBlogPost', {
+                                            teacher: false
+                                        })}>
+                                        <Text style={styles.mainHeading}>Questions</Text>
+                                        <Text style={styles.description}>Teacher Name</Text>
+                                        <Text></Text>
+                                        <View style={styles.iconDiv}>
+                                            <Text style={styles.mainIcon}>
+                                                <SimpleLineIcons name='info' size={40} color={Colors.darkColor()} />
+                                            </Text>
+                                        </View>
+                                    </TouchableWithoutFeedback>
+                                </View>
+                            </View>
+                            <View style={{marginTop: 20}}></View>
+                            <View style={styles.mainRow}>
+                                <View style={styles.categoryViewStyle}>
+                                    <TouchableWithoutFeedback onPress={() => navigation.navigate('StudentCourseAssignment')}>
+                                        <Text style={styles.mainHeading}>Assignments</Text>
+                                        <Text style={styles.description}>Teacher Name</Text>
+                                        <Text></Text>
+                                        <View style={styles.iconDiv}>
+                                            <Text style={styles.mainIcon}>
+                                                <Feather name='edit' size={40} color={Colors.darkColor()} />
+                                            </Text>
+                                        </View>
+                                    </TouchableWithoutFeedback>
+                                </View>
+                                <View style={styles.categoryViewStyle}>
+                                    <TouchableWithoutFeedback onPress={() => navigation.navigate('StudentSeperateExam')}>
+                                        <Text style={styles.mainHeading}>Exam</Text>
+                                        <Text style={styles.description}>Teacher Name</Text>
+                                        <Text></Text>
+                                        <View style={styles.iconDiv}>
+                                            <Text style={styles.mainIcon}>
+                                                <Feather name='clipboard' size={40} color={Colors.darkColor()} />
+                                            </Text>
+                                        </View>
+                                    </TouchableWithoutFeedback>
+                                </View>
+                            </View>
                         </View>
                     </View>
-                    <View style={{padding: 15, marginTop: 10}}>
-                        <View style={styles.mainRow}>
-                            <View style={styles.categoryViewStyle}>
-                                <TouchableWithoutFeedback onPress={() => navigation.navigate('StudentSavedLectureTopBar')}>
-                                    <Text style={styles.mainHeading}>Saved Lecture</Text>
-                                    <Text style={styles.description}>Teacher Name</Text>
-                                    <Text></Text>
-                                    <View style={styles.iconDiv}>
-                                        <Text style={styles.mainIcon}>
-                                            <Ionicons name='ios-videocam-outline' size={45} color={Colors.darkColor()} />
-                                        </Text>
-                                    </View>
-                                </TouchableWithoutFeedback>
-                            </View>
-                            <View style={styles.categoryViewStyle}>
-                                <TouchableWithoutFeedback onPress={() => navigation.navigate('StudentBlogPost', {
-                                        teacher: false
-                                    })}>
-                                    <Text style={styles.mainHeading}>Questions</Text>
-                                    <Text style={styles.description}>Teacher Name</Text>
-                                    <Text></Text>
-                                    <View style={styles.iconDiv}>
-                                        <Text style={styles.mainIcon}>
-                                            <SimpleLineIcons name='info' size={40} color={Colors.darkColor()} />
-                                        </Text>
-                                    </View>
-                                </TouchableWithoutFeedback>
-                            </View>
-                        </View>
-                        <View style={{marginTop: 20}}></View>
-                        <View style={styles.mainRow}>
-                            <View style={styles.categoryViewStyle}>
-                                <TouchableWithoutFeedback onPress={() => navigation.navigate('StudentCourseAssignment')}>
-                                    <Text style={styles.mainHeading}>Assignments</Text>
-                                    <Text style={styles.description}>Teacher Name</Text>
-                                    <Text></Text>
-                                    <View style={styles.iconDiv}>
-                                        <Text style={styles.mainIcon}>
-                                            <Feather name='edit' size={40} color={Colors.darkColor()} />
-                                        </Text>
-                                    </View>
-                                </TouchableWithoutFeedback>
-                            </View>
-                            <View style={styles.categoryViewStyle}>
-                                <TouchableWithoutFeedback onPress={() => navigation.navigate('StudentSeperateExam')}>
-                                    <Text style={styles.mainHeading}>Exam</Text>
-                                    <Text style={styles.description}>Teacher Name</Text>
-                                    <Text></Text>
-                                    <View style={styles.iconDiv}>
-                                        <Text style={styles.mainIcon}>
-                                            <Feather name='clipboard' size={40} color={Colors.darkColor()} />
-                                        </Text>
-                                    </View>
-                                </TouchableWithoutFeedback>
-                            </View>
-                        </View>
-                    </View>
-                </View>
-            </ScrollView>
-        </View>
-        <BottomRightFab
-            backgroundColor={Colors.darkColor()}
-            navigation={navigation}
-        />
-      </SafeAreaView>
-    </>
-  );
+                </ScrollView>
+            </View>
+            <BottomRightFab
+                backgroundColor={Colors.darkColor()}
+                navigation={navigation}
+            />
+        </SafeAreaView>
+        </>
+    );
 };
 
 const styles = StyleSheet.create({
