@@ -70,7 +70,6 @@ const SubjectBlogPost = ({ route, navigation }: any) => {
                 {/* <ScrollView style={{}}> */}
                         <View style={styles.categoryBody}>
                             <View style={styles.mainListBody}>
-                                {console.log(empty)}
                                 {empty ?
                                     <View style={styles.zeroQuestion}>
                                         <Text>No Question Found!</Text>

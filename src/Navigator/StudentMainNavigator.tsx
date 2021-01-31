@@ -8,6 +8,7 @@ import AddANewQuesction from '../../src/components/AddANewQuesction';
 import StudentSavedLectureTopBar from '../Navigator/StudentSavedLectureTopBar';
 import Bookmark from '../../src/components/BookmarkScreen';
 import Notification from '../../src/components/NotificationScreen';
+import WebViewComponent from '../components/WebViewComponent';
 // import SeperateSubjectChat from './src/components/SeperateSubjectChat';
 // import BrodcastVideo from './src/Screens/Video/BrodcastVideo';
 const StudentStack = createStackNavigator();
@@ -27,6 +28,7 @@ const StudentMainNavigator = () => {
             <StudentStack.Screen name="StudentSeperateExam" component={StudentSeperateExam} />
             <StudentStack.Screen name="Bookmark" component={Bookmark} />
             <StudentStack.Screen name="Notification" component={Notification} />
+            <StudentStack.Screen name="WebViewComponent" component={WebViewComponent} />
             {/* <StudentStack.Screen name="SeperateSubjectChat" component={SeperateSubjectChat} />
             <StudentStack.Screen name="SubjectVideo" component={BrodcastVideo} /> */}
         </StudentStack.Navigator>
