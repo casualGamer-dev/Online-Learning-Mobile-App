@@ -10,50 +10,60 @@ import CommonHeader from '../../components/StudentCommonHeader';
 import SecondHeader from '../../components/SecondHeader';
 import BottomRightFab from '../../components/StudentBottomRightFab';
 import Colors from '../../utils/Color';
+import Loader from '../../components/Loader';
 const {width, height} = Dimensions.get('screen');
 
 export const SeperateCourseDetails = ({route, navigation}: any) => {
     const [singleSubjectDetails, setSingleSubjectdetails] = useState([]);
+    const [loading, setLoading] = useState(false);
     const subjectId = route.params.subjectId;
 
     const getParticularCourseDetails = async () => {
-        console.log(subjectId)
-        const particularSubject: any = [];
-        const fullSubjectDetails = 
-            await firestore()
-                .collection('subject_details')
-                .where('subject_id', '==',subjectId.toString())
-                .get();
+        try{
+            setLoading(true);
+            const particularSubject: any = [];
+            const fullSubjectDetails = 
+                await firestore()
+                    .collection('subject_details')
+                    .where('subject_id', '==',subjectId.toString())
+                    .get();
 
-        fullSubjectDetails.forEach((res: any) => {
-            const { subject_name, subject_id } = res.data();
-            particularSubject.push({
-                subject_name,
-                subject_id
-            });
-        })
-        setSingleSubjectdetails(particularSubject)
-        console.log('SUBJECT',singleSubjectDetails)
+            fullSubjectDetails.forEach((res: any) => {
+                const { subject_name, subject_id, teacher_name } = res.data();
+                particularSubject.push({
+                    subject_name,
+                    subject_id,
+                    teacher_name
+                });
+            })
+            console.log(particularSubject)
+            setSingleSubjectdetails(particularSubject)
+            setLoading(false);
+        } catch(e) {
+            console.log(e)
+        }
     }   
 
     useEffect(() => {
+        setLoading(true)
         getParticularCourseDetails()
+        setLoading(false);
     }, []);
 
     return (
+        !loading && !singleSubjectDetails.length ? <Loader /> : (
         <>
         <StatusBar backgroundColor={Colors.headerBlue()} barStyle='light-content' />
         <SafeAreaView style={styles.container}>
             <CommonHeader
                 back={false}
                 backgroundColor={Colors.headerBlue()}
-                title='Subject Name'
+                title={singleSubjectDetails ? singleSubjectDetails[0].subject_name : 'Loading...'}
                 fontColor={Colors.headerFontColor()}
                 navigation={navigation}
             />
             <SecondHeader 
-                mainText='By Teacher Name ' 
-                secondText='Last Activity: 25th May 2020' 
+                mainText={singleSubjectDetails ? `By ${singleSubjectDetails[0].teacher_name}` : 'Not Available'}
             />
             <View style={styles.mainBody}>
                 <ScrollView style={{}}>
@@ -84,7 +94,8 @@ export const SeperateCourseDetails = ({route, navigation}: any) => {
                                 </View>
                                 <View style={styles.categoryViewStyle}>
                                     <TouchableWithoutFeedback onPress={() => navigation.navigate('StudentBlogPost', {
-                                            teacher: false
+                                            teacher: false,
+                                            subject_details: singleSubjectDetails[0]
                                         })}>
                                         <Text style={styles.mainHeading}>Questions</Text>
                                         <Text style={styles.description}>Teacher Name</Text>
@@ -134,6 +145,7 @@ export const SeperateCourseDetails = ({route, navigation}: any) => {
             />
         </SafeAreaView>
         </>
+        )
     );
 };
 

@@ -5,8 +5,8 @@ import FeatherIcon from 'react-native-vector-icons/Feather';
 import Colors from '../utils/Color';
 
 const QuesctionCard = (props: any) => {
-  const {navigation} = props;
-  const data = `Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi dicta praesentium aspernatur quibusdam impedit ullam quas recusandae corrupti debitis ?`
+  const {questionDetails, navigation} = props;
+  const data = `${questionDetails.question}?`
   const ShareQuesction = (quesction: String) => {
     Share.share({
         message: `
@@ -54,12 +54,12 @@ const QuesctionCard = (props: any) => {
             {data}
         </Text>
         <View style={{marginTop: 10,}}>
-            <Text style={styles.quesctionUser}> • Abcd asked the quesction</Text>
+            <Text style={styles.quesctionUser}> • Many students has asked this</Text>
         </View>
         <View style={styles.bottomCard}>
             <View style={styles.answerTab}>
                 <TouchableWithoutFeedback onPress={() => navigation.navigate('BlogAnswer', {
-                        quesction: data
+                        allDetails: questionDetails
                     })}
                     >
                     <Text style={{textAlign: 'center'}}>

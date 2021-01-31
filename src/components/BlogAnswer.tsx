@@ -1,14 +1,17 @@
 import * as React from 'react';
-import { Text, View, StyleSheet, SafeAreaView, ScrollView, Dimensions, StatusBar } from 'react-native';
+import { Text, View, StyleSheet, SafeAreaView, ScrollView, Dimensions, StatusBar, Alert } from 'react-native';
 import {TextInput, Button} from 'react-native-paper';
 import { Formik } from 'formik';
+import firestore from '@react-native-firebase/firestore';
+import { AuthContext } from '../Context';
 import CommonHeader from './StudentCommonHeader';
 import SecondHeader from '../components/SecondHeader';
 import Colors from '../utils/Color';
 
 const {width, height} = Dimensions.get('screen');
 const BlogAnswer = ({route, navigation}: any) => {
-  const { quesction } = route.params;
+  const {user} = React.useContext(AuthContext);
+  const { allDetails } = route.params;
   return (
     <>
       <StatusBar backgroundColor={Colors.headerBlue()} barStyle='light-content' />
@@ -22,29 +25,38 @@ const BlogAnswer = ({route, navigation}: any) => {
         />
         <SecondHeader 
             mainText='Subject Name'
-            secondText='Your answer will Visible to Everyone'
         />
         <View style={styles.mainBody}>
             <ScrollView style={{}}>
                     <View style={styles.categoryBody}>
                     <View style={styles.whiteBody}>
                         <View>
-                            <Text style={styles.quesction}>{quesction}</Text>
+                            <Text style={styles.quesction}>{allDetails.question}</Text>
                         </View>
                         <View style={{padding: 8, paddingLeft: 15, paddingRight: 15}}>
                             <Text>Date: 24 Jul 2020</Text>
                             <Text>Description text goes here</Text>
                             <Text>Some text</Text>
-                            <Text>Abcd asked the quesction</Text>
+                            <Text>Many students has asked this question</Text>
                         </View>
                         <View style={{marginTop: 15, padding: 15}}> 
                             <Formik
                                 initialValues={{
-                                    blogId: '',
-                                    userId: '',
+                                    question_id: allDetails.question_id,
+                                    user_id: user.uid,
                                     comment: ''
                                 }}
-                                onSubmit={values => console.log(values)}
+                                onSubmit={values => {
+                                    console.log(values)
+                                    firestore()
+                                        .collection('all_answers')
+                                        .add(values)
+                                        .then(() => {
+                                            values.comment=''
+                                            Alert.alert('Answer added Successfully!')
+                                        })
+                                        .catch(e => console.log(e));
+                                }}
                                 >
                                 {({ handleChange, handleBlur, handleSubmit, values }) => (
                                 <View>

@@ -32,7 +32,7 @@ export default SecondHeader;
 const styles = StyleSheet.create({
     upperTop: {
         width, 
-        height: 90, 
+        height: 80, 
         backgroundColor: '#4B83F2', 
         paddingRight: 15, 
         paddingLeft: 15
