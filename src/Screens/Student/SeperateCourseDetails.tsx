@@ -81,7 +81,9 @@ export const SeperateCourseDetails = ({route, navigation}: any) => {
                         <View style={{padding: 15, marginTop: 10}}>
                             <View style={styles.mainRow}>
                                 <View style={styles.categoryViewStyle}>
-                                    <TouchableWithoutFeedback onPress={() => navigation.navigate('StudentSavedLectureTopBar')}>
+                                    <TouchableWithoutFeedback onPress={() => navigation.navigate('StudentSavedLectureTopBar', {
+                                        subject_details: singleSubjectDetails[0]
+                                    })}>
                                         <Text style={styles.mainHeading}>Saved Lecture</Text>
                                         <Text style={styles.description}>Teacher Name</Text>
                                         <Text></Text>

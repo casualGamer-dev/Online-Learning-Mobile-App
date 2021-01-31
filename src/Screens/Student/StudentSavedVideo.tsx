@@ -5,20 +5,21 @@ import SecondHeader from '../../components/SecondHeader';
 import Colors from '../../utils/Color';
 
 const {width, height} = Dimensions.get('screen');
-export const StudentSavedVideo = ({navigation}: any) => {
+export const StudentSavedVideo = ({route, navigation}: any) => {
+  const {subject_details} = route.params;
   return (
     <>
       <StatusBar backgroundColor={Colors.headerBlue()} barStyle='light-content' />
       <SafeAreaView style={styles.container}>
         <SecondHeader 
           mainText='Pre Recorded Video'
-          secondText='Last Updated on : 20th Jul 2020'
         />
         <View style={styles.mainBody}>
             <ScrollView style={{}}>
               <View style={styles.categoryBody}>
                   <View style={{justifyContent: 'center', alignItems: 'center'}}>
                       <Text>Video Section</Text>
+                      <Text>{subject_details.subject_id}</Text>
                   </View>
               </View>
             </ScrollView>
