@@ -5,6 +5,7 @@ import BottomRightFab from '../../components/StudentBottomRightFab';
 import SecondHeader from '../../components/SecondHeader';
 import Loader from '../../components/Loader';
 import Colors from '../../utils/Color';
+import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
 const {width, height} = Dimensions.get('screen');
 
 export const StudentSavedVideo = ({route, navigation}: any) => {
@@ -24,8 +25,9 @@ export const StudentSavedVideo = ({route, navigation}: any) => {
             .get();
 
       fullSubjectDetails.forEach((res: any) => {
-        const { video_url } = res.data();
+        const { name, video_url } = res.data();
         particularSubject.push({
+          name,
           video_url
         });
       })
@@ -67,9 +69,19 @@ export const StudentSavedVideo = ({route, navigation}: any) => {
                       horizontal={false}
                       renderItem={ ({ item: videoDetails }) => {
                         return(
-                          <>
-                            <Text onPress={() => navigation.navigate('WebViewComponent')}>{videoDetails.video_url}</Text>
-                          </>
+                          <TouchableWithoutFeedback
+                            onPress={() => navigation.navigate('WebViewComponent', {
+                              url: videoDetails.video_url
+                            })}
+                            style={styles.videoStyle}
+                            >
+                            <View style={{width: '20%'}}>
+                              <Text>Video: </Text>
+                            </View>
+                            <View style={{width: '80%'}}>
+                              <Text>{videoDetails.name}</Text>
+                            </View>
+                          </TouchableWithoutFeedback>
                         )
                       }}
                       keyExtractor={ (item, index) => index.toString() }
@@ -115,5 +127,22 @@ const styles = StyleSheet.create({
   zeroQuestion: {
     justifyContent: 'center',
     alignItems: 'center'
+  },
+  videoStyle: {
+    width,
+    paddingVertical: 15,
+    paddingHorizontal: 15,
+    backgroundColor: Colors.white(),
+    shadowColor: Colors.shadowWhite(),
+    shadowOffset: {
+      width: 0,
+      height: 1,
+    },
+    shadowOpacity: 0.20,
+    shadowRadius: 1.41,
+    elevation: 2,
+    borderRadius: 10,
+    marginBottom: 10,
+    flexDirection: 'row'
   }
 });
