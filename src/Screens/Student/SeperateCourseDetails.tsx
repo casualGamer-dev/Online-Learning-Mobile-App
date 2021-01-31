@@ -141,6 +141,7 @@ export const SeperateCourseDetails = ({route, navigation}: any) => {
             </View>
             <BottomRightFab
                 backgroundColor={Colors.darkColor()}
+                subject_id={singleSubjectDetails[0].subject_id}
                 navigation={navigation}
             />
         </SafeAreaView>

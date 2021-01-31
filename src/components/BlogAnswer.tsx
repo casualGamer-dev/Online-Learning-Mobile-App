@@ -24,7 +24,7 @@ const BlogAnswer = ({route, navigation}: any) => {
             navigation={navigation}
         />
         <SecondHeader 
-            mainText='Subject Name'
+            mainText='Your answer will be available for everyone'
         />
         <View style={styles.mainBody}>
             <ScrollView style={{}}>
@@ -44,7 +44,7 @@ const BlogAnswer = ({route, navigation}: any) => {
                                 initialValues={{
                                     question_id: allDetails.question_id,
                                     user_id: user.uid,
-                                    comment: ''
+                                    answer: ''
                                 }}
                                 onSubmit={values => {
                                     console.log(values)
@@ -52,7 +52,7 @@ const BlogAnswer = ({route, navigation}: any) => {
                                         .collection('all_answers')
                                         .add(values)
                                         .then(() => {
-                                            values.comment=''
+                                            values.answer=''
                                             Alert.alert('Answer added Successfully!')
                                         })
                                         .catch(e => console.log(e));
@@ -65,9 +65,9 @@ const BlogAnswer = ({route, navigation}: any) => {
                                         label="Type an Answer"
                                         multiline={true}
                                         numberOfLines={8}
-                                        onChangeText={handleChange('comment')}
-                                        onBlur={handleBlur('comment')}
-                                        value={values.comment}
+                                        onChangeText={handleChange('answer')}
+                                        onBlur={handleBlur('answer')}
+                                        value={values.answer}
                                         style={styles.answerInput}
                                     />
                                     <Button 
