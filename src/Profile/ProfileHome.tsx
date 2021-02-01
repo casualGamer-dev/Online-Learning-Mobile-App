@@ -1,18 +1,24 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { View, StyleSheet, SafeAreaView, ScrollView, StatusBar, Dimensions, Alert, Text } from 'react-native';
 import { Button } from 'react-native-paper';
+import { AuthContext } from '../Context';
 import CommonHeader from '../components/StudentCommonHeader';
 import SecondHeader from '../components/SecondHeader';
 import ProfileTop from './components/ProfileTopSection';
-import SummarySectionTeacher from './components/SummarySectionTeacher';
-import AboutMe from './components/AboutMe';
 import DegreeSection from './components/DegreeSection';
 import Colors from '../utils/Color';
 import UserFab from './components/UserFab';
+import { getData } from '../AsyncActivities/getData';
 const {width, height} = Dimensions.get('screen');
-import { AuthContext } from '../Context';
+
 const ProfileHome = ({navigation}: any) => {
   const { signOut } = useContext(AuthContext);
+  const [name, setName] = useState('');
+  const userDetails = getData('extra')
+  userDetails
+    .then(allDetails => setName(allDetails.name))
+    .catch(err => Alert.alert('ERROR', 'Error in ProfileHome'));
+  
   return (
     <>
       <SafeAreaView style={styles.container}>
@@ -27,15 +33,14 @@ const ProfileHome = ({navigation}: any) => {
           blank={true}
         />
         <View style={styles.mainBody}>
-            <ScrollView style={{}}>
-              <View style={styles.categoryBody}>
-                <ProfileTop />
-                <Button onPress={() => signOut()}>
-                  <Text>LOGOUT</Text>
-                </Button>
-                {/* <DegreeSection /> */}
-              </View>
-            </ScrollView>
+          <ScrollView style={{}}>
+            <View style={styles.categoryBody}>
+              <ProfileTop name={name} />
+              <Button onPress={() => signOut()}>
+                <Text>LOGOUT</Text>
+              </Button>
+            </View>
+          </ScrollView>
         </View>
         <UserFab 
           backgroundColor={Colors.headerBlue()}
