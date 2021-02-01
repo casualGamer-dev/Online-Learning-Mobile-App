@@ -15,13 +15,6 @@ export const StudentDashboard = ({route, navigation}: any) => {
   const { user } = useContext(AuthContext);
   const [loading, setLoading] = useState(false);
   const [allSubject, setAllSubject] = useState([]);
-  // console.log(user.providerData)
-  const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sept", "Oct", "Nov", "Dec" ];
-  const getCurrentDate = () => {
-    const today: Date = new Date();
-    const date = today.getDate() + " "+ monthNames[parseInt(`${today.getMonth()}`)] +" "+ today.getFullYear();
-    return date;
-  }
 
   const getStudentInformation = async () => {
     setLoading(true)

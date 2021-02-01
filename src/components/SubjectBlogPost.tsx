@@ -10,7 +10,7 @@ import Colors from '../utils/Color';
 const {width, height} = Dimensions.get('screen');
 
 const SubjectBlogPost = ({ route, navigation }: any) => {
-    const { teacher, subject_details } = route.params;
+    const { subject_details, teacher } = route.params;
     const [singleSubjectDetails, setSingleSubjectdetails] = useState([]);
     const [empty, setEmpty] = useState(false);
     const [loading, setLoading] = useState(false);

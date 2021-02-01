@@ -160,6 +160,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 15,
   },
   particularAnswer: {
+    paddingTop: 15,
     borderBottomColor: Colors.shadowWhite(),
     paddingBottom: 15,
     borderBottomWidth: 1,

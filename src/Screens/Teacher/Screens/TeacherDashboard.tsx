@@ -1,19 +1,66 @@
-import * as React from 'react';
+import React, {useContext, useState, useEffect} from 'react';
 import { Text, View, StyleSheet, SafeAreaView, ScrollView, Dimensions, StatusBar } from 'react-native';
+import firestore from '@react-native-firebase/firestore';
+import { getData } from '../../../AsyncActivities/getData';
+import {storeData} from '../../../AsyncActivities/storeData';
+import { AuthContext } from '../../../Context';
 import CommonHeader from '../../../components/StudentCommonHeader';
-import Category from '../../../components/CategoryScreen';
+import TeacherCategory from '../../../components/TeacherCategory';
 import SecondHeader from '../../../components/SecondHeader';
 import AddNewSubject from '../components/TeacherDashboardFab';
 import Colors from '../../../utils/Color';
-
 const {width, height} = Dimensions.get('screen');
-export const TeacherDashboard = ({navigation}: any) => {
-  const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sept", "Oct", "Nov", "Dec" ];
-  const getCurrentDate = () => {
-    const today: Date = new Date();
-    const date = today.getDate() + " "+ monthNames[parseInt(`${today.getMonth()}`)] +" "+ today.getFullYear();
-    return date;
-  }
+
+export const TeacherDashboard = ({route, navigation}: any) => {
+  const {user} = useContext(AuthContext);
+  // console.log(user)
+  const [loading, setLoading] = useState(false);
+  const [allSubject, setAllSubject] = useState([]);
+
+  const getStudentInformation = async () => {
+    setLoading(true)
+    const _uid = user.uid;
+    const userRemainingDetails = 
+      await firestore()
+        .collection('Users')
+        .where('user_id', '==',_uid.toString())
+        .get();
+        userRemainingDetails.forEach(_batchId => {
+          storeData('extra', {
+            name: _batchId._data.name
+          })
+        })
+
+    const subjectArray: any = [];
+    try {
+      const allSubjects = 
+        await firestore()
+        .collection('subject_details')
+        .where('teacher_id', '==',user.uid)
+        .get();
+      allSubjects.forEach((res: any) => {
+        const { subject_name, teacher_name, subject_id } = res.data();
+        subjectArray.push({
+          subject_name,
+          teacher_name,
+          subject_id
+        });
+      })
+      setAllSubject(subjectArray);
+      setLoading(false);
+    } catch(e) {
+      console.log(e)
+    }
+  };
+
+  useEffect(() => {
+    try{
+      getStudentInformation()
+    } catch(e){
+      console.log(e)
+    }
+  }, []);
+
   return (
     <>
       <StatusBar backgroundColor={Colors.headerBlue()} barStyle='light-content' />
@@ -31,14 +78,13 @@ export const TeacherDashboard = ({navigation}: any) => {
           {/* <ScrollView style={{}}> */}
               <View style={styles.IntroductionMsg}>
                 <Text style={{fontSize: 0}}></Text>
-                <Text style={styles.bodyHeading}>Let's Learn Something</Text>
-                <Text style={styles.currentDate}>{getCurrentDate()}</Text>
-                <Text></Text>
               </View>
               <View style={styles.categoryBody}>
-                <Category 
+                <TeacherCategory 
                   navigation={navigation} 
+                  route={route}
                   name='SeperateSubjectDetails'
+                  allSubjectInfo={allSubject}
                 />
               </View>
           {/* </ScrollView> */}
@@ -79,7 +125,7 @@ const styles = StyleSheet.create({
     marginTop: 3
   },
   categoryBody: {
-    marginTop: 25, 
+    marginTop: 15, 
     paddingLeft: 15, 
     paddingRight: 15,
     marginBottom: 130
