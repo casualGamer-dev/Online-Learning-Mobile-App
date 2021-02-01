@@ -9,6 +9,7 @@ import SubjectBlogPost from '../components/SubjectBlogPost';
 import AddANewQuesction from '../components/AddANewQuesction';
 import { QuestionAnswer } from '../Screens/Student';
 import BlogAnswer from '../components/BlogAnswer';
+import WebViewComponent from '../components/WebViewComponent';
 const TeacherStack = createStackNavigator();
 
 const TeacherMainNavigator = ({navigation}: any) => {
@@ -26,6 +27,7 @@ const TeacherMainNavigator = ({navigation}: any) => {
             <TeacherStack.Screen name="BlogAnswer" component={BlogAnswer} />
             <TeacherStack.Screen name="TeacherAssignment" component={TeacherAssignment} />
             <TeacherStack.Screen name="ParticularAssignmentView" component={ParticularAssignmentView} />
+            <TeacherStack.Screen name="WebViewComponent" component={WebViewComponent} />
         </TeacherStack.Navigator>
     );
 }

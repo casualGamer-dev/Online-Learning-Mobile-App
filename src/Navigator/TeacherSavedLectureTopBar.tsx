@@ -6,7 +6,8 @@ import Colors from '../utils/Color';
 const TopTab = createMaterialTopTabNavigator();
 const {width} = Dimensions.get('screen');
 
-const TeacherSavedLectureTopBar = ({navigation}: any) => {
+const TeacherSavedLectureTopBar = ({route, navigation}: any) => {
+  const {subject_details} = route.params;
   return (
     <TopTab.Navigator
         initialRouteName='StudentSavedVideo'
@@ -23,6 +24,7 @@ const TeacherSavedLectureTopBar = ({navigation}: any) => {
           options={{
             tabBarLabel: 'Upload Video'
           }}
+          initialParams={{ subject_details: subject_details }}
         />
         <TopTab.Screen 
           name="TeacherSavedMaterial" 
@@ -30,6 +32,7 @@ const TeacherSavedLectureTopBar = ({navigation}: any) => {
           options={{
             tabBarLabel: 'Upload Material'
           }}
+          initialParams={{ subject_details: subject_details }}
         />
     </TopTab.Navigator>
   );

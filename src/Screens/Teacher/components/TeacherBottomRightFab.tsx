@@ -3,7 +3,7 @@ import { Alert } from 'react-native';
 import { FAB, Portal, Provider } from 'react-native-paper';
 
 const TeacherBottomRightFab = (props: any) => {
-  const {backgroundColor, navigation} = props;
+  const {backgroundColor, navigation, singleSubjectDetails} = props;
   const [state, setState] = useState(false);
   const onStateChange = () => setState(!state);
   return (
@@ -17,7 +17,10 @@ const TeacherBottomRightFab = (props: any) => {
             {
               icon: 'file-edit-outline',
               label: 'Answer A Quesction',
-              onPress: () => navigation.navigate('StudentBlogPost'),
+              onPress: () => navigation.navigate('TeacherBlogPost', {
+                teacher: true,
+                subject_details: singleSubjectDetails
+              }),
             },
             {
               icon: 'chat-outline',

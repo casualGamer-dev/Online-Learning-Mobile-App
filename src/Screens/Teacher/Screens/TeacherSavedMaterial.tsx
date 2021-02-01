@@ -8,7 +8,8 @@ import MaterialDialog from './components/MaterialUploadDialog';
 import Colors from '../../../utils/Color';
 
 const {width, height} = Dimensions.get('screen');
-export const TeacherSavedMaterial = ({navigation}: any) => {
+export const TeacherSavedMaterial = ({route, navigation}: any) => {
+    const {subject_details} = route.params; 
     const [visible, setVisible] = useState(false);
     return (
         <Provider>
@@ -50,6 +51,7 @@ export const TeacherSavedMaterial = ({navigation}: any) => {
             <BottomRightFab
                 backgroundColor={Colors.darkColor()}
                 navigation={navigation}
+                singleSubjectDetails={subject_details}
             />
             <MaterialDialog visible={visible} setVisible={setVisible} />
         </SafeAreaView>
