@@ -6,3 +6,4 @@ export { StudentSavedVideo } from "./StudentSavedVideo";
 export { StudentSavedMaterial } from "./StudentSavedMaterial";
 export { StudentMainPageExam } from "./StudentMainPageExam";
 export { SeperateLiveClass } from "./SeperateLiveClass";
+export { QuestionAnswer } from "./QuestionAnswer";

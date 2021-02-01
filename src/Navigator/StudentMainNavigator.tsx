@@ -1,7 +1,7 @@
 import React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
 import { StudentBottomTab } from '../../src/Navigator/StudentBottomTab';
-import { StudentAssignment, StudentSeperateExam } from '../../src/Screens/Student';
+import { QuestionAnswer, StudentAssignment, StudentSeperateExam } from '../../src/Screens/Student';
 import SubjectBlogPost from '../../src/components/SubjectBlogPost';
 import BlogAnswer from '../../src/components/BlogAnswer';
 import AddANewQuesction from '../../src/components/AddANewQuesction';
@@ -24,6 +24,7 @@ const StudentMainNavigator = () => {
             <StudentStack.Screen name="StudentCourseAssignment" component={StudentAssignment} />
             <StudentStack.Screen name="StudentBlogPost" component={SubjectBlogPost} />
             <StudentStack.Screen name="AddAQuesction" component={AddANewQuesction} />
+            <StudentStack.Screen name="QuestionAnswer" component={QuestionAnswer} />
             <StudentStack.Screen name="BlogAnswer" component={BlogAnswer} />
             <StudentStack.Screen name="StudentSeperateExam" component={StudentSeperateExam} />
             <StudentStack.Screen name="Bookmark" component={Bookmark} />

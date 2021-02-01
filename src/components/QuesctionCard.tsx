@@ -50,12 +50,18 @@ const QuesctionCard = (props: any) => {
   }
   return (
     <View style={styles.mainCard}>
-        <Text style={styles.doubtQuesction}>
-            {data}
-        </Text>
-        <View style={{marginTop: 10,}}>
-            <Text style={styles.quesctionUser}> • Many students has asked this</Text>
-        </View>
+        <TouchableWithoutFeedback
+            onPress={() => navigation.navigate('QuestionAnswer', {
+                questionDetails: questionDetails
+            })}
+            >
+            <Text style={styles.doubtQuesction}>
+                {data}
+            </Text>
+            <View style={{marginTop: 10,}}>
+                <Text style={styles.quesctionUser}> • Many students has asked this</Text>
+            </View>
+        </TouchableWithoutFeedback>
         <View style={styles.bottomCard}>
             <View style={styles.answerTab}>
                 <TouchableWithoutFeedback onPress={() => navigation.navigate('BlogAnswer', {

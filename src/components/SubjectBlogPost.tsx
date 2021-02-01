@@ -2,11 +2,11 @@ import React, {useState, useEffect} from 'react';
 import { View, StyleSheet, SafeAreaView, ScrollView, Dimensions, StatusBar, Text, FlatList } from 'react-native';
 import firestore from '@react-native-firebase/firestore';
 import CommonHeader from './StudentCommonHeader';
-import Colors from '../utils/Color';
+import SecondHeader from '../components/SecondHeader';
 import BottomRightFab from './StudentBottomRightFab';
 import QuesctionCard from './QuesctionCard';
-import SecondHeader from '../components/SecondHeader';
 import Loader from '../components/Loader';
+import Colors from '../utils/Color';
 const {width, height} = Dimensions.get('screen');
 
 const SubjectBlogPost = ({ route, navigation }: any) => {
@@ -115,7 +115,7 @@ const styles = StyleSheet.create({
     },
     mainBody: {
         width,
-        minHeight: height * .75, 
+        minHeight: height * .85, 
         backgroundColor: Colors.F9Background(), 
         borderTopRightRadius: 30, 
         position: 'relative', 
