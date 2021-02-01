@@ -9,8 +9,9 @@ import firestore from '@react-native-firebase/firestore';
 import CommonHeader from '../../components/StudentCommonHeader';
 import SecondHeader from '../../components/SecondHeader';
 import BottomRightFab from '../../components/StudentBottomRightFab';
-import Colors from '../../utils/Color';
+import { getCurrentDate } from '../../utils/Utilities';
 import Loader from '../../components/Loader';
+import Colors from '../../utils/Color';
 const {width, height} = Dimensions.get('screen');
 
 export const SeperateCourseDetails = ({route, navigation}: any) => {
@@ -71,10 +72,12 @@ export const SeperateCourseDetails = ({route, navigation}: any) => {
                         <View style={{}}>
                             <View style={[styles.liveNowStyle]}>
                                 <Text>Live Class Details</Text>
+                                <Text>Date: {getCurrentDate()}</Text>
                                 <Button
-                                    onPress={() => navigation.navigate('SubjectVideo')}
+                                    style={styles.liveClassButton}
+                                    onPress={() => navigation.navigate('LiveVideo')}
                                     >
-                                    <Text>Click to Join Live Class</Text>
+                                    <Text style={{textAlign: 'left'}}>Join Live</Text>
                                 </Button>
                             </View>
                         </View>
@@ -224,4 +227,10 @@ const styles = StyleSheet.create({
         textAlign: 'left', 
         marginLeft: 5
     },
+    liveClassButton: {
+        alignItems: 'flex-start',
+        position: 'relative',
+        marginLeft: -15,
+        paddingLeft: 0,
+    }
 });

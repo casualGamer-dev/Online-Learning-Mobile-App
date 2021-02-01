@@ -31,6 +31,13 @@ export const getLocalDate = (dateString) => {
   return date.toLocaleDateString();
 };
 
+export const getCurrentDate = () => {
+  const date = new Date().getDate();
+  const month = new Date().getMonth() + 1;
+  const year = new Date().getFullYear();
+  return date + '-' + month + '-' + year;
+}
+
 export const delCard = (key: number, data: any, setData: any) => {
   const filteredData = data.filter(
     (item: any, index: number) => index.toString() !== key.toString(),

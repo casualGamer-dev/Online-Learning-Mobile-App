@@ -9,8 +9,8 @@ import StudentSavedLectureTopBar from '../Navigator/StudentSavedLectureTopBar';
 import Bookmark from '../../src/components/BookmarkScreen';
 import Notification from '../../src/components/NotificationScreen';
 import WebViewComponent from '../components/WebViewComponent';
+import { LiveVideo } from '../Screens/Video';
 // import SeperateSubjectChat from './src/components/SeperateSubjectChat';
-// import BrodcastVideo from './src/Screens/Video/BrodcastVideo';
 const StudentStack = createStackNavigator();
 
 const StudentMainNavigator = () => {
@@ -30,8 +30,8 @@ const StudentMainNavigator = () => {
             <StudentStack.Screen name="Bookmark" component={Bookmark} />
             <StudentStack.Screen name="Notification" component={Notification} />
             <StudentStack.Screen name="WebViewComponent" component={WebViewComponent} />
-            {/* <StudentStack.Screen name="SeperateSubjectChat" component={SeperateSubjectChat} />
-            <StudentStack.Screen name="SubjectVideo" component={BrodcastVideo} /> */}
+            <StudentStack.Screen name="LiveVideo" component={LiveVideo} /> 
+            {/* <StudentStack.Screen name="SeperateSubjectChat" component={SeperateSubjectChat} /> */}
         </StudentStack.Navigator>
     );
 }
