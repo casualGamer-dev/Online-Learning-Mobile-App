@@ -65,6 +65,7 @@ export const TeacherSavedMaterial = ({route, navigation}: any) => {
                 setVisible={setVisible} 
                 loading={loading}
                 setLoading={setLoading}
+                subject_details={subject_details}
             />
         </SafeAreaView>
         </Provider>

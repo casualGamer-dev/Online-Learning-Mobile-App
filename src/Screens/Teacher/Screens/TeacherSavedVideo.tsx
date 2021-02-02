@@ -4,9 +4,9 @@ import firestore from '@react-native-firebase/firestore';
 import { Button, Provider } from 'react-native-paper';
 import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
 import SecondHeader from '../../../components/SecondHeader';
+import VideoUploadDialog from './components/VideoUploadDialog';
 import BottomRightFab from '../components/TeacherBottomRightFab';
 import Colors from '../../../utils/Color';
-import VideoUploadDialog from './components/VideoUploadDialog';
 
 const {width, height} = Dimensions.get('screen');
 export const TeacherSavedVideo = ({route, navigation}: any) => {

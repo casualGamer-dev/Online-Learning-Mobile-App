@@ -3,11 +3,11 @@ import { View, Text, StyleSheet, Platform, Alert } from 'react-native';
 import { Button, Dialog, Portal } from 'react-native-paper';
 import DocumentPicker from 'react-native-document-picker';
 import storage from '@react-native-firebase/storage';
+import firestore from '@react-native-firebase/firestore';
 import RNFetchBlob from 'rn-fetch-blob';
-import Loader from '../../../../components/Loader';
 
 const MaterialUploadDialog = (props: any) => {
-    const {visible, setVisible, loading, setLoading} = props;
+    const {visible, setVisible, loading, setLoading, subject_details} = props;
     const hideDialog = () => setVisible(false);
 
     const handleFiles = async () => {
@@ -19,9 +19,6 @@ const MaterialUploadDialog = (props: any) => {
             const path = await normalizePath(file.uri);
             const result = await RNFetchBlob.fs.readFile(path, 'base64');
             await uploadFileToFirebaseStorage(result, file);
-            setVisible(false)
-            setLoading(false)
-            Alert.alert('Success', 'File Uploaded');
         } catch (err) {
             if (DocumentPicker.isCancel(err)) {
               console.log('CANCEL BY USER')
@@ -51,12 +48,15 @@ const MaterialUploadDialog = (props: any) => {
             }, 
             (error) => {
                 // Handle unsuccessful uploads
+                Alert.alert('ERROR', 'There is a problem while uploading the file')
                 console.log(error)
             }, 
             () => {
                 uploadTask.snapshot.ref.getDownloadURL().then((downloadURL) => {
                 console.log('File available at', downloadURL);
+                // Add Data to Firestore DB
                 //   file: downloadURL, file
+                storeDataToDatabase(downloadURL)
             });
         });
     }
@@ -75,6 +75,27 @@ const MaterialUploadDialog = (props: any) => {
 
         }
         return path;
+    }
+
+    const storeDataToDatabase = (url) => {
+        firestore()
+            .collection('saved_material')
+            .add({
+                subject_id: subject_details.subject_id,
+                subject_name: subject_details.subject_name,
+                file_url: url
+            })
+            .then(() => {
+                setVisible(false)
+                setLoading(false)
+                Alert.alert('Success', 'File Uploaded');
+            })
+            .catch(e => {
+                setVisible(false)
+                setLoading(false)
+                Alert.alert('ERROR', 'Error in Uploading the Data to DB');
+                console.log(e)
+            });
     }
 
     return (
