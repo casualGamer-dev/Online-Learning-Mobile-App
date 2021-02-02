@@ -47,7 +47,7 @@ export const StudentSavedVideo = ({route, navigation}: any) => {
   }, []);
 
   return (
-    !loading && !singleSubjectDetails.length ? <Loader /> : (
+    loading ? <Loader /> : (
     <>
       <StatusBar backgroundColor={Colors.headerBlue()} barStyle='light-content' />
       <SafeAreaView style={styles.container}>
@@ -125,6 +125,7 @@ const styles = StyleSheet.create({
     marginBottom: 130
   },
   zeroQuestion: {
+    paddingTop: 15,
     justifyContent: 'center',
     alignItems: 'center'
   },

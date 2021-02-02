@@ -58,8 +58,7 @@ export const TeacherSavedMaterial = ({route, navigation}: any) => {
         <StatusBar backgroundColor={Colors.headerBlue()} barStyle='light-content' />
         <SafeAreaView style={styles.container}>
             <SecondHeader 
-                mainText='By Teacher Name '
-                secondText='Last Updated on : 20th Jul 2020'
+                mainText='Lecture Material'
             />
             <View style={styles.mainBody}>
                 {/* <ScrollView style={{}}> */}
