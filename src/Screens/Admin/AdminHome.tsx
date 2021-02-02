@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { Text, View, StyleSheet, StatusBar, SafeAreaView, Dimensions } from 'react-native';
+import SimpleLineIcons from 'react-native-vector-icons/SimpleLineIcons';
 import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
 import CommonHeader from '../../components/StudentCommonHeader';
 import SecondHeader from '../../components/SecondHeader';
@@ -28,24 +29,22 @@ export const AdminHome = ({navigation}: any) => {
                         <View style={styles.categoryViewStyle}>
                             <TouchableWithoutFeedback onPress={() => navigation.navigate('AdminAddNewUser')}>
                                 <Text style={styles.subjectName}>Add New User</Text>
-                                {/* <Text style={styles.teacherName}>{subjectInformation.teacher_name}</Text> */}
                                 <Text></Text>
                                 <View style={styles.iconView}>
                                     <Text style={styles.icon}>
-                                        {/* <MaterialIcon name='laptop' size={40} color={Colors.darkColor()} /> */}
+                                        <SimpleLineIcons name='user-follow' size={40} color={Colors.darkColor()} />
                                     </Text>
                                 </View>
                             </TouchableWithoutFeedback>
                         </View>
 
                         <View style={styles.categoryViewStyle}>
-                            <TouchableWithoutFeedback onPress={() => navigation.navigate(null)}>
+                            <TouchableWithoutFeedback onPress={() => navigation.navigate('AdminAddNewSubject')}>
                                 <Text style={styles.subjectName}>Add New Subject</Text>
-                                {/* <Text style={styles.teacherName}>{subjectInformation.teacher_name}</Text> */}
                                 <Text></Text>
                                 <View style={styles.iconView}>
                                     <Text style={styles.icon}>
-                                        {/* <MaterialIcon name='laptop' size={40} color={Colors.darkColor()} /> */}
+                                        <SimpleLineIcons name='notebook' size={40} color={Colors.darkColor()} />
                                     </Text>
                                 </View>
                             </TouchableWithoutFeedback>
@@ -98,6 +97,7 @@ const styles = StyleSheet.create({
     icon: {
         textAlign: 'left', 
         marginLeft: 5,
+        paddingTop: 15
     },
     categoryViewStyle: {
         backgroundColor: '#F2F2FA',
