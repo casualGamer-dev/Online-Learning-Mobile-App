@@ -56,7 +56,7 @@ const MaterialUploadDialog = (props: any) => {
                 console.log('File available at', downloadURL);
                 // Add Data to Firestore DB
                 //   file: downloadURL, file
-                storeDataToDatabase(downloadURL)
+                storeDataToDatabase(downloadURL, file)
             });
         });
     }
@@ -77,12 +77,13 @@ const MaterialUploadDialog = (props: any) => {
         return path;
     }
 
-    const storeDataToDatabase = (url) => {
+    const storeDataToDatabase = (url, file) => {
         firestore()
             .collection('saved_material')
             .add({
                 subject_id: subject_details.subject_id,
                 subject_name: subject_details.subject_name,
+                file_name: file.name,
                 file_url: url
             })
             .then(() => {

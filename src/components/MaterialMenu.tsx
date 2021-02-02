@@ -4,13 +4,14 @@ import {Menu} from 'react-native-paper';
 import CustomIcon from 'react-native-vector-icons/Entypo';
 import Colors from '../utils/Color';
 
-const MaterialMenu = () => {
+const MaterialMenu = (props) => {
+    const {materialDetails, navigation} = props;
     const [menu, toggle] = useState(false);
     return (
     <>
         <View style={styles.mainBody}>
             <View style={styles.mainRow}>
-                <Text>Hello World!</Text>
+                <Text>{materialDetails.file_name}</Text>
                 <Menu
                     anchor={
                         <CustomIcon
@@ -27,15 +28,18 @@ const MaterialMenu = () => {
                     <Menu.Item
                       onPress={() => {
                         toggle(!menu);
+                        navigation.navigate('WebViewComponent', {
+                          url: materialDetails.file_url
+                        })
                       }}
-                      title="View"
+                      title="View / Download"
                     />
-                    <Menu.Item
+                    {/* <Menu.Item
                       onPress={() => {
                         toggle(!menu);
                       }}
                       title="Download"
-                    />
+                    /> */}
                 </Menu>
             </View>
         </View>

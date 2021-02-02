@@ -1,6 +1,7 @@
-import React, {useState} from 'react';
-import { Text, View, StyleSheet, StatusBar, SafeAreaView, ScrollView, Dimensions } from 'react-native';
+import React, {useState, useEffect} from 'react';
+import { Text, View, StyleSheet, StatusBar, SafeAreaView, ScrollView, Dimensions, FlatList } from 'react-native';
 import { Provider, Button } from 'react-native-paper';
+import firestore from '@react-native-firebase/firestore';
 import SecondHeader from '../../../components/SecondHeader';
 import BottomRightFab from '../components/TeacherBottomRightFab';
 import MaterialMenu from '../../../components/MaterialMenu';
@@ -13,6 +14,40 @@ export const TeacherSavedMaterial = ({route, navigation}: any) => {
     const {subject_details} = route.params; 
     const [visible, setVisible] = useState(false);
     const [loading, setLoading] = useState(false);
+    const [singleSubjectDetails, setSingleSubjectdetails] = useState([]);
+    const [empty, setEmpty] = useState(false);
+
+    const getParticularCourseDetails = async () => {
+        try{
+            setLoading(true);
+            const particularSubject: any = [];
+            const fullSubjectDetails = 
+                await firestore()
+                    .collection('saved_material')
+                    .where('subject_id', '==',subject_details.subject_id.toString())
+                    .get();
+        
+            fullSubjectDetails.forEach((res: any) => {
+                const { file_url, file_name } = res.data();
+                particularSubject.push({
+                    file_name,
+                    file_url
+                });
+            })
+            // console.log(particularSubject)
+            if(particularSubject.length === 0) setEmpty(true)
+            setSingleSubjectdetails(particularSubject)
+            setLoading(false);
+            } catch(e) {
+            console.log(e)
+        }
+    }   
+    
+    useEffect(() => {
+        setLoading(true)
+        getParticularCourseDetails()
+        setLoading(false);
+    }, []);
 
     return (
         <>
@@ -27,9 +62,8 @@ export const TeacherSavedMaterial = ({route, navigation}: any) => {
                 secondText='Last Updated on : 20th Jul 2020'
             />
             <View style={styles.mainBody}>
-                <ScrollView style={{}}>
+                {/* <ScrollView style={{}}> */}
                     <View style={styles.categoryBody}>
-
                         <View style={styles.materialContent}>
                             <View style={styles.uploadSection}>
                                 <Text style={styles.uploadText}>Want to upload ? </Text>
@@ -40,20 +74,35 @@ export const TeacherSavedMaterial = ({route, navigation}: any) => {
                         </View>
                          {/* Uploads will show here */}
                         <View style={{marginTop: 10}}>
-                            <View style={{marginBottom: 10}}>
+                            {/* <View style={{marginBottom: 10}}>
                                 <Text style={{fontSize: 12, fontWeight: '600'}}>25th May 2020</Text>
-                            </View>
+                            </View> */}
                             <View style={styles.materialContent}>
-                                <MaterialMenu />
-                                <MaterialMenu />
-                                <MaterialMenu />
-                                <MaterialMenu />
-                                <MaterialMenu />
+                                {empty ?
+                                    <View style={styles.zeroQuestion}>
+                                        <Text>No Material Found!</Text>
+                                    </View>
+                                :
+                                <FlatList 
+                                    data={singleSubjectDetails}
+                                    showsVerticalScrollIndicator={false}
+                                    horizontal={false}
+                                    renderItem={ ({ item: materialDetails }) => {
+                                    return(
+                                        <MaterialMenu 
+                                            materialDetails={materialDetails}  
+                                            navigation={navigation}
+                                        />
+                                    )
+                                    }}
+                                    keyExtractor={ (item, index) => index.toString() }
+                                    />
+                                }
                             </View>
                         </View>
                         {/*  */}
                     </View>
-                </ScrollView>
+                {/* </ScrollView> */}
             </View>
             <BottomRightFab
                 backgroundColor={Colors.darkColor()}
@@ -121,5 +170,9 @@ const styles = StyleSheet.create({
     uploadText: {
         position: 'relative', 
         top: 10
+    },
+    zeroQuestion: {
+        justifyContent: 'center',
+        alignItems: 'center'
     },
 });
