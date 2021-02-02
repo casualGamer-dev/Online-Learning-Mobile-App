@@ -9,11 +9,11 @@ import TeacherCategory from '../../../components/TeacherCategory';
 import SecondHeader from '../../../components/SecondHeader';
 import AddNewSubject from '../components/TeacherDashboardFab';
 import Colors from '../../../utils/Color';
+import Loader from '../../../components/Loader';
 const {width, height} = Dimensions.get('screen');
 
 export const TeacherDashboard = ({route, navigation}: any) => {
   const {user} = useContext(AuthContext);
-  // console.log(user)
   const [loading, setLoading] = useState(false);
   const [allSubject, setAllSubject] = useState([]);
 
@@ -63,6 +63,10 @@ export const TeacherDashboard = ({route, navigation}: any) => {
 
   return (
     <>
+    {loading ? (
+      <Loader />
+    ) : (
+    <>
       <StatusBar backgroundColor={Colors.headerBlue()} barStyle='light-content' />
       <SafeAreaView style={styles.container}>
         <CommonHeader
@@ -94,6 +98,8 @@ export const TeacherDashboard = ({route, navigation}: any) => {
           backgroundColor={Colors.headerBlue()}
         />
       </SafeAreaView>
+    </>
+    )}
     </>
   );
 };

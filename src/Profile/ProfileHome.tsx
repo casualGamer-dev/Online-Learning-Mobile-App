@@ -16,7 +16,10 @@ const ProfileHome = ({navigation}: any) => {
   const [name, setName] = useState('');
   const userDetails = getData('extra')
   userDetails
-    .then(allDetails => setName(allDetails.name))
+    .then(allDetails => {
+      if(allDetails) setName(allDetails.name)
+      else setName('Admin')
+    })
     .catch(err => Alert.alert('ERROR', 'Error in ProfileHome'));
   
   return (

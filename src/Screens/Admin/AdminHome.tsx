@@ -1,13 +1,15 @@
-import * as React from 'react';
+import React, { useContext } from 'react';
 import { Text, View, StyleSheet, StatusBar, SafeAreaView, Dimensions } from 'react-native';
 import SimpleLineIcons from 'react-native-vector-icons/SimpleLineIcons';
 import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
+import { AuthContext } from '../../Context';
 import CommonHeader from '../../components/StudentCommonHeader';
 import SecondHeader from '../../components/SecondHeader';
 import Colors from '../../utils/Color';
 const {width, height} = Dimensions.get('screen');
 
 export const AdminHome = ({navigation}: any) => {
+    const {user} = useContext(AuthContext);
     return (
         <>
             <StatusBar backgroundColor={Colors.headerBlue()} barStyle='light-content' />
@@ -27,7 +29,9 @@ export const AdminHome = ({navigation}: any) => {
                     <View style={{marginTop: 20}}></View>
                     <View style={styles.mainRow}> 
                         <View style={styles.categoryViewStyle}>
-                            <TouchableWithoutFeedback onPress={() => navigation.navigate('AdminAddNewUser')}>
+                            <TouchableWithoutFeedback onPress={() => navigation.navigate('AdminAddNewUser', {
+                                uid: user.uid
+                            })}>
                                 <Text style={styles.subjectName}>Add New User</Text>
                                 <Text></Text>
                                 <View style={styles.iconView}>

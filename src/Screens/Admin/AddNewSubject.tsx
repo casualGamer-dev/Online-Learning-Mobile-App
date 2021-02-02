@@ -1,6 +1,6 @@
-import React, {useState, useContext} from 'react';
+import React, {useState, useContext, useEffect} from 'react';
 import { Text, View, StyleSheet, SafeAreaView, Dimensions, KeyboardAvoidingView, Alert } from 'react-native';
-import { RadioButton, Button, Caption } from 'react-native-paper';
+import { Button, List } from 'react-native-paper';
 import {Formik} from 'formik';
 import firestore from '@react-native-firebase/firestore';
 import { AuthContext } from '../../Context';
@@ -12,7 +12,50 @@ import Loader from '../../components/Loader';
 const {width, height} = Dimensions.get('screen');
 
 export const AddNewSubject = ({navigation}) => {
+  const {user} = useContext(AuthContext);
+  const [loading, setLoading] = useState(false);
+  const [allTeacher, setAllTeacher] = useState([]);
+  const [expanded, setExpanded] = useState(false);
+
+  const handlePress = () => setExpanded(!expanded);
+
+  const getAllTeachersInformation = async () => {
+    setLoading(true)
+    const teacherArray: any = [];
+    try {
+      const allSubjects = 
+        await firestore()
+        .collection('Users')
+        .where('admin_id', '==',user.uid)
+        .get();
+      allSubjects.forEach((res: any) => {
+        const { name, user_id } = res.data();
+        teacherArray.push({
+          name,
+          user_id
+        });
+      })
+      setAllTeacher(teacherArray);
+      // console.log(teacherArray)
+      setLoading(false);
+    } catch(e) {
+      console.log(e)
+    }
+  };
+
+  useEffect(() => {
+    try{
+      getAllTeachersInformation()
+    } catch(e){
+      console.log(e)
+    }
+  }, []);
+
   return (
+    <>
+    {loading ? (
+      <Loader />
+    ) : (
     <KeyboardAvoidingView>
         <SafeAreaView style={styles.container}>
             <CommonHeader
@@ -39,6 +82,7 @@ export const AddNewSubject = ({navigation}) => {
                         subject_name: '',
                         subject_id: '',
                         batch_id: '',
+                        admin_id: user.uid
                     }}
                     onSubmit={async (values) => {
                     try{
@@ -69,6 +113,27 @@ export const AddNewSubject = ({navigation}) => {
                   {({handleChange, handleSubmit, setFieldValue, values}) => (
                       <View>
                           <View>
+                              <List.Section>
+                                <List.Accordion
+                                  title="Select a Teacher"
+                                  expanded={expanded}
+                                  onPress={handlePress}
+                                  >
+                                  {allTeacher.map((individualTeacher) => 
+                                    <List.Item 
+                                      key={individualTeacher.user_id} 
+                                      title={individualTeacher.name} 
+                                      onPress={() => {
+                                        console.log(individualTeacher.user_id)
+                                        values.teacher_id = individualTeacher.user_id
+                                        values.teacher_name = individualTeacher.name
+                                        handlePress()
+                                      }}
+                                    />
+                                  )}
+                                </List.Accordion>
+                              </List.Section>
+
                               <TextField
                                 label="Teacher Name"
                                 handleChange={handleChange('teacher_name')}
@@ -122,6 +187,8 @@ export const AddNewSubject = ({navigation}) => {
           </View>
       </SafeAreaView>
   </KeyboardAvoidingView>
+  )}
+  </>
   );
 };
 
