@@ -74,6 +74,8 @@ export const TeacherDashboard = ({route, navigation}: any) => {
           title="My Dashboard"
           fontColor={Colors.headerFontColor()}
           navigation={navigation}
+          bookmark={true}
+          notification={true}
         />
         <SecondHeader 
           welcomeMSG='Mr. Teacher'
@@ -93,10 +95,10 @@ export const TeacherDashboard = ({route, navigation}: any) => {
               </View>
           {/* </ScrollView> */}
         </View>
-        <AddNewSubject 
+        {/* <AddNewSubject 
           navigation={navigation}
           backgroundColor={Colors.headerBlue()}
-        />
+        /> */}
       </SafeAreaView>
     </>
     )}

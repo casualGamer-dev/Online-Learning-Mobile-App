@@ -2,11 +2,16 @@ import * as React from 'react';
 import { Text, View, StyleSheet, ActivityIndicator } from 'react-native';
 import Colors from '../utils/Color';
 
-const Loader = () => {
+const Loader = (props) => {
+  const {name} = props;
   return (
     <View style={styles.container}>
       <ActivityIndicator size='large' color={Colors.darkBlue()} />
-      <Text style={{textAlign: 'center'}}>Loading...</Text>
+      {name ?
+        <Text style={{textAlign: 'center'}}>{name}</Text>
+      :
+        <Text style={{textAlign: 'center'}}>Loading...</Text>
+      }
     </View>
   );
 };

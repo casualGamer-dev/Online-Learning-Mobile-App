@@ -5,13 +5,20 @@ import SecondHeader from '../../../components/SecondHeader';
 import BottomRightFab from '../components/TeacherBottomRightFab';
 import MaterialMenu from '../../../components/MaterialMenu';
 import MaterialDialog from './components/MaterialUploadDialog';
+import Loader from '../../../components/Loader';
 import Colors from '../../../utils/Color';
-
 const {width, height} = Dimensions.get('screen');
+
 export const TeacherSavedMaterial = ({route, navigation}: any) => {
     const {subject_details} = route.params; 
     const [visible, setVisible] = useState(false);
+    const [loading, setLoading] = useState(false);
+
     return (
+        <>
+        {loading ?
+            <Loader name='file is uploading' />
+        :
         <Provider>
         <StatusBar backgroundColor={Colors.headerBlue()} barStyle='light-content' />
         <SafeAreaView style={styles.container}>
@@ -53,9 +60,16 @@ export const TeacherSavedMaterial = ({route, navigation}: any) => {
                 navigation={navigation}
                 singleSubjectDetails={subject_details}
             />
-            <MaterialDialog visible={visible} setVisible={setVisible} />
+            <MaterialDialog 
+                visible={visible} 
+                setVisible={setVisible} 
+                loading={loading}
+                setLoading={setLoading}
+            />
         </SafeAreaView>
         </Provider>
+    }
+    </>
     );
 };
 

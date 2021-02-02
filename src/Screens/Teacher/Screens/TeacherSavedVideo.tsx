@@ -1,7 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import { Text, View, StyleSheet, StatusBar, SafeAreaView, ScrollView, Dimensions, FlatList } from 'react-native';
 import firestore from '@react-native-firebase/firestore';
-import DocumentPicker from 'react-native-document-picker';
 import { Button, Provider } from 'react-native-paper';
 import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
 import SecondHeader from '../../../components/SecondHeader';
@@ -49,26 +48,6 @@ export const TeacherSavedVideo = ({route, navigation}: any) => {
     setLoading(false);
   }, []);
 
-
-  const handleFiles = async () => {
-    try {
-        const res = await DocumentPicker.pick({
-          type: [DocumentPicker.types.images],
-        });
-        console.log(
-          res.uri,
-          res.type, // mime type
-          res.name,
-          res.size
-        );
-    } catch (err) {
-        if (DocumentPicker.isCancel(err)) {
-          // User cancelled the picker, exit any dialogs or menus and move on
-        } else {
-          throw err;
-        }
-    }
-  }
   return (
     <Provider>
       <StatusBar backgroundColor={Colors.headerBlue()} barStyle='light-content' />
@@ -79,7 +58,6 @@ export const TeacherSavedVideo = ({route, navigation}: any) => {
         <View style={styles.mainBody}>
             {/* <ScrollView style={{}}> */}
               <View style={styles.categoryBody}>
-
                 <View style={styles.materialContent}>
                   <View style={styles.uploadSection}>
                     <Text style={styles.uploadText}>Want to upload ? </Text>
