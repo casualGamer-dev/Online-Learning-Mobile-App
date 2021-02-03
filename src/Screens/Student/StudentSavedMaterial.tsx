@@ -17,29 +17,29 @@ export const StudentSavedMaterial = ({route, navigation}: any) => {
   const [empty, setEmpty] = useState(false);
 
   const getParticularCourseDetails = async () => {
-        try{
-            setLoading(true);
-            const particularSubject: any = [];
-            const fullSubjectDetails = 
-                await firestore()
-                    .collection('saved_material')
-                    .where('subject_id', '==',subject_details.subject_id.toString())
-                    .get();
-        
-            fullSubjectDetails.forEach((res: any) => {
-                const { file_url, file_name } = res.data();
-                particularSubject.push({
-                    file_name,
-                    file_url
-                });
-            })
-            // console.log(particularSubject)
-            if(particularSubject.length === 0) setEmpty(true)
-            setSingleSubjectdetails(particularSubject)
-            setLoading(false);
-            } catch(e) {
-            console.log(e)
-        }
+    try{
+      setLoading(true);
+      const particularSubject: any = [];
+      const fullSubjectDetails = 
+        await firestore()
+          .collection('saved_material')
+          .where('subject_id', '==',subject_details.subject_id.toString())
+        .get();
+    
+      fullSubjectDetails.forEach((res: any) => {
+        const { file_url, file_name } = res.data();
+        particularSubject.push({
+          file_name,
+          file_url
+        });
+      })
+      // console.log(particularSubject)
+      if(particularSubject.length === 0) setEmpty(true)
+      setSingleSubjectdetails(particularSubject)
+      setLoading(false);
+    } catch(e) {
+      console.log(e)
+    }
   }   
     
   useEffect(() => {

@@ -1,13 +1,15 @@
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, Platform, Alert } from 'react-native';
-import { Button, Dialog, Portal } from 'react-native-paper';
+import { Button, Dialog, Portal, TextInput } from 'react-native-paper';
 import DocumentPicker from 'react-native-document-picker';
 import storage from '@react-native-firebase/storage';
 import firestore from '@react-native-firebase/firestore';
 import RNFetchBlob from 'rn-fetch-blob';
+import Colors from '../../../../utils/Color';
 
 const MaterialUploadDialog = (props: any) => {
     const {visible, setVisible, loading, setLoading, subject_details} = props;
+    const [uploadedFileName, setUploadedFileName] = useState<any>();
     const hideDialog = () => setVisible(false);
 
     const handleFiles = async () => {
@@ -22,8 +24,11 @@ const MaterialUploadDialog = (props: any) => {
         } catch (err) {
             if (DocumentPicker.isCancel(err)) {
               console.log('CANCEL BY USER')
+              setLoading(false)
             } else {
-              throw err;
+                setLoading(false)
+                Alert.alert('ERROR', 'In Upload File Dialog Box');
+                throw err;
             }
         }
     }
@@ -56,7 +61,7 @@ const MaterialUploadDialog = (props: any) => {
                 console.log('File available at', downloadURL);
                 // Add Data to Firestore DB
                 //   file: downloadURL, file
-                storeDataToDatabase(downloadURL, file)
+                storeDataToDatabase(downloadURL)
             });
         });
     }
@@ -77,13 +82,13 @@ const MaterialUploadDialog = (props: any) => {
         return path;
     }
 
-    const storeDataToDatabase = (url, file) => {
+    const storeDataToDatabase = (url) => {
         firestore()
             .collection('saved_material')
             .add({
                 subject_id: subject_details.subject_id,
                 subject_name: subject_details.subject_name,
-                file_name: file.name,
+                file_name: uploadedFileName,
                 file_url: url
             })
             .then(() => {
@@ -104,10 +109,21 @@ const MaterialUploadDialog = (props: any) => {
             <Dialog visible={visible} onDismiss={hideDialog}>
                 <Dialog.Title>Upload File</Dialog.Title>
                     <Dialog.Content>
-                        <Text>This is simple dialog to Upload</Text>
-                        <Button 
-                            onPress={handleFiles}
-                        >Click Here</Button>
+                        <View>
+                            <TextInput 
+                                label={'Material Name'}
+                                onChangeText={(fie_name) => setUploadedFileName(fie_name)}
+                                value={uploadedFileName}
+                                style={styles.textInputStyle}
+                            />
+                            <Button 
+                                onPress={handleFiles} 
+                                mode="contained"
+                                style={styles.submitBtn}
+                                >
+                                <Text>Choose And Auto Upload</Text>
+                            </Button>
+                        </View>
                     </Dialog.Content>
                     <Dialog.Actions>
                         <Button onPress={() => setVisible(false)}>Cancel</Button>
@@ -118,7 +134,27 @@ const MaterialUploadDialog = (props: any) => {
 };
 
 const styles = StyleSheet.create({
-  container: {}
+    container: {},
+    textInputStyle: {
+        borderTopRightRadius: 15,
+        borderRadius: 10,
+        marginBottom: 20,
+    },
+    submitBtn: {
+        position: 'relative',
+        bottom: 0,
+        backgroundColor: Colors.darkBlue(),
+        height: 40,
+        borderRadius: 5,
+    },
+    chooseFileStyle: {
+        justifyContent: 'flex-start',
+        flexDirection: 'row'
+    },
+    uploadBtn: {
+        position: 'relative',
+        top: -10
+    }
 });
 
 export default MaterialUploadDialog;
