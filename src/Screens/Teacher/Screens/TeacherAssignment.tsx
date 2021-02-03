@@ -8,7 +8,6 @@ import Colors from '../../../utils/Color';
 import AssignmentDialog from './components/AssignmentDialog';
 import AssignmentBlockCard from './components/AssignmentBlockCard';
 import Loader from '../../../components/Loader';
-import { idGenerator } from '../../../utils/Utilities';
 
 const {width, height} = Dimensions.get('screen');
 export const TeacherAssignment = ({route, navigation}: any) => {
@@ -29,14 +28,14 @@ export const TeacherAssignment = ({route, navigation}: any) => {
                     .get();
         
             fullSubjectDetails.forEach((res: any) => {
-                const { file_name, details, file_url, published_on, last_date } = res.data();
+                const { file_name, details, file_url, published_on, last_date, assignment_id } = res.data();
                 particularSubject.push({
                     file_name,
                     details,
                     file_url,
                     published_on,
                     last_date,
-                    assignment_id: idGenerator()
+                    assignment_id
                 });
             })
             // console.log(particularSubject)

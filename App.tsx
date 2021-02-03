@@ -60,7 +60,8 @@ const App = () => {
               .catch((Regerror) => Alert.alert(Regerror));
               storeData('extra', {
                 name: userSignInData.fullName,
-                batch_id: userSignInData.batchId
+                batch_id: userSignInData.batchId,
+                roll_number: userSignInData.roll_number
               });
           })
           .catch((error: any) => {

@@ -51,10 +51,11 @@ export const AddNewUser = ({navigation}: any) => {
                         password: '',
                         batchId: '',
                         type: 'student',
+                        roll_number: ''
                     }}
                     onSubmit={async (values) => {
                     try{
-                        if(values.email === '' || values.fullname === '' || values.password === '') {
+                        if(values.email === '' || values.fullname === '' || values.password === '' || values.roll_number === '') {
                         Alert.alert('Empty Field');
                         } else {
                             try{
@@ -68,6 +69,7 @@ export const AddNewUser = ({navigation}: any) => {
                                         user_id: userCredentials.user.uid,
                                         name: values.fullname,
                                         batch_id: values.batchId,
+                                        roll_number: values.roll_number
                                     })
                                     .then(() => {
                                         console.log('DATA ADDED AT THE TIME OF REG', values.type)
@@ -125,6 +127,13 @@ export const AddNewUser = ({navigation}: any) => {
                                     label="Batch Id"
                                     handleChange={handleChange('batchId')}
                                     value={values.batchId}
+                                    style={styles.inputBackground}
+                                />
+
+                                <TextField
+                                    label="Roll Number"
+                                    handleChange={handleChange('roll_number')}
+                                    value={values.roll_number}
                                     style={styles.inputBackground}
                                 />  
 

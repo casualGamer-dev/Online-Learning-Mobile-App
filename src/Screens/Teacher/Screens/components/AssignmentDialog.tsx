@@ -5,7 +5,7 @@ import DocumentPicker from 'react-native-document-picker';
 import storage from '@react-native-firebase/storage';
 import firestore from '@react-native-firebase/firestore';
 import RNFetchBlob from 'rn-fetch-blob';
-import { getCurrentDate } from '../../../../utils/Utilities';
+import { getCurrentDate, idGenerator } from '../../../../utils/Utilities';
 import Colors from '../../../../utils/Color';
 
 const AssignmentDialog = (props: any) => {
@@ -38,7 +38,7 @@ const AssignmentDialog = (props: any) => {
 
     const uploadFileToFirebaseStorage = async(result, file) => {
         const uploadTask = storage()
-            .ref(`assignments/${file.name}`)
+            .ref(`${subject_details.subject_id}/assignments/${file.name}`)
             .putString(result, 'base64', {contentType: file.type});
 
         uploadTask.on('state_changed', 
@@ -95,7 +95,8 @@ const AssignmentDialog = (props: any) => {
                 details: assignmentDetails,
                 file_url: url,
                 published_on: getCurrentDate(),
-                last_date: submissionDate
+                last_date: submissionDate,
+                assignment_id: idGenerator()
             })
             .then(() => {
                 setVisible(false)

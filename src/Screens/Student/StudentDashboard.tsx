@@ -28,7 +28,8 @@ export const StudentDashboard = ({route, navigation}: any) => {
         userRemainingDetails.forEach(_batchId => {
           storeData('extra', {
             name: _batchId._data.name,
-            batch_id: _batchId._data.batch_id
+            batch_id: _batchId._data.batch_id,
+            roll_number: _batchId._data.roll_number
           })
           batchId = _batchId._data.batch_id;
         })

@@ -1,10 +1,11 @@
-import React, {useState} from 'react';
+import React from 'react';
 import { Text, View, StyleSheet, Alert } from 'react-native';
 import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
+import AssignmentModal from './AssignmentModal';
 import Colors from '../../../utils/Color';
 
 const AssignmentCard = (props: any) => {
-  const {setVisible} = props;
+  const {setVisible, assignmentDetails, navigation, visible, setLoading} = props;
   return (
     <View style={styles.whiteBody}>
         <TouchableWithoutFeedback
@@ -12,18 +13,25 @@ const AssignmentCard = (props: any) => {
             >
             <View style={{padding: 15, paddingLeft: 15, paddingRight: 15}}>
                 <View style={{ flexDirection: 'row', justifyContent: 'space-between'}}>
-                    <Text style={{fontSize: 17, fontWeight: '700', color: Colors.extremeBlue()}}>Assignment <Text>: 1</Text></Text>
+                    <Text style={{fontSize: 17, fontWeight: '700', color: Colors.extremeBlue()}}>{assignmentDetails.file_name}</Text>
                     {true ? 
                         <Text style={{color: 'red'}}>Due</Text> 
                     :
                         <Text style={{color: 'green'}}>Submitted</Text> 
                     }
                 </View>
-                <Text style={{marginTop: 10}}>Published on : 25 - 02 - 2020</Text>
-                <Text style={{marginTop: 3}}>Due Date : 25 - 02 - 2020</Text>
-                <Text numberOfLines={5}>Assignment Description Goes Here </Text>
+                <Text style={{marginTop: 10}}>{'Published on :' + assignmentDetails.published_on}</Text>
+                <Text style={{marginTop: 3}}>{'Due Date : ' + assignmentDetails.last_date}</Text>
+                <Text numberOfLines={5}>{assignmentDetails.details}</Text>
             </View>
         </TouchableWithoutFeedback>
+        <AssignmentModal 
+            navigation={navigation} 
+            visible={visible} 
+            setVisible={setVisible} 
+            assignmentDetails={assignmentDetails}
+            setLoading={setLoading}
+        />
     </View>
   );
 };

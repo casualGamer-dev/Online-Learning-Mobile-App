@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, Platform, Alert } from 'react-native';
 import { Button, Dialog, Portal, TextInput } from 'react-native-paper';
 import DocumentPicker from 'react-native-document-picker';
@@ -35,7 +35,7 @@ const MaterialUploadDialog = (props: any) => {
 
     const uploadFileToFirebaseStorage = async(result, file) => {
         const uploadTask = storage()
-            .ref(`allFiles/${file.name}`)
+            .ref(`${subject_details.subject_id}/material/${file.name}`)
             .putString(result, 'base64', {contentType: file.type});
 
         uploadTask.on('state_changed', 

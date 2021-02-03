@@ -89,8 +89,8 @@ export const ParticularAssignmentView = ({route, navigation}: any) => {
                                         })}
                                         >
                                         <View style={styles.materialContent}>
-                                            <Text>{assignmentDetails.student_name}</Text>
-                                            <Text>{assignmentDetails.roll_number}</Text>
+                                            <Text>{'Name: ' + assignmentDetails.student_name}</Text>
+                                            <Text>{'Roll Number:'  + assignmentDetails.roll_number}</Text>
                                         </View>
                                     </TouchableWithoutFeedback>
                                 )
@@ -135,7 +135,6 @@ const styles = StyleSheet.create({
     materialContent: {
         backgroundColor: Colors.white(), 
         padding: 15,
-        paddingTop: 0,
         borderRadius: 10,
         shadowColor: Colors.shadowWhite(),
         shadowOffset: {
