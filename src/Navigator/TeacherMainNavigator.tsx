@@ -3,7 +3,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import TeacherBottomTab from '../Navigator/TeacherBottomTab';
 import TeacherSavedLectureTopBar from '../Navigator/TeacherSavedLectureTopBar';
 import {
-    TeacherAddNewCourse, TeacherAssignment, ParticularAssignmentView
+    TeacherAddNewCourse, TeacherAssignment, ParticularAssignmentView, ParticularExamView, TeacherExam
 } from '../Screens/Teacher/Screens';
 import SubjectBlogPost from '../components/SubjectBlogPost';
 import AddANewQuesction from '../components/AddANewQuesction';
@@ -26,7 +26,9 @@ const TeacherMainNavigator = ({navigation}: any) => {
             <TeacherStack.Screen name="QuestionAnswer" component={QuestionAnswer} />
             <TeacherStack.Screen name="BlogAnswer" component={BlogAnswer} />
             <TeacherStack.Screen name="TeacherAssignment" component={TeacherAssignment} />
+            <TeacherStack.Screen name="TeacherExam" component={TeacherExam} />
             <TeacherStack.Screen name="ParticularAssignmentView" component={ParticularAssignmentView} />
+            <TeacherStack.Screen name="ParticularExamView" component={ParticularExamView} />
             <TeacherStack.Screen name="WebViewComponent" component={WebViewComponent} />
         </TeacherStack.Navigator>
     );

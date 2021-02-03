@@ -88,7 +88,7 @@ export const SeperateCourseDetails = ({route, navigation}: any) => {
                                         subject_details: singleSubjectDetails[0]
                                     })}>
                                         <Text style={styles.mainHeading}>Saved Lecture</Text>
-                                        <Text style={styles.description}>Teacher Name</Text>
+                                        <Text style={styles.description}>{`By ${singleSubjectDetails[0].teacher_name}`}</Text>
                                         <Text></Text>
                                         <View style={styles.iconDiv}>
                                             <Text style={styles.mainIcon}>
@@ -103,7 +103,7 @@ export const SeperateCourseDetails = ({route, navigation}: any) => {
                                             subject_details: singleSubjectDetails[0]
                                         })}>
                                         <Text style={styles.mainHeading}>Questions</Text>
-                                        <Text style={styles.description}>Teacher Name</Text>
+                                        <Text style={styles.description}>{`By ${singleSubjectDetails[0].teacher_name}`}</Text>
                                         <Text></Text>
                                         <View style={styles.iconDiv}>
                                             <Text style={styles.mainIcon}>
@@ -120,7 +120,7 @@ export const SeperateCourseDetails = ({route, navigation}: any) => {
                                         subject_details: singleSubjectDetails[0]
                                     })}>
                                         <Text style={styles.mainHeading}>Assignments</Text>
-                                        <Text style={styles.description}>Teacher Name</Text>
+                                        <Text style={styles.description}>{`By ${singleSubjectDetails[0].teacher_name}`}</Text>
                                         <Text></Text>
                                         <View style={styles.iconDiv}>
                                             <Text style={styles.mainIcon}>
@@ -130,9 +130,11 @@ export const SeperateCourseDetails = ({route, navigation}: any) => {
                                     </TouchableWithoutFeedback>
                                 </View>
                                 <View style={styles.categoryViewStyle}>
-                                    <TouchableWithoutFeedback onPress={() => navigation.navigate('StudentSeperateExam')}>
+                                    <TouchableWithoutFeedback onPress={() => navigation.navigate('StudentSeperateExam', {
+                                        subject_details: singleSubjectDetails[0]
+                                    })}>
                                         <Text style={styles.mainHeading}>Exam</Text>
-                                        <Text style={styles.description}>Teacher Name</Text>
+                                        <Text style={styles.description}>{`By ${singleSubjectDetails[0].teacher_name}`}</Text>
                                         <Text></Text>
                                         <View style={styles.iconDiv}>
                                             <Text style={styles.mainIcon}>

@@ -1,20 +1,22 @@
 import * as React from 'react';
-import { Text, View, StyleSheet } from 'react-native';
+import { Text, View, StyleSheet, Alert } from 'react-native';
 import { Button } from 'react-native-paper';
 import Colors from '../../../utils/Color';
 
 const ShowResultGraphCard = () => {
-  return (
-    <View style={styles.mainCard}>
-        <Text>Want to See the Progress ? </Text>
-        <Button
-            onPress={() => console.log('Pressed')}
-            style={{position: 'relative', top: -8,}}
-            >
-            <Text style={{color: Colors.extremeBlue()}}>Click Here</Text>
-        </Button>
-    </View>
-  );
+    return (
+        <View style={styles.mainCard}>
+            <Text>Want to See the Progress ? </Text>
+            <Button
+                onPress={() => {
+                    Alert.alert('Cooming Soon', 'This features is in Beta...')
+                }}
+                style={{position: 'relative', top: -8,}}
+                >
+                <Text style={{color: Colors.extremeBlue()}}>Click Here</Text>
+            </Button>
+        </View>
+    );
 };
 
 export default ShowResultGraphCard;
