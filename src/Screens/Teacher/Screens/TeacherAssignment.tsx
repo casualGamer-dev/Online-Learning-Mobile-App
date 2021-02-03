@@ -1,16 +1,64 @@
-import React, {useState} from 'react';
-import { Text, View, StyleSheet, StatusBar, SafeAreaView, Dimensions, ScrollView } from 'react-native';
+import React, {useState, useEffect, useContext} from 'react';
+import { Text, View, StyleSheet, StatusBar, SafeAreaView, Dimensions, ScrollView, FlatList } from 'react-native';
 import { Button, Provider } from 'react-native-paper';
+import firestore from '@react-native-firebase/firestore';
 import CommonHeader from '../components/TeacherCommonHeader';
 import SecondHeader from '../../../components/SecondHeader';
 import Colors from '../../../utils/Color';
 import AssignmentDialog from './components/AssignmentDialog';
 import AssignmentBlockCard from './components/AssignmentBlockCard';
+import Loader from '../../../components/Loader';
+import { idGenerator } from '../../../utils/Utilities';
 
 const {width, height} = Dimensions.get('screen');
-export const TeacherAssignment = ({navigation}: any) => {
+export const TeacherAssignment = ({route, navigation}: any) => {
+    const {subject_details} = route.params;
     const [visible, setVisible] = useState(false);
+    const [loading, setLoading] = useState(false);
+    const [singleSubjectDetails, setSingleSubjectdetails] = useState([]);
+    const [empty, setEmpty] = useState(false);
+
+    const getParticularCourseDetails = async () => {
+        try{
+            setLoading(true);
+            const particularSubject: any = [];
+            const fullSubjectDetails = 
+                await firestore()
+                    .collection('all_assignments')
+                    .where('subject_id', '==',subject_details.subject_id.toString())
+                    .get();
+        
+            fullSubjectDetails.forEach((res: any) => {
+                const { file_name, details, file_url, published_on, last_date } = res.data();
+                particularSubject.push({
+                    file_name,
+                    details,
+                    file_url,
+                    published_on,
+                    last_date,
+                    assignment_id: idGenerator()
+                });
+            })
+            // console.log(particularSubject)
+            if(particularSubject.length === 0) setEmpty(true)
+            setSingleSubjectdetails(particularSubject)
+            setLoading(false);
+            } catch(e) {
+            console.log(e)
+        }
+    }   
+    
+    useEffect(() => {
+        setLoading(true)
+        getParticularCourseDetails()
+        setLoading(false);
+    }, []);
+
     return (
+        <>
+        {loading ?
+            <Loader name='file is uploading' />
+        :
         <Provider>
         <StatusBar backgroundColor={Colors.headerBlue()} barStyle='light-content' />
         <SafeAreaView style={styles.container}>
@@ -22,11 +70,10 @@ export const TeacherAssignment = ({navigation}: any) => {
                 navigation={navigation}
             />
             <SecondHeader 
-                mainText='Subject Name'
-                secondText='Last Updated on : 20th Jul 2020'
+                mainText={subject_details.subject_name}
             />
             <View style={styles.mainBody}>
-                <ScrollView style={{}}>
+                {/* <ScrollView style={{}}> */}
                     <View style={styles.categoryBody}>
                         {/* Upload View */}
                         <View style={styles.materialContent}>
@@ -38,13 +85,40 @@ export const TeacherAssignment = ({navigation}: any) => {
                             </View>
                         </View>
                         {/* Card */}
-                        <AssignmentBlockCard navigation={navigation} />
+                        {empty ?
+                            <View style={styles.zeroQuestion}>
+                                <Text>No Assignment Found!</Text>
+                            </View>
+                        :
+                        <FlatList 
+                            data={singleSubjectDetails}
+                            showsVerticalScrollIndicator={false}
+                            horizontal={false}
+                            renderItem={ ({ item: assignmentDetails }) => {
+                                return(
+                                    <AssignmentBlockCard 
+                                        navigation={navigation} 
+                                        assignmentDetails={assignmentDetails}
+                                    />
+                                )
+                            }}
+                            keyExtractor={ (item, index) => index.toString() }
+                            />
+                        } 
                     </View>
-                </ScrollView>
+                {/* </ScrollView> */}
             </View>
-            <AssignmentDialog visible={visible} setVisible={setVisible} />
+            <AssignmentDialog 
+                visible={visible} 
+                setVisible={setVisible} 
+                loading={loading}
+                setLoading={setLoading}
+                subject_details={subject_details}
+            />
         </SafeAreaView>
         </Provider>
+        }
+        </>
     );
 };
 
@@ -95,5 +169,9 @@ const styles = StyleSheet.create({
     uploadText: {
         position: 'relative', 
         top: 8
+    },
+    zeroQuestion: {
+        justifyContent: 'center',
+        alignItems: 'center'
     },
 });

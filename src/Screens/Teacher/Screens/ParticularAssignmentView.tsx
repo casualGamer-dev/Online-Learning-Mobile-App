@@ -1,72 +1,112 @@
-import React from 'react';
-import { Text, View, StyleSheet, StatusBar, SafeAreaView, Dimensions, ScrollView } from 'react-native';
+import React, {useState, useEffect} from 'react';
+import { Text, View, StyleSheet, StatusBar, SafeAreaView, Dimensions, ScrollView, FlatList } from 'react-native';
 import { Provider } from 'react-native-paper';
+import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
+import firestore from '@react-native-firebase/firestore';
 import CommonHeader from '../components/TeacherCommonHeader';
 import SecondHeader from '../../../components/SecondHeader';
 import Colors from '../../../utils/Color';
-import MaterialMenu from '../../../components/MaterialMenu';
-
+import Loader from '../../../components/Loader';
 const {width, height} = Dimensions.get('screen');
-export const ParticularAssignmentView = ({navigation}: any) => {
-  return (
-    <Provider>
-      <StatusBar backgroundColor={Colors.headerBlue()} barStyle='light-content' />
-      <SafeAreaView style={styles.container}>
-        <CommonHeader
-            x={true}
-            backgroundColor={Colors.headerBlue()}
-            title="Assignment 1"
-            fontColor={Colors.headerFontColor()}
-            navigation={navigation}
-        />
-        <SecondHeader 
-            mainText='Title'
-            secondText='Last Updated on : 20th Jul 2020'
-        />
-        <View style={styles.mainBody}>
-            <ScrollView style={{}}>
-                <View style={styles.categoryBody}>
 
-                    <View style={{marginTop: 5}}>
-                        <View style={{marginBottom: 10}}>
-                            <Text style={styles.missingHeading}>Missing</Text>
-                        </View>
-                        <View style={styles.materialContent}>
-                            <MaterialMenu />
-                            <MaterialMenu />
-                            <MaterialMenu />
-                            <MaterialMenu />
-                        </View>
+export const ParticularAssignmentView = ({route, navigation}: any) => {
+    const {assignmentDetails} = route.params;
+    const [loading, setLoading] = useState(false);
+    const [singleSubjectDetails, setSingleSubjectdetails] = useState([]);
+    const [empty, setEmpty] = useState(false);
+
+    const getParticularCourseDetails = async () => {
+        try{
+            setLoading(true);
+            const particularSubject: any = [];
+            const fullSubjectDetails = 
+                await firestore()
+                    .collection('submitted_assignments')
+                    .where('assignment_id', '==',assignmentDetails.assignment_id.toString())
+                    .get();
+        
+            fullSubjectDetails.forEach((res: any) => {
+                const { student_name, roll_number, file_url } = res.data();
+                particularSubject.push({
+                    student_name,
+                    roll_number,
+                    file_url
+                });
+            })
+            // console.log(particularSubject)
+            if(particularSubject.length === 0) setEmpty(true)
+            setSingleSubjectdetails(particularSubject)
+            setLoading(false);
+        } catch(e) {
+            console.log(e)
+        }
+    }  
+    
+    useEffect(() => {
+        getParticularCourseDetails()
+    }, []);
+
+    return (
+        <>
+        {loading ?
+            <Loader />
+        :
+        <Provider>
+        <StatusBar backgroundColor={Colors.headerBlue()} barStyle='light-content' />
+        <SafeAreaView style={styles.container}>
+            <CommonHeader
+                x={true}
+                backgroundColor={Colors.headerBlue()}
+                title={assignmentDetails.file_name}
+                fontColor={Colors.headerFontColor()}
+                navigation={navigation}
+            />
+            <SecondHeader 
+                secondText={'Last date : ' + assignmentDetails.last_date}
+            />
+            <View style={styles.mainBody}>
+                {/* <ScrollView style={{}}> */}
+                    <View style={styles.categoryBody}>
+                        {empty ?
+                            <View style={styles.zeroQuestion}>
+                                <Text></Text>
+                                <Text>No Submission Found!</Text>
+                            </View>
+                        :
+                        <>
+                            <View style={{marginTop: 5, marginBottom: 10}}>
+                                <Text style={styles.onTimeHeading}>Submitted By</Text>
+                            </View>
+                            <FlatList 
+                                data={singleSubjectDetails}
+                                showsVerticalScrollIndicator={false}
+                                horizontal={false}
+                                renderItem={ ({ item: assignmentDetails }) => {
+                                return(
+                                    <TouchableWithoutFeedback
+                                        onPress={() => navigation.navigate('WebViewComponent', {
+                                            url: assignmentDetails.file_url
+                                        })}
+                                        >
+                                        <View style={styles.materialContent}>
+                                            <Text>{assignmentDetails.student_name}</Text>
+                                            <Text>{assignmentDetails.roll_number}</Text>
+                                        </View>
+                                    </TouchableWithoutFeedback>
+                                )
+                                }}
+                                keyExtractor={ (item, index) => index.toString() }
+                            />
+                        </>
+                        }
                     </View>
-
-                    <View style={{marginTop: 5}}>
-                        <View style={{marginBottom: 10}}>
-                            <Text style={styles.lateHeading}>Late Submission</Text>
-                        </View>
-                        <View style={styles.materialContent}>
-                            <MaterialMenu />
-                            <MaterialMenu />
-                        </View>
-                    </View>
-
-                    <View style={{marginTop: 5}}>
-                        <View style={{marginBottom: 10}}>
-                            <Text style={styles.onTimeHeading}>On Time Submission</Text>
-                        </View>
-                        <View style={styles.materialContent}>
-                            <MaterialMenu />
-                            <MaterialMenu />
-                            <MaterialMenu />
-                            <MaterialMenu />
-                        </View>
-                    </View>
-
-                </View>
-            </ScrollView>
-        </View>
-      </SafeAreaView>
-    </Provider>
-  );
+                {/* </ScrollView> */}
+            </View>
+        </SafeAreaView>
+        </Provider>
+    }
+    </>
+    );
 };
 
 const styles = StyleSheet.create({
@@ -131,5 +171,10 @@ const styles = StyleSheet.create({
         fontSize: 12, 
         fontWeight: '600', 
         color: 'red'
+    },
+    zeroQuestion: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center'
     },
 });
