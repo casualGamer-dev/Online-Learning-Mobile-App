@@ -3,7 +3,6 @@ import { Text, View, StyleSheet, Alert } from 'react-native';
 import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
 import firestore from '@react-native-firebase/firestore';
 import { AuthContext } from '../../../Context';
-import AssignmentModal from './AssignmentModal';
 import { getCurrentDate } from '../../../utils/Utilities';
 import Colors from '../../../utils/Color';
 
@@ -11,7 +10,6 @@ const AssignmentCard = (props: any) => {
     const {setVisible, assignmentDetails, navigation, visible, setLoading, setDetails} = props;
     const {user} = useContext(AuthContext)
     const [assignmentRecord, setAssignmentRecord] = useState<any>();
-    const [dueAssignmentDetails, setDueAssignmentDetails] = useState<any>();
 
     // 100 -> Submitted on time
     // 101 -> last date over and student has not submitted the assignment

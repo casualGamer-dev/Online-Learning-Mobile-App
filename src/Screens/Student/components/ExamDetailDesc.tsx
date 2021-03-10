@@ -1,11 +1,10 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { View, Text, StyleSheet, Platform, Alert } from 'react-native';
-import { Button, Dialog, Portal, TextInput } from 'react-native-paper';
+import { Button, Dialog, Portal } from 'react-native-paper';
 import DocumentPicker from 'react-native-document-picker';
 import storage from '@react-native-firebase/storage';
 import firestore from '@react-native-firebase/firestore'; 
 import RNFetchBlob from 'rn-fetch-blob';
-import { getCurrentDate, idGenerator } from '../../../utils/Utilities';
 import Colors from '../../../utils/Color';
 import { getData } from '../../../AsyncActivities/getData';
 import { AuthContext } from '../../../Context';
@@ -16,8 +15,6 @@ const ExamDetailDesc = (props: any) => {
     const [studentInfo, setStudent] = useState({});
     const [assignmentSubmitted, setAssignmentSubmitted] = useState<any>();
     const hideDialog = () => setVisible(false);
-
-    console.log(assignmentDetails)
 
     const getStudentData = async () => {
       const studentDetails = await getData('extra')

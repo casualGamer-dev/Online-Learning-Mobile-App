@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import { StatusBar, Alert } from 'react-native';
 import {Provider} from 'react-native-paper';
 import {NavigationContainer} from '@react-navigation/native';
@@ -66,13 +66,15 @@ const App = () => {
           })
           .catch((error: any) => {
             if (error.code === 'auth/email-already-in-use') {
-              Alert.alert('That email address is already in use!');
+              Alert.alert('ERROR','That email address is already in use!');
             } else if (error.code === 'auth/invalid-email') {
-              Alert.alert('That email address is invalid!');
+              Alert.alert('ERROR','That email address is invalid!');
             } else if (error.code === 'auth/weak-password') {
-              Alert.alert('weak password');
-            } else
-            Alert.alert(error);
+              Alert.alert('Warning','Weak Password');
+            } else {
+              console.log(error);
+              Alert.alert('Error', 'Error in Registation Section...');
+            }
           });
       } catch(e) {
         Alert.alert(e)
