@@ -80,9 +80,9 @@ import com.android.build.OutputFile
  */
 
 project.ext.react = [
-    enableHermes: false,  // clean and rebuild if changing
     entryFile: "index.js",
     bundleAssetName: "app.bundle",
+    enableHermes: false,  // clean and rebuild if changing
 ]
 
 apply from: "../../node_modules/react-native/react.gradle"
@@ -193,6 +193,16 @@ android {
       pickFirst 'lib/x86_64/libc++_shared.so'
       pickFirst 'lib/armeabi-v7a/libc++_shared.so'
       pickFirst 'lib/armeabi-v7a/libjsc.so'
+
+      exclude 'META-INF/DEPENDENCIES'
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/LICENSE.txt'
+        exclude 'META-INF/license.txt'
+        exclude 'META-INF/NOTICE'
+        exclude 'META-INF/NOTICE.txt'
+        exclude 'META-INF/notice.txt'
+        exclude 'META-INF/ASL2.0'
+        exclude("META-INF/*.kotlin_module") 
     }
 
     dexOptions {
@@ -222,7 +232,11 @@ dependencies {
 
     implementation 'androidx.multidex:multidex:2.0.1'
 
-    implementation(project(':react-native-jitsi-meet'))
+    implementation(project(':react-native-jitsi-meet')) {
+        exclude group: 'com.facebook.react',module:'react-native-vector-icons'
+        exclude group: 'com.facebook.react', module:'react-native-community-async-storage'
+        exclude group: 'com.facebook.react',module:'react-native-webview'
+    }
 
     if (enableHermes) {
         def hermesPath = "../../node_modules/hermes-engine/android/";
