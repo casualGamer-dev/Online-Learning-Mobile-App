@@ -71,7 +71,7 @@ const LiveClassDialoge = (props: any) => {
                             />
                             <TextInput
                                 keyboardType="default"
-                                label="Enter Video ID"
+                                label="Enter Meeting ID"
                                 multiline={true}
                                 numberOfLines={3}
                                 onChangeText={handleChange('video_id')}

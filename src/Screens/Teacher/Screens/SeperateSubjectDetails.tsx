@@ -12,14 +12,17 @@ import BottomRightFab from '../components/TeacherBottomRightFab';
 import Loader from '../../../components/Loader';
 import Colors from '../../../utils/Color';
 import LiveClassDialoge from './components/LiveClassDialoge';
+import { getData } from '../../../AsyncActivities/getData';
 const {width, height} = Dimensions.get('screen');
 
 export const SeperateSubjectDetails = ({route, navigation}: any) => {
     const subjectId = route.params.subjectId;
+    const userDetails = getData('extra')
     const [singleSubjectDetails, setSingleSubjectdetails] = useState([]);
     const [loading, setLoading] = useState(false);
     const [visible, setVisible] = useState(false);
     const [liveOnline, setLiveOnline] = useState([]);
+    const [name, setName] = useState('');
 
     const getLiveClass = async() => {
         setLoading(true)
@@ -32,10 +35,11 @@ export const SeperateSubjectDetails = ({route, navigation}: any) => {
                 .get();
 
             subjectLive.forEach((res: any) => {
-                const { teacher_id, subject_id } = res.data();
+                const { teacher_id, subject_id, video_id } = res.data();
                 liveArray.push({
                     teacher_id,
                     subject_id,
+                    video_id,
                     id: res._ref._documentPath._parts[1]
                 });
             })
@@ -49,6 +53,12 @@ export const SeperateSubjectDetails = ({route, navigation}: any) => {
 
     useEffect(() => {
         setLoading(true)
+        userDetails
+            .then(allDetails => {
+            if(allDetails) setName(allDetails.name)
+            else setName('Admin')
+            })
+            .catch(err => Alert.alert('ERROR', 'Error in ProfileHome'));
         getLiveClass()
         setLoading(false)
     },[]);
@@ -102,6 +112,13 @@ export const SeperateSubjectDetails = ({route, navigation}: any) => {
         }
     }
 
+    const joinFromMobile = () => {
+        console.log(liveOnline[0].video_id)
+        navigation.navigate('TeacherLiveClassNow', {
+            video_id: liveOnline[0].video_id
+        })
+    }
+
     return (
         !loading && !singleSubjectDetails.length ? <Loader /> : (
         <>
@@ -124,6 +141,7 @@ export const SeperateSubjectDetails = ({route, navigation}: any) => {
                             <View style={[styles.liveNowStyle]}>
                                 <Text>Live class Details</Text>
                                 {liveOnline.length === 1 ?
+                                <>
                                 <TouchableWithoutFeedback 
                                     onPress={() => removeLiveClass()}
                                     style={styles.liveView}
@@ -134,6 +152,16 @@ export const SeperateSubjectDetails = ({route, navigation}: any) => {
                                         <Text style={styles.liveBtnTextRed}>Stop Live</Text>
                                     </Button>
                                 </TouchableWithoutFeedback>
+                                <TouchableWithoutFeedback 
+                                    onPress={() => joinFromMobile()}
+                                    >
+                                    <Button 
+                                        style={styles.liveBtn}
+                                        >
+                                        <Text style={styles.liveBtnTextRed}>Join from Mobile</Text>
+                                    </Button>
+                                </TouchableWithoutFeedback>
+                                </>
                                 :
                                 <TouchableWithoutFeedback 
                                     style={styles.liveView}
@@ -142,7 +170,7 @@ export const SeperateSubjectDetails = ({route, navigation}: any) => {
                                     <Button 
                                         style={styles.liveBtn}
                                         >
-                                        <Text style={styles.liveBtnText}>Start Now (Join.me)</Text>
+                                        <Text style={styles.liveBtnText}>Start Now (meet.jit.si)</Text>
                                     </Button>
                                 </TouchableWithoutFeedback>
                                 }
@@ -155,7 +183,7 @@ export const SeperateSubjectDetails = ({route, navigation}: any) => {
                                         subject_details: singleSubjectDetails[0]
                                     })}>
                                         <Text style={styles.mainHeading}>Upload Lecture</Text>
-                                        <Text style={styles.description}>Teacher Name</Text>
+                                        <Text style={styles.description}>{name}</Text>
                                         <Text></Text>
                                         <View style={styles.iconDiv}>
                                             <Text style={styles.mainIcon}>
@@ -170,7 +198,7 @@ export const SeperateSubjectDetails = ({route, navigation}: any) => {
                                         subject_details: singleSubjectDetails[0]
                                         })}>
                                         <Text style={styles.mainHeading}>Subject Doubts</Text>
-                                        <Text style={styles.description}>Teacher Name</Text>
+                                        <Text style={styles.description}>{name}</Text>
                                         <Text></Text>
                                         <View style={styles.iconDiv}>
                                             <Text style={styles.mainIcon}>
@@ -187,7 +215,7 @@ export const SeperateSubjectDetails = ({route, navigation}: any) => {
                                         subject_details: singleSubjectDetails[0]
                                     })}>
                                         <Text style={styles.mainHeading}>Assignments</Text>
-                                        <Text style={styles.description}>Teacher Name</Text>
+                                        <Text style={styles.description}>{name}</Text>
                                         <Text></Text>
                                         <View style={styles.iconDiv}>
                                             <Text style={styles.mainIcon}>
@@ -201,7 +229,7 @@ export const SeperateSubjectDetails = ({route, navigation}: any) => {
                                     subject_details: singleSubjectDetails[0]
                                 })}>
                                         <Text style={styles.mainHeading}>Exam</Text>
-                                        <Text style={styles.description}>Teacher Name</Text>
+                                        <Text style={styles.description}>{name}</Text>
                                         <Text></Text>
                                         <View style={styles.iconDiv}>
                                             <Text style={styles.mainIcon}>

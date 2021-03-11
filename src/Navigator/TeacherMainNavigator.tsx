@@ -7,7 +7,7 @@ import {
 } from '../Screens/Teacher/Screens';
 import SubjectBlogPost from '../components/SubjectBlogPost';
 import AddANewQuesction from '../components/AddANewQuesction';
-import { QuestionAnswer } from '../Screens/Student';
+import { QuestionAnswer, StudentLiveClass } from '../Screens/Student';
 import BlogAnswer from '../components/BlogAnswer';
 import WebViewComponent from '../components/WebViewComponent';
 import { MainChatBot } from '../Screens/ChatBot';
@@ -31,6 +31,7 @@ const TeacherMainNavigator = ({navigation}: any) => {
             <TeacherStack.Screen name="ParticularAssignmentView" component={ParticularAssignmentView} />
             <TeacherStack.Screen name="ParticularExamView" component={ParticularExamView} />
             <TeacherStack.Screen name="WebViewComponent" component={WebViewComponent} />
+            <TeacherStack.Screen name="TeacherLiveClassNow" component={StudentLiveClass} /> 
             <TeacherStack.Screen name="ChatBot" component={MainChatBot} />
         </TeacherStack.Navigator>
     );
