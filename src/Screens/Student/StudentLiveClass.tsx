@@ -1,88 +1,67 @@
-import React, {useState, useEffect} from 'react';
-import { Text, View, StyleSheet, SafeAreaView, ScrollView, Dimensions, StatusBar } from 'react-native';
-import Video from 'react-native-video';
-import { WebView } from 'react-native-webview';
-import CommonHeader from '../../components/StudentCommonHeader';
-import SecondHeader from '../../components/SecondHeader';
-import Colors from '../../utils/Color';
-const {width, height} = Dimensions.get('screen');
+import React, { useContext, useEffect, useState } from 'react';
+import { Alert } from 'react-native';
+import JitsiMeet, { JitsiMeetView } from 'react-native-jitsi-meet';
+import { getData } from '../../AsyncActivities/getData';
+import { AuthContext } from '../../Context';
 
 export const StudentLiveClass = ({route, navigation}: any) => {
-    const video_id = route.params.video_id;
-    const [loading, setLoading] = useState(false);
-    const [thumbnailURL, setThumbnail] = useState<any>();
-    const [videoURL, setVideoURL] = useState<any>();
-    const [video, setVideo] = useState<any>();
-    console.log('ID', video_id)
+  const video_id = route.params.video_id;
+  const {user} = useContext(AuthContext);
+  const userDetails = getData('extra')
+  const [name, setName] = useState('');
 
-    const getMp4 = () => {
-        fetch(`https://player.vimeo.com/video/${video_id}/config`)
-        .then(res => res.json())
-        .then(res => {
-            setThumbnail(res.video.thumbs['640'])
-            setVideoURL(res.request.files.hls.cdns[res.request.files.hls.default_cdn].url)
-            setVideo(res.video)
-        });
-    }
+  userDetails
+    .then(allDetails => {
+      if(allDetails) setName(allDetails.name)
+      else setName('Admin')
+    })
+    .catch(err => Alert.alert('ERROR', 'Error in ProfileHome'));
 
+  console.log('ID', video_id)
 
-    useEffect(() => {
-        setLoading(true)
-        // getMp4()
-        setLoading(false)
-    },[]);
+  useEffect(() => {
+    setTimeout(() => {
+      const url = `https://meet.jit.si/${video_id}`;
+      const userInfo = {
+        displayName: name || 'User',
+        email: user.email || 'info@padhai.com',
+        avatar: 'https:/gravatar.com/avatar/abc123',
+      };
+      JitsiMeet.call(url, userInfo);
+    }, 1000);
+  }, [])
 
-    return (
-        <>
-        <StatusBar backgroundColor={Colors.headerBlue()} barStyle='light-content' />
-        <SafeAreaView style={styles.container}>
-            <CommonHeader
-                x={true}
-                notification={true}
-                backgroundColor={Colors.headerBlue()}
-                title="Live Class"
-                fontColor={Colors.headerFontColor()}
-                navigation={navigation}
-            />
-            <SecondHeader 
-                blank={true}
-            />
-            <View style={styles.mainBody}>
-                <WebView source={{ uri: `https://video-call-padhai.herokuapp.com/${video_id}` }} />
-            </View>
-        </SafeAreaView>
-        </>
-    );
-};
+  useEffect(() => {
+    return () => {
+      JitsiMeet.endCall();
+    };
+  });
 
-const styles = StyleSheet.create({
-    container: {
+  const onConferenceTerminated = (nativeEvent) => {
+    /* Conference terminated event */
+    console.log(nativeEvent)
+    navigation.goBack();
+  }
+
+  const onConferenceJoined = (nativeEvent) => {
+    /* Conference joined event */
+    console.log(nativeEvent)
+  }
+
+  const onConferenceWillJoin = (nativeEvent) => {
+    /* Conference will join event */
+    console.log(nativeEvent)
+  }
+  return (
+    <JitsiMeetView
+      onConferenceTerminated={() => navigation.goBack()}
+      onConferenceJoined={e => onConferenceJoined(e)}
+      onConferenceWillJoin={e => onConferenceWillJoin(e)}
+      style={{
         flex: 1,
-    },
-    IntroductionMsg: {
-        paddingLeft: 15,
-        paddingRight: 15,
-        marginTop: 15,
-    },
-    mainBody: {
-        width,
-        minHeight: height * .75, 
-        backgroundColor: Colors.F9Background(), 
-        borderTopRightRadius: 30, 
-        position: 'relative', 
-        top: -30
-    },
-    categoryBody: {
-        marginTop: 25, 
-        paddingLeft: 15, 
-        paddingRight: 15,
-        marginBottom: 130
-    },
-    backgroundVideo: {
-        position: 'absolute',
-        top: 0,
-        left: 0,
-        bottom: 0,
-        right: 0,
-    },
-});
+        height: '100%',
+        width: '100%',
+      }}
+    />
+  )
+}
