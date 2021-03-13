@@ -5,6 +5,7 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import auth from '@react-native-firebase/auth';
 import firestore from '@react-native-firebase/firestore';
+import messaging from '@react-native-firebase/messaging';
 import { AuthContext } from './src/Context';
 import {storeData} from './src/AsyncActivities/storeData';
 import {clearCache} from './src/AsyncActivities/clearCache';
@@ -36,6 +37,7 @@ const App = () => {
         });
       } catch(error) {
         console.log(error)
+        Alert.alert('Error', 'Error in Login');
       }
     },
     signUp: async (userSignInData: any) => {
@@ -77,7 +79,8 @@ const App = () => {
             }
           });
       } catch(e) {
-        Alert.alert(e)
+        console.log(e)
+        Alert.alert('Error', 'Error in Registation Section...')
       }
     },
     signOut: async () => {
@@ -86,7 +89,8 @@ const App = () => {
         await auth().signOut();
         clearCache();
       } catch(e) {
-        Alert.alert(e)
+        console.log(e)
+        Alert.alert('Error', 'Error in Logout')
       }
     },
   };
@@ -97,8 +101,39 @@ const App = () => {
     if(initialization) setInitialization(false)
   }
 
+  const PushNotification = async() => {
+    try{
+      const authStatus = await messaging().requestPermission();
+      const enabled =
+        authStatus === messaging.AuthorizationStatus.AUTHORIZED ||
+        authStatus === messaging.AuthorizationStatus.PROVISIONAL;
+    
+      if (enabled) {
+        console.log('Authorization status:', authStatus);
+      }
+    } catch(e) {
+      console.log(e)
+      Alert.alert('Error', 'Error in Push Notifiction')
+    }
+  }
+
   React.useEffect(() => {
     const subscriber = auth().onAuthStateChanged(onAuthStateChanged);
+    PushNotification()
+
+    // When App in is Background
+    messaging().onNotificationOpenedApp(remoteMessage => {
+      Alert.alert(remoteMessage.notification.title, remoteMessage.notification?.body)
+    });
+
+    // When App is in Quite Mode
+    // messaging().getInitialNotification();
+
+    // When App is in Foreground
+    messaging().onMessage(remoteMessage => {
+      Alert.alert(remoteMessage.notification.title, remoteMessage.notification?.body)
+    });
+
     return subscriber;
   }, []);
 

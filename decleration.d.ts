@@ -8,6 +8,5 @@ declare module 'react-native-vector-icons/Entypo';
 declare module 'react-native-vector-icons/Ionicons';
 declare module 'react-native-vector-icons/EvilIcons';
 declare module 'react-native-vector-icons/Fontisto';
-declare module 'react-native-video';
 declare module 'react-native-connectycube';
 declare module 'react-native-jitsi-meet';
