@@ -12,7 +12,7 @@ import { getData } from '../AsyncActivities/getData';
 const {width, height} = Dimensions.get('screen');
 
 const ProfileHome = ({navigation}: any) => {
-  const { signOut } = useContext(AuthContext);
+  const { user, signOut } = useContext(AuthContext);
   const [name, setName] = useState('');
   const userDetails = getData('extra')
   userDetails
@@ -25,13 +25,25 @@ const ProfileHome = ({navigation}: any) => {
   return (
     <>
       <SafeAreaView style={styles.container}>
-        <CommonHeader
-          back={false}
-          backgroundColor={Colors.darkBlue()}
-          title="My Profile"
-          fontColor={Colors.appWhite()}
-          navigation={navigation}
-        />
+        {user.displayName == 'admin' ?
+          <CommonHeader
+            back={false}
+            backgroundColor={Colors.darkBlue()}
+            title="My Profile"
+            fontColor={Colors.appWhite()}
+            navigation={navigation}
+            notification={true}
+            bookmark={true}
+          />
+        : 
+          <CommonHeader
+            back={false}
+            backgroundColor={Colors.darkBlue()}
+            title="My Profile"
+            fontColor={Colors.appWhite()}
+            navigation={navigation}
+          />
+        }
         <SecondHeader 
           blank={true}
         />
