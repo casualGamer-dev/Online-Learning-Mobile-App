@@ -13,6 +13,7 @@ import Loader from '../../../components/Loader';
 import Colors from '../../../utils/Color';
 import LiveClassDialoge from './components/LiveClassDialoge';
 import { getData } from '../../../AsyncActivities/getData';
+import { getCurrentDate } from '../../../utils/Utilities';
 const {width, height} = Dimensions.get('screen');
 
 export const SeperateSubjectDetails = ({route, navigation}: any) => {
@@ -141,27 +142,31 @@ export const SeperateSubjectDetails = ({route, navigation}: any) => {
                         <View style={{}}>
                             <View style={[styles.liveNowStyle]}>
                                 <Text>Live class Details</Text>
+                                <Text style={{marginTop: 3}}>Date: {getCurrentDate()}</Text>
                                 {liveOnline.length === 1 ?
                                 <>
-                                <TouchableWithoutFeedback 
-                                    onPress={() => removeLiveClass()}
-                                    style={styles.liveView}
-                                    >
-                                    <Button 
-                                        style={styles.liveBtn}
+                                <View style={styles.liveNowView}>
+                                    <TouchableWithoutFeedback 
+                                        onPress={() => removeLiveClass()}
+                                        style={styles.liveView}
                                         >
-                                        <Text style={styles.liveBtnTextRed}>Stop Live</Text>
-                                    </Button>
-                                </TouchableWithoutFeedback>
-                                <TouchableWithoutFeedback 
-                                    onPress={() => joinFromMobile()}
-                                    >
-                                    <Button 
-                                        style={styles.liveBtn}
+                                        <Button 
+                                            style={styles.liveBtn}
+                                            >
+                                            <Text style={styles.liveBtnTextRed}>Stop Live</Text>
+                                        </Button>
+                                    </TouchableWithoutFeedback>
+                                    <TouchableWithoutFeedback 
+                                        onPress={() => joinFromMobile()}
+                                        style={styles.liveView}
                                         >
-                                        <Text style={styles.liveBtnTextRed}>Join from Mobile</Text>
-                                    </Button>
-                                </TouchableWithoutFeedback>
+                                        <Button 
+                                            style={styles.liveBtn}
+                                            >
+                                            <Text style={styles.liveBtnTextRed}>Join Now</Text>
+                                        </Button>
+                                    </TouchableWithoutFeedback>
+                                </View>
                                 </>
                                 :
                                 <TouchableWithoutFeedback 
@@ -341,12 +346,20 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignSelf: 'flex-start',
         position: 'relative',
-        left: -15
+        backgroundColor: Colors.darkBlue(),
+        marginRight: 10,
+        height: 35
     },
     liveBtnText: {
-        color: Colors.darkBlue()
+        color: Colors.white(),
+        fontSize: 13
     },
     liveBtnTextRed: {
-        color: 'red'
+        color: Colors.white(),
+        fontSize: 13
+    },
+    liveNowView: {
+        flexDirection: 'row',
+        justifyContent: 'flex-start'
     }
 });
