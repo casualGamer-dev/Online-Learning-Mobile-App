@@ -20,6 +20,8 @@ const LiveClassDialoge = (props: any) => {
                                 name: '',
                                 subject_id: singleSubjectDetails.subject_id,
                                 video_id: '',
+                                batch_id: singleSubjectDetails.batch_id,
+                                subject_name: singleSubjectDetails.subject_name,
                                 teacher_id: user.uid
                             }}
                             onSubmit={values => {

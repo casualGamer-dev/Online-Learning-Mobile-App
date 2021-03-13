@@ -74,11 +74,12 @@ export const SeperateSubjectDetails = ({route, navigation}: any) => {
                     .get();
 
             fullSubjectDetails.forEach((res: any) => {
-                const { subject_name, subject_id, teacher_name } = res.data();
+                const { subject_name, subject_id, teacher_name, batch_id } = res.data();
                 particularSubject.push({
                     subject_name,
                     subject_id,
-                    teacher_name
+                    teacher_name,
+                    batch_id
                 });
             })
             // console.log(particularSubject)

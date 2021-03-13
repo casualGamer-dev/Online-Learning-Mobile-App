@@ -98,7 +98,8 @@ const ExamDialog = (props: any) => {
                 published_on: getCurrentDate(),
                 start_time: startDate,
                 end_time: submissionDate,
-                exam_id: idGenerator()
+                exam_id: idGenerator(),
+                batch_id: subject_details.batch_id
             })
             .then(() => {
                 setVisible(false)

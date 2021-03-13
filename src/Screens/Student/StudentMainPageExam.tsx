@@ -17,7 +17,6 @@ export const StudentMainPageExam = ({navigation}: any) => {
         />
         <SecondHeader 
             mainText='All The Exams Details'
-            secondText='Last Exam on : 20th Jul 2020'
         />
         <View style={styles.mainBody}>
             <ScrollView style={{}}>
