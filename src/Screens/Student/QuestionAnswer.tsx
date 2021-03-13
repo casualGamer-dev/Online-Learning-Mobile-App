@@ -14,6 +14,7 @@ export const QuestionAnswer = ({route, navigation}: any) => {
   const [singleSubjectAnswer, setSingleSubjectAnswer] = useState([]);
   const [empty, setEmpty] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [refresh, setRefresh] = useState<boolean>(false);
 
   const getParticularCourseDetails = async () => {
     try{
@@ -75,6 +76,8 @@ export const QuestionAnswer = ({route, navigation}: any) => {
                   :
                   <FlatList 
                     data={singleSubjectAnswer}
+                    refreshing={refresh}
+                    onRefresh={getParticularCourseDetails}
                     showsVerticalScrollIndicator={false}
                     horizontal={false}
                     renderItem={ ({ item: setOfAnswer }) => {

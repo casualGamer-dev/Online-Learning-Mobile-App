@@ -136,6 +136,7 @@ export const AddNewSubject = ({navigation}) => {
 
                               <TextField
                                 label="Teacher Name"
+                                disabled={true}
                                 handleChange={handleChange('teacher_name')}
                                 value={values.teacher_name}
                                 style={styles.inputBackground}
@@ -143,6 +144,7 @@ export const AddNewSubject = ({navigation}) => {
 
                               <TextField
                                 label="Teacher Id"
+                                disabled={true}
                                 handleChange={handleChange('teacher_id')}
                                 value={values.teacher_id}
                                 style={styles.inputBackground}

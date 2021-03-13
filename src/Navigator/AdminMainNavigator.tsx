@@ -1,7 +1,7 @@
 import React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
 import { AdminBottomTab } from './AdminBottomTab';
-import { AddNewSubject, AddNewUser } from '../Screens/Admin';
+import { AddNewSubject, AddNewUser, AdminNotification } from '../Screens/Admin';
 const AdminStack = createStackNavigator();
 
 const AdminMainNavigator = () => {
@@ -13,6 +13,7 @@ const AdminMainNavigator = () => {
             <AdminStack.Screen name="AdminBottomTab" component={AdminBottomTab} />
             <AdminStack.Screen name="AdminAddNewUser" component={AddNewUser} />
             <AdminStack.Screen name="AdminAddNewSubject" component={AddNewSubject} />
+            <AdminStack.Screen name="AdminNotification" component={AdminNotification} />
         </AdminStack.Navigator>
     );
 }

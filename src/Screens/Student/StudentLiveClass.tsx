@@ -10,12 +10,12 @@ export const StudentLiveClass = ({route, navigation}: any) => {
   const userDetails = getData('extra')
   const [name, setName] = useState('');
 
-  userDetails
-    .then(allDetails => {
-      if(allDetails) setName(allDetails.name)
-      else setName('Admin')
-    })
-    .catch(err => Alert.alert('ERROR', 'Error in ProfileHome'));
+  // userDetails
+  //   .then(allDetails => {
+  //     if(allDetails) setName(allDetails.name)
+  //     else setName('Admin')
+  //   })
+  //   .catch(err => Alert.alert('ERROR', 'Error in ProfileHome'));
 
   console.log('ID', video_id)
 
@@ -23,8 +23,8 @@ export const StudentLiveClass = ({route, navigation}: any) => {
     setTimeout(() => {
       const url = `https://meet.jit.si/${video_id}`;
       const userInfo = {
-        displayName: name || 'User',
-        email: user.email || 'info@padhai.com',
+        displayName: 'User',
+        email: 'info@padhai.com',
         avatar: 'https:/gravatar.com/avatar/abc123',
       };
       JitsiMeet.call(url, userInfo);

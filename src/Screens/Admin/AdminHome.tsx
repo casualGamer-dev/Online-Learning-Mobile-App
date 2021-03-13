@@ -54,6 +54,19 @@ export const AdminHome = ({navigation}: any) => {
                             </TouchableWithoutFeedback>
                         </View>
                     </View>
+                    <View style={[styles.mainRow, {marginTop: 15}]}> 
+                        <View style={styles.categoryViewStyle}>
+                            <TouchableWithoutFeedback onPress={() => navigation.navigate('AdminNotification')}>
+                                <Text style={styles.subjectName}>Send Notification</Text>
+                                <Text></Text>
+                                <View style={styles.iconView}>
+                                    <Text style={styles.icon}>
+                                        <SimpleLineIcons name='bell' size={40} color={Colors.darkColor()} />
+                                    </Text>
+                                </View>
+                            </TouchableWithoutFeedback>
+                        </View>
+                    </View>
                 </View>
             </SafeAreaView>
         </>

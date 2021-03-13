@@ -10,11 +10,13 @@ const TextField = (props) => {
     handleChange,
     value,
     multiline = false,
+    disabled = false,
     style = {},
   } = props;
   return (
     <TextInput
       multiline={multiline}
+      disabled={disabled}
       autoCapitalize={'none'}
       label={label}
       secureTextEntry={secure}
