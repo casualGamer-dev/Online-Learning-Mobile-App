@@ -17,7 +17,7 @@ export const StudentBottomTab = ({navigation}: any) => {
             iconName = focused ? 'home' : 'home';
             return <AntIcon name={iconName} size={28} color={color} />;
           } else if (route.name === 'StudentLiveClass') {
-            iconName = focused ? 'book' : 'book';
+            iconName = focused ? 'play' : 'play';
             return <Feather name={iconName} size={28} color={color} />;
           } else if (route.name === 'StudentExam') {
             iconName = focused ? 'clipboard' : 'clipboard';
