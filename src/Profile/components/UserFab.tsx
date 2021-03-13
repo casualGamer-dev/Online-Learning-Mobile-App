@@ -16,11 +16,11 @@ const UserFab = (props: any) => {
                     fabStyle={{backgroundColor}}
                     icon={state ? 'window-close' : 'pencil-outline'}
                     actions={[
-                        {
-                            icon: 'account-edit-outline',
-                            label: 'Edit Profile',
-                            onPress: () => Alert.alert('Edit Profile Coming Soon...'),
-                        },
+                        // {
+                        //     icon: 'account-edit-outline',
+                        //     label: 'Edit Profile',
+                        //     onPress: () => Alert.alert('Edit Profile Coming Soon...'),
+                        // },
                         {
                             icon: 'account-arrow-right-outline',
                             label: 'Logout',
