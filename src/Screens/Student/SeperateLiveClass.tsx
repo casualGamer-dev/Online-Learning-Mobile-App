@@ -62,7 +62,7 @@ export const SeperateLiveClass = ({navigation}: any) => {
       <SafeAreaView style={styles.container}>
         <CommonHeader
           backgroundColor={Colors.headerBlue()}
-          title="My Live Class"
+          title="My Live Classes"
           fontColor={Colors.headerFontColor()}
           navigation={navigation}
         />

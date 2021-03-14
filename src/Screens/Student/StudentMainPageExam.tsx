@@ -5,7 +5,6 @@ import CommonHeader from '../../components/StudentCommonHeader';
 import SecondHeader from '../../components/SecondHeader';
 import Colors from '../../utils/Color';
 import { getData } from '../../AsyncActivities/getData';
-import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
 import SeperateExamCard from './components/SeperateExamCard';
 import ExamDetailDesc from './components/ExamDetailDesc';
 import Loader from '../../components/Loader';
@@ -72,12 +71,12 @@ export const StudentMainPageExam = ({navigation}: any) => {
       <SafeAreaView style={styles.container}>
         <CommonHeader
           backgroundColor={Colors.headerBlue()}
-          title="My Live Class"
+          title="My Exams"
           fontColor={Colors.headerFontColor()}
           navigation={navigation}
         />
         <SecondHeader 
-          mainText='All The Live Classes'
+          mainText='All The Exams'
         />
         <View style={styles.mainBody}>
           {/* <ScrollView style={{}}> */}

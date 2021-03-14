@@ -49,8 +49,11 @@ const SeperateExamCard = (props: any) => {
                     return 205;
                 }
             } else {
-                console.log('Different date')
-                return 104;
+                if(checkExamAnswerSheet.length > 0) {
+                    return 100;
+                } else {
+                    return 101;
+                }
             }
             // setLoading(false)
             return 103;

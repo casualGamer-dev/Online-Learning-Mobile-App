@@ -126,7 +126,7 @@ export const SeperateCourseDetails = ({route, navigation}: any) => {
                                     style={styles.liveView}
                                     >
                                     <Button 
-                                        style={styles.liveBtn}
+                                        style={styles.noBtn}
                                         >
                                         <Text style={styles.liveBtnText}>No Live Class</Text>
                                     </Button>
@@ -297,12 +297,22 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignSelf: 'flex-start',
         position: 'relative',
+        backgroundColor: Colors.darkBlue(),
+        marginRight: 10,
+        height: 35
+    },
+    noBtn: {
+        flexDirection: 'row',
+        alignSelf: 'flex-start',
+        position: 'relative',
         left: -15
     },
     liveBtnText: {
-        color: Colors.darkBlue()
+        color: Colors.darkBlue(),
+        fontSize: 13
     },
     liveBtnTextRed: {
-        color: 'red'
+        color: Colors.white(),
+        fontSize: 13
     }
 });

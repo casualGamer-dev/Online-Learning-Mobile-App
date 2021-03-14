@@ -1,14 +1,14 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { Alert } from 'react-native';
+// import { Alert } from 'react-native';
 import JitsiMeet, { JitsiMeetView } from 'react-native-jitsi-meet';
-import { getData } from '../../AsyncActivities/getData';
-import { AuthContext } from '../../Context';
+// import { getData } from '../../AsyncActivities/getData';
+// import { AuthContext } from '../../Context';
 
 export const StudentLiveClass = ({route, navigation}: any) => {
   const video_id = route.params.video_id;
-  const {user} = useContext(AuthContext);
-  const userDetails = getData('extra')
-  const [name, setName] = useState('');
+  // const {user} = useContext(AuthContext);
+  // const userDetails = getData('extra')
+  // const [name, setName] = useState('');
 
   // userDetails
   //   .then(allDetails => {
