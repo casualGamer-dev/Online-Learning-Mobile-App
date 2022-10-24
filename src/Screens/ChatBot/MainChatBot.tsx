@@ -30,10 +30,10 @@ export class MainChatBot extends Component {
 	componentDidMount() {
 		this.state.loading = true
 		Dialogflow_V2.setConfiguration(
-			dialogflowConfig.client_email,
-			dialogflowConfig.private_key,
+			"anime-f5c79",
+			"AIzaSyC2gOkmTLJ_T9SHheURr2Vq4f9h4pVylcQ",
 			Dialogflow_V2.LANG_ENGLISH_US,
-			dialogflowConfig.project_id
+			"671250213885-5h4ev1v3s9nt34q6ml0gipv07kqsc0jq.apps.googleusercontent.com"
 		);
 		this.state.loading = false
 	}
