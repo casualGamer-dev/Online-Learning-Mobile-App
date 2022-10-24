@@ -7,20 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		00E356F31AD99517003FC87E /* PadhaiTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* PadhaiTests.m */; };
+		00E356F31AD99517003FC87E /* EdufitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* EdufitTests.m */; };
 		13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		2D02E4BC1E0B4A80006451C7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		2D02E4BD1E0B4A84006451C7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		2D02E4BF1E0B4AB3006451C7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
-		2DCD954D1E0B4F2C00145EB5 /* PadhaiTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* PadhaiTests.m */; };
+		2DCD954D1E0B4F2C00145EB5 /* EdufitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* EdufitTests.m */; };
 		6F942C0925B4300D001DBEFE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6FE9667D25B41D95003B053F /* GoogleService-Info.plist */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
-		BB31DEDCE10B7F5760DA660A /* libPods-Padhai-PadhaiTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 32B77B49A1C20A75C470212E /* libPods-Padhai-PadhaiTests.a */; };
-		C5FE619191528D490B08FBFA /* libPods-Padhai-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0CB20A8460631C8168F62632 /* libPods-Padhai-tvOSTests.a */; };
-		E4243FFB4F532B6268762158 /* libPods-Padhai-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 308C7B1225FEED9D767A2F0D /* libPods-Padhai-tvOS.a */; };
-		EBE9293107BF21EF9E34D543 /* libPods-Padhai.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 874395A89C6B97F14B6257F8 /* libPods-Padhai.a */; };
+		BB31DEDCE10B7F5760DA660A /* libPods-Edufit-EdufitTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 32B77B49A1C20A75C470212E /* libPods-Edufit-EdufitTests.a */; };
+		C5FE619191528D490B08FBFA /* libPods-Edufit-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0CB20A8460631C8168F62632 /* libPods-Edufit-tvOSTests.a */; };
+		E4243FFB4F532B6268762158 /* libPods-Edufit-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 308C7B1225FEED9D767A2F0D /* libPods-Edufit-tvOS.a */; };
+		EBE9293107BF21EF9E34D543 /* libPods-Edufit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 874395A89C6B97F14B6257F8 /* libPods-Edufit.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,37 +29,37 @@
 			containerPortal = 83CBB9F71A601CBA00E9B192 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 13B07F861A680F5B00A75B9A;
-			remoteInfo = Padhai;
+			remoteInfo = Edufit;
 		};
 		2D02E4911E0B4A5D006451C7 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 83CBB9F71A601CBA00E9B192 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 2D02E47A1E0B4A5D006451C7;
-			remoteInfo = "Padhai-tvOS";
+			remoteInfo = "Edufit-tvOS";
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		008F07F21AC5B25A0029DE68 /* main.jsbundle */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = main.jsbundle; sourceTree = "<group>"; };
-		00E356EE1AD99517003FC87E /* PadhaiTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PadhaiTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		00E356EE1AD99517003FC87E /* EdufitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EdufitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		00E356F21AD99517003FC87E /* PadhaiTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PadhaiTests.m; sourceTree = "<group>"; };
-		0CB20A8460631C8168F62632 /* libPods-Padhai-tvOSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Padhai-tvOSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		13B07F961A680F5B00A75B9A /* Padhai.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Padhai.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = Padhai/AppDelegate.h; sourceTree = "<group>"; };
-		13B07FB01A68108700A75B9A /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = Padhai/AppDelegate.m; sourceTree = "<group>"; };
-		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = Padhai/Images.xcassets; sourceTree = "<group>"; };
-		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Padhai/Info.plist; sourceTree = "<group>"; };
-		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = Padhai/main.m; sourceTree = "<group>"; };
-		1902B8237E14E66C134F85F9 /* Pods-Padhai-PadhaiTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Padhai-PadhaiTests.release.xcconfig"; path = "Target Support Files/Pods-Padhai-PadhaiTests/Pods-Padhai-PadhaiTests.release.xcconfig"; sourceTree = "<group>"; };
-		195512841940740EEA0C87AD /* Pods-Padhai.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Padhai.release.xcconfig"; path = "Target Support Files/Pods-Padhai/Pods-Padhai.release.xcconfig"; sourceTree = "<group>"; };
-		2D02E47B1E0B4A5D006451C7 /* Padhai-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Padhai-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		2D02E4901E0B4A5D006451C7 /* Padhai-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Padhai-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		2EC7F1216C68F0CF87201382 /* Pods-Padhai-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Padhai-tvOSTests.debug.xcconfig"; path = "Target Support Files/Pods-Padhai-tvOSTests/Pods-Padhai-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
-		308C7B1225FEED9D767A2F0D /* libPods-Padhai-tvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Padhai-tvOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		32B77B49A1C20A75C470212E /* libPods-Padhai-PadhaiTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Padhai-PadhaiTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		38564DEB57E9377BC37924DE /* Pods-Padhai-tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Padhai-tvOS.debug.xcconfig"; path = "Target Support Files/Pods-Padhai-tvOS/Pods-Padhai-tvOS.debug.xcconfig"; sourceTree = "<group>"; };
+		00E356F21AD99517003FC87E /* EdufitTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EdufitTests.m; sourceTree = "<group>"; };
+		0CB20A8460631C8168F62632 /* libPods-Edufit-tvOSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Edufit-tvOSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		13B07F961A680F5B00A75B9A /* Edufit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Edufit.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = Edufit/AppDelegate.h; sourceTree = "<group>"; };
+		13B07FB01A68108700A75B9A /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = Edufit/AppDelegate.m; sourceTree = "<group>"; };
+		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = Edufit/Images.xcassets; sourceTree = "<group>"; };
+		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Edufit/Info.plist; sourceTree = "<group>"; };
+		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = Edufit/main.m; sourceTree = "<group>"; };
+		1902B8237E14E66C134F85F9 /* Pods-Edufit-EdufitTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Edufit-EdufitTests.release.xcconfig"; path = "Target Support Files/Pods-Edufit-EdufitTests/Pods-Edufit-EdufitTests.release.xcconfig"; sourceTree = "<group>"; };
+		195512841940740EEA0C87AD /* Pods-Edufit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Edufit.release.xcconfig"; path = "Target Support Files/Pods-Edufit/Pods-Edufit.release.xcconfig"; sourceTree = "<group>"; };
+		2D02E47B1E0B4A5D006451C7 /* Edufit-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Edufit-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2D02E4901E0B4A5D006451C7 /* Edufit-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Edufit-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2EC7F1216C68F0CF87201382 /* Pods-Edufit-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Edufit-tvOSTests.debug.xcconfig"; path = "Target Support Files/Pods-Edufit-tvOSTests/Pods-Edufit-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
+		308C7B1225FEED9D767A2F0D /* libPods-Edufit-tvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Edufit-tvOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		32B77B49A1C20A75C470212E /* libPods-Edufit-EdufitTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Edufit-EdufitTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		38564DEB57E9377BC37924DE /* Pods-Edufit-tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Edufit-tvOS.debug.xcconfig"; path = "Target Support Files/Pods-Edufit-tvOS/Pods-Edufit-tvOS.debug.xcconfig"; sourceTree = "<group>"; };
 		6F2B3A6C25B3DFE500D13E82 /* Fontisto.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Fontisto.ttf; sourceTree = "<group>"; };
 		6F2B3A6D25B3DFE500D13E82 /* Octicons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Octicons.ttf; sourceTree = "<group>"; };
 		6F2B3A6E25B3DFE500D13E82 /* Feather.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Feather.ttf; sourceTree = "<group>"; };
@@ -77,14 +77,14 @@
 		6F2B3A7A25B3DFE500D13E82 /* SimpleLineIcons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = SimpleLineIcons.ttf; sourceTree = "<group>"; };
 		6F2B3A7B25B3DFE500D13E82 /* MaterialIcons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = MaterialIcons.ttf; sourceTree = "<group>"; };
 		6FE9667D25B41D95003B053F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = Padhai/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		874395A89C6B97F14B6257F8 /* libPods-Padhai.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Padhai.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		925EEF6E9BB02A10A3A2A28B /* Pods-Padhai.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Padhai.debug.xcconfig"; path = "Target Support Files/Pods-Padhai/Pods-Padhai.debug.xcconfig"; sourceTree = "<group>"; };
-		A7092312FE042D8AF1F9758E /* Pods-Padhai-tvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Padhai-tvOSTests.release.xcconfig"; path = "Target Support Files/Pods-Padhai-tvOSTests/Pods-Padhai-tvOSTests.release.xcconfig"; sourceTree = "<group>"; };
-		C1D991BB6666E08F4D95F218 /* Pods-Padhai-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Padhai-tvOS.release.xcconfig"; path = "Target Support Files/Pods-Padhai-tvOS/Pods-Padhai-tvOS.release.xcconfig"; sourceTree = "<group>"; };
+		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = Edufit/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		874395A89C6B97F14B6257F8 /* libPods-Edufit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Edufit.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		925EEF6E9BB02A10A3A2A28B /* Pods-Edufit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Edufit.debug.xcconfig"; path = "Target Support Files/Pods-Edufit/Pods-Edufit.debug.xcconfig"; sourceTree = "<group>"; };
+		A7092312FE042D8AF1F9758E /* Pods-Edufit-tvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Edufit-tvOSTests.release.xcconfig"; path = "Target Support Files/Pods-Edufit-tvOSTests/Pods-Edufit-tvOSTests.release.xcconfig"; sourceTree = "<group>"; };
+		C1D991BB6666E08F4D95F218 /* Pods-Edufit-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Edufit-tvOS.release.xcconfig"; path = "Target Support Files/Pods-Edufit-tvOS/Pods-Edufit-tvOS.release.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		ED2971642150620600B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS12.0.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
-		F78693C9B8EF76E58F8874C5 /* Pods-Padhai-PadhaiTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Padhai-PadhaiTests.debug.xcconfig"; path = "Target Support Files/Pods-Padhai-PadhaiTests/Pods-Padhai-PadhaiTests.debug.xcconfig"; sourceTree = "<group>"; };
+		F78693C9B8EF76E58F8874C5 /* Pods-Edufit-EdufitTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Edufit-EdufitTests.debug.xcconfig"; path = "Target Support Files/Pods-Edufit-EdufitTests/Pods-Edufit-EdufitTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,7 +92,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BB31DEDCE10B7F5760DA660A /* libPods-Padhai-PadhaiTests.a in Frameworks */,
+				BB31DEDCE10B7F5760DA660A /* libPods-Edufit-EdufitTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -100,7 +100,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EBE9293107BF21EF9E34D543 /* libPods-Padhai.a in Frameworks */,
+				EBE9293107BF21EF9E34D543 /* libPods-Edufit.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -108,7 +108,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E4243FFB4F532B6268762158 /* libPods-Padhai-tvOS.a in Frameworks */,
+				E4243FFB4F532B6268762158 /* libPods-Edufit-tvOS.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -116,20 +116,20 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C5FE619191528D490B08FBFA /* libPods-Padhai-tvOSTests.a in Frameworks */,
+				C5FE619191528D490B08FBFA /* libPods-Edufit-tvOSTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		00E356EF1AD99517003FC87E /* PadhaiTests */ = {
+		00E356EF1AD99517003FC87E /* EdufitTests */ = {
 			isa = PBXGroup;
 			children = (
-				00E356F21AD99517003FC87E /* PadhaiTests.m */,
+				00E356F21AD99517003FC87E /* EdufitTests.m */,
 				00E356F01AD99517003FC87E /* Supporting Files */,
 			);
-			path = PadhaiTests;
+			path = EdufitTests;
 			sourceTree = "<group>";
 		};
 		00E356F01AD99517003FC87E /* Supporting Files */ = {
@@ -140,7 +140,7 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		13B07FAE1A68108700A75B9A /* Padhai */ = {
+		13B07FAE1A68108700A75B9A /* Edufit */ = {
 			isa = PBXGroup;
 			children = (
 				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
@@ -151,7 +151,7 @@
 				81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */,
 				13B07FB71A68108700A75B9A /* main.m */,
 			);
-			name = Padhai;
+			name = Edufit;
 			sourceTree = "<group>";
 		};
 		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
@@ -159,10 +159,10 @@
 			children = (
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
 				ED2971642150620600B7C4FE /* JavaScriptCore.framework */,
-				874395A89C6B97F14B6257F8 /* libPods-Padhai.a */,
-				32B77B49A1C20A75C470212E /* libPods-Padhai-PadhaiTests.a */,
-				308C7B1225FEED9D767A2F0D /* libPods-Padhai-tvOS.a */,
-				0CB20A8460631C8168F62632 /* libPods-Padhai-tvOSTests.a */,
+				874395A89C6B97F14B6257F8 /* libPods-Edufit.a */,
+				32B77B49A1C20A75C470212E /* libPods-Edufit-EdufitTests.a */,
+				308C7B1225FEED9D767A2F0D /* libPods-Edufit-tvOS.a */,
+				0CB20A8460631C8168F62632 /* libPods-Edufit-tvOSTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -203,9 +203,9 @@
 			children = (
 				6FE9667D25B41D95003B053F /* GoogleService-Info.plist */,
 				6F2B3A6B25B3DFE500D13E82 /* Fonts */,
-				13B07FAE1A68108700A75B9A /* Padhai */,
+				13B07FAE1A68108700A75B9A /* Edufit */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
-				00E356EF1AD99517003FC87E /* PadhaiTests */,
+				00E356EF1AD99517003FC87E /* EdufitTests */,
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				A594501888EDDBD1413F66D3 /* Pods */,
@@ -218,10 +218,10 @@
 		83CBBA001A601CBA00E9B192 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				13B07F961A680F5B00A75B9A /* Padhai.app */,
-				00E356EE1AD99517003FC87E /* PadhaiTests.xctest */,
-				2D02E47B1E0B4A5D006451C7 /* Padhai-tvOS.app */,
-				2D02E4901E0B4A5D006451C7 /* Padhai-tvOSTests.xctest */,
+				13B07F961A680F5B00A75B9A /* Edufit.app */,
+				00E356EE1AD99517003FC87E /* EdufitTests.xctest */,
+				2D02E47B1E0B4A5D006451C7 /* Edufit-tvOS.app */,
+				2D02E4901E0B4A5D006451C7 /* Edufit-tvOSTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -229,14 +229,14 @@
 		A594501888EDDBD1413F66D3 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				925EEF6E9BB02A10A3A2A28B /* Pods-Padhai.debug.xcconfig */,
-				195512841940740EEA0C87AD /* Pods-Padhai.release.xcconfig */,
-				F78693C9B8EF76E58F8874C5 /* Pods-Padhai-PadhaiTests.debug.xcconfig */,
-				1902B8237E14E66C134F85F9 /* Pods-Padhai-PadhaiTests.release.xcconfig */,
-				38564DEB57E9377BC37924DE /* Pods-Padhai-tvOS.debug.xcconfig */,
-				C1D991BB6666E08F4D95F218 /* Pods-Padhai-tvOS.release.xcconfig */,
-				2EC7F1216C68F0CF87201382 /* Pods-Padhai-tvOSTests.debug.xcconfig */,
-				A7092312FE042D8AF1F9758E /* Pods-Padhai-tvOSTests.release.xcconfig */,
+				925EEF6E9BB02A10A3A2A28B /* Pods-Edufit.debug.xcconfig */,
+				195512841940740EEA0C87AD /* Pods-Edufit.release.xcconfig */,
+				F78693C9B8EF76E58F8874C5 /* Pods-Edufit-EdufitTests.debug.xcconfig */,
+				1902B8237E14E66C134F85F9 /* Pods-Edufit-EdufitTests.release.xcconfig */,
+				38564DEB57E9377BC37924DE /* Pods-Edufit-tvOS.debug.xcconfig */,
+				C1D991BB6666E08F4D95F218 /* Pods-Edufit-tvOS.release.xcconfig */,
+				2EC7F1216C68F0CF87201382 /* Pods-Edufit-tvOSTests.debug.xcconfig */,
+				A7092312FE042D8AF1F9758E /* Pods-Edufit-tvOSTests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -244,9 +244,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		00E356ED1AD99517003FC87E /* PadhaiTests */ = {
+		00E356ED1AD99517003FC87E /* EdufitTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "PadhaiTests" */;
+			buildConfigurationList = 00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "EdufitTests" */;
 			buildPhases = (
 				77130E14711206AF30BCF107 /* [CP] Check Pods Manifest.lock */,
 				00E356EA1AD99517003FC87E /* Sources */,
@@ -259,14 +259,14 @@
 			dependencies = (
 				00E356F51AD99517003FC87E /* PBXTargetDependency */,
 			);
-			name = PadhaiTests;
-			productName = PadhaiTests;
-			productReference = 00E356EE1AD99517003FC87E /* PadhaiTests.xctest */;
+			name = EdufitTests;
+			productName = EdufitTests;
+			productReference = 00E356EE1AD99517003FC87E /* EdufitTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		13B07F861A680F5B00A75B9A /* Padhai */ = {
+		13B07F861A680F5B00A75B9A /* Edufit */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "Padhai" */;
+			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "Edufit" */;
 			buildPhases = (
 				6BE8878100ECB7E3DEA44BFC /* [CP] Check Pods Manifest.lock */,
 				FD10A7F022414F080027D42C /* Start Packager */,
@@ -281,14 +281,14 @@
 			);
 			dependencies = (
 			);
-			name = Padhai;
-			productName = Padhai;
-			productReference = 13B07F961A680F5B00A75B9A /* Padhai.app */;
+			name = Edufit;
+			productName = Edufit;
+			productReference = 13B07F961A680F5B00A75B9A /* Edufit.app */;
 			productType = "com.apple.product-type.application";
 		};
-		2D02E47A1E0B4A5D006451C7 /* Padhai-tvOS */ = {
+		2D02E47A1E0B4A5D006451C7 /* Edufit-tvOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 2D02E4BA1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "Padhai-tvOS" */;
+			buildConfigurationList = 2D02E4BA1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "Edufit-tvOS" */;
 			buildPhases = (
 				AF68A10ECC0859B732B32860 /* [CP] Check Pods Manifest.lock */,
 				FD10A7F122414F3F0027D42C /* Start Packager */,
@@ -301,14 +301,14 @@
 			);
 			dependencies = (
 			);
-			name = "Padhai-tvOS";
-			productName = "Padhai-tvOS";
-			productReference = 2D02E47B1E0B4A5D006451C7 /* Padhai-tvOS.app */;
+			name = "Edufit-tvOS";
+			productName = "Edufit-tvOS";
+			productReference = 2D02E47B1E0B4A5D006451C7 /* Edufit-tvOS.app */;
 			productType = "com.apple.product-type.application";
 		};
-		2D02E48F1E0B4A5D006451C7 /* Padhai-tvOSTests */ = {
+		2D02E48F1E0B4A5D006451C7 /* Edufit-tvOSTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 2D02E4BB1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "Padhai-tvOSTests" */;
+			buildConfigurationList = 2D02E4BB1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "Edufit-tvOSTests" */;
 			buildPhases = (
 				7EDB4672EABBC6DC04AC6075 /* [CP] Check Pods Manifest.lock */,
 				2D02E48C1E0B4A5D006451C7 /* Sources */,
@@ -320,9 +320,9 @@
 			dependencies = (
 				2D02E4921E0B4A5D006451C7 /* PBXTargetDependency */,
 			);
-			name = "Padhai-tvOSTests";
-			productName = "Padhai-tvOSTests";
-			productReference = 2D02E4901E0B4A5D006451C7 /* Padhai-tvOSTests.xctest */;
+			name = "Edufit-tvOSTests";
+			productName = "Edufit-tvOSTests";
+			productReference = 2D02E4901E0B4A5D006451C7 /* Edufit-tvOSTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -351,7 +351,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "Padhai" */;
+			buildConfigurationList = 83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "Edufit" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -364,10 +364,10 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				13B07F861A680F5B00A75B9A /* Padhai */,
-				00E356ED1AD99517003FC87E /* PadhaiTests */,
-				2D02E47A1E0B4A5D006451C7 /* Padhai-tvOS */,
-				2D02E48F1E0B4A5D006451C7 /* Padhai-tvOSTests */,
+				13B07F861A680F5B00A75B9A /* Edufit */,
+				00E356ED1AD99517003FC87E /* EdufitTests */,
+				2D02E47A1E0B4A5D006451C7 /* Edufit-tvOS */,
+				2D02E48F1E0B4A5D006451C7 /* Edufit-tvOSTests */,
 			);
 		};
 /* End PBXProject section */
@@ -452,7 +452,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Padhai-PadhaiTests/Pods-Padhai-PadhaiTests-resources.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-Edufit-EdufitTests/Pods-Edufit-EdufitTests-resources.sh",
 				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/AntDesign.ttf",
 				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Entypo.ttf",
 				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/EvilIcons.ttf",
@@ -495,7 +495,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Padhai-PadhaiTests/Pods-Padhai-PadhaiTests-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Edufit-EdufitTests/Pods-Edufit-EdufitTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		6BE8878100ECB7E3DEA44BFC /* [CP] Check Pods Manifest.lock */ = {
@@ -513,7 +513,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Padhai-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-Edufit-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -535,7 +535,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Padhai-PadhaiTests-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-Edufit-EdufitTests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -557,7 +557,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Padhai-tvOSTests-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-Edufit-tvOSTests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -570,7 +570,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Padhai/Pods-Padhai-resources.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-Edufit/Pods-Edufit-resources.sh",
 				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/AntDesign.ttf",
 				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Entypo.ttf",
 				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/EvilIcons.ttf",
@@ -613,7 +613,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Padhai/Pods-Padhai-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Edufit/Pods-Edufit-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		AF68A10ECC0859B732B32860 /* [CP] Check Pods Manifest.lock */ = {
@@ -631,7 +631,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Padhai-tvOS-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-Edufit-tvOS-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -683,7 +683,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				00E356F31AD99517003FC87E /* PadhaiTests.m in Sources */,
+				00E356F31AD99517003FC87E /* EdufitTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -709,7 +709,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2DCD954D1E0B4F2C00145EB5 /* PadhaiTests.m in Sources */,
+				2DCD954D1E0B4F2C00145EB5 /* EdufitTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -718,12 +718,12 @@
 /* Begin PBXTargetDependency section */
 		00E356F51AD99517003FC87E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 13B07F861A680F5B00A75B9A /* Padhai */;
+			target = 13B07F861A680F5B00A75B9A /* Edufit */;
 			targetProxy = 00E356F41AD99517003FC87E /* PBXContainerItemProxy */;
 		};
 		2D02E4921E0B4A5D006451C7 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 2D02E47A1E0B4A5D006451C7 /* Padhai-tvOS */;
+			target = 2D02E47A1E0B4A5D006451C7 /* Edufit-tvOS */;
 			targetProxy = 2D02E4911E0B4A5D006451C7 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -731,14 +731,14 @@
 /* Begin XCBuildConfiguration section */
 		00E356F61AD99517003FC87E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F78693C9B8EF76E58F8874C5 /* Pods-Padhai-PadhaiTests.debug.xcconfig */;
+			baseConfigurationReference = F78693C9B8EF76E58F8874C5 /* Pods-Edufit-EdufitTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = PadhaiTests/Info.plist;
+				INFOPLIST_FILE = EdufitTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				OTHER_LDFLAGS = (
@@ -748,17 +748,17 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Padhai.app/Padhai";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Edufit.app/Edufit";
 			};
 			name = Debug;
 		};
 		00E356F71AD99517003FC87E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1902B8237E14E66C134F85F9 /* Pods-Padhai-PadhaiTests.release.xcconfig */;
+			baseConfigurationReference = 1902B8237E14E66C134F85F9 /* Pods-Edufit-EdufitTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
-				INFOPLIST_FILE = PadhaiTests/Info.plist;
+				INFOPLIST_FILE = EdufitTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				OTHER_LDFLAGS = (
@@ -768,19 +768,19 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Padhai.app/Padhai";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Edufit.app/Edufit";
 			};
 			name = Release;
 		};
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 925EEF6E9BB02A10A3A2A28B /* Pods-Padhai.debug.xcconfig */;
+			baseConfigurationReference = 925EEF6E9BB02A10A3A2A28B /* Pods-Edufit.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				ENABLE_BITCODE = NO;
-				INFOPLIST_FILE = Padhai/Info.plist;
+				INFOPLIST_FILE = Edufit/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
@@ -788,7 +788,7 @@
 					"-lc++",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = Padhai;
+				PRODUCT_NAME = Edufit;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -797,12 +797,12 @@
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 195512841940740EEA0C87AD /* Pods-Padhai.release.xcconfig */;
+			baseConfigurationReference = 195512841940740EEA0C87AD /* Pods-Edufit.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
-				INFOPLIST_FILE = Padhai/Info.plist;
+				INFOPLIST_FILE = Edufit/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
@@ -810,7 +810,7 @@
 					"-lc++",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = Padhai;
+				PRODUCT_NAME = Edufit;
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
@@ -818,7 +818,7 @@
 		};
 		2D02E4971E0B4A5E006451C7 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 38564DEB57E9377BC37924DE /* Pods-Padhai-tvOS.debug.xcconfig */;
+			baseConfigurationReference = 38564DEB57E9377BC37924DE /* Pods-Edufit-tvOS.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -829,14 +829,14 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_TESTABILITY = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "Padhai-tvOS/Info.plist";
+				INFOPLIST_FILE = "Edufit-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.Padhai-tvOS";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.Edufit-tvOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
 				TARGETED_DEVICE_FAMILY = 3;
@@ -846,7 +846,7 @@
 		};
 		2D02E4981E0B4A5E006451C7 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C1D991BB6666E08F4D95F218 /* Pods-Padhai-tvOS.release.xcconfig */;
+			baseConfigurationReference = C1D991BB6666E08F4D95F218 /* Pods-Edufit-tvOS.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -857,14 +857,14 @@
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "Padhai-tvOS/Info.plist";
+				INFOPLIST_FILE = "Edufit-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.Padhai-tvOS";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.Edufit-tvOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
 				TARGETED_DEVICE_FAMILY = 3;
@@ -874,7 +874,7 @@
 		};
 		2D02E4991E0B4A5E006451C7 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2EC7F1216C68F0CF87201382 /* Pods-Padhai-tvOSTests.debug.xcconfig */;
+			baseConfigurationReference = 2EC7F1216C68F0CF87201382 /* Pods-Edufit-tvOSTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ANALYZER_NONNULL = YES;
@@ -884,24 +884,24 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_TESTABILITY = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "Padhai-tvOSTests/Info.plist";
+				INFOPLIST_FILE = "Edufit-tvOSTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.Padhai-tvOSTests";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.Edufit-tvOSTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Padhai-tvOS.app/Padhai-tvOS";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Edufit-tvOS.app/Edufit-tvOS";
 				TVOS_DEPLOYMENT_TARGET = 10.1;
 			};
 			name = Debug;
 		};
 		2D02E49A1E0B4A5E006451C7 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A7092312FE042D8AF1F9758E /* Pods-Padhai-tvOSTests.release.xcconfig */;
+			baseConfigurationReference = A7092312FE042D8AF1F9758E /* Pods-Edufit-tvOSTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ANALYZER_NONNULL = YES;
@@ -911,17 +911,17 @@
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "Padhai-tvOSTests/Info.plist";
+				INFOPLIST_FILE = "Edufit-tvOSTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.Padhai-tvOSTests";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.Edufit-tvOSTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Padhai-tvOS.app/Padhai-tvOS";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Edufit-tvOS.app/Edufit-tvOS";
 				TVOS_DEPLOYMENT_TARGET = 10.1;
 			};
 			name = Release;
@@ -1042,7 +1042,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "PadhaiTests" */ = {
+		00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "EdufitTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				00E356F61AD99517003FC87E /* Debug */,
@@ -1051,7 +1051,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "Padhai" */ = {
+		13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "Edufit" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				13B07F941A680F5B00A75B9A /* Debug */,
@@ -1060,7 +1060,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		2D02E4BA1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "Padhai-tvOS" */ = {
+		2D02E4BA1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "Edufit-tvOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2D02E4971E0B4A5E006451C7 /* Debug */,
@@ -1069,7 +1069,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		2D02E4BB1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "Padhai-tvOSTests" */ = {
+		2D02E4BB1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "Edufit-tvOSTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2D02E4991E0B4A5E006451C7 /* Debug */,
@@ -1078,7 +1078,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "Padhai" */ = {
+		83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "Edufit" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				83CBBA201A601CBA00E9B192 /* Debug */,

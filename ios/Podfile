@@ -3,12 +3,12 @@ require_relative '../node_modules/@react-native-community/cli-platform-ios/nativ
 
 platform :ios, '10.0'
 
-target 'Padhai' do
+target 'Edufit' do
   config = use_native_modules!
 
   use_react_native!(:path => config["reactNativePath"])
 
-  target 'PadhaiTests' do
+  target 'EdufitTests' do
     inherit! :complete
     # Pods for testing
   end
@@ -23,10 +23,10 @@ target 'Padhai' do
   # end
 end
 
-target 'Padhai-tvOS' do
-  # Pods for Padhai-tvOS
+target 'Edufit-tvOS' do
+  # Pods for Edufit-tvOS
 
-  target 'Padhai-tvOSTests' do
+  target 'Edufit-tvOSTests' do
     inherit! :search_paths
     # Pods for testing
   end

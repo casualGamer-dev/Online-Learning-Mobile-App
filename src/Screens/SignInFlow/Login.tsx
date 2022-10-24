@@ -17,7 +17,7 @@ export const Login = ({navigation}: any) => {
       <KeyboardAvoidingView style={ styles.FullBody }>
         <SafeAreaView>
           <View>
-            <Text style={ styles.MainHeading }>Padhai</Text>
+            <Text style={ styles.MainHeading }>Edufit</Text>
             <View style={ styles.FormArea }>
               <>
                 {/* FORM BODY */}

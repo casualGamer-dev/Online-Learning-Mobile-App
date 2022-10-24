@@ -133,7 +133,7 @@ android {
     }
 
     defaultConfig {
-        applicationId "com.padhai"
+        applicationId "com.Edufit"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
