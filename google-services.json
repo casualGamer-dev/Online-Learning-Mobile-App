@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "97285258476",
+    "project_id": "avid-battery-285106",
+    "storage_bucket": "avid-battery-285106.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:97285258476:android:db49758daf2cd2a054b9c9",
+        "android_client_info": {
+          "package_name": "com.toivi.edufit"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "97285258476-h675gkueij5onomcd1udcrkmhh67s2dv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBXZiMap2dzF8DlKPEnc5sKbg6G6bwPU-8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "97285258476-h675gkueij5onomcd1udcrkmhh67s2dv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
