@@ -1,4 +1,4 @@
-package com.Edufit;
+package com.toivi.edufit;
 
 import com.facebook.react.ReactActivity;
 
