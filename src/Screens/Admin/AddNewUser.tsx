@@ -80,7 +80,7 @@ export const AddNewUser = ({navigation}: any) => {
                                     .then(() => {
                                         try{
                                             auth().signOut();
-                                            signIn('admin@padhai.com', 'admin@123')
+                                            signIn('admin@Edufit.com', 'admin@123')
                                             setAdminNewUserLoading(false)
                                         } catch(e) {
                                             Alert.alert(e)

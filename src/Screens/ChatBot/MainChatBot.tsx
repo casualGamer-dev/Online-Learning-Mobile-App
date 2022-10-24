@@ -4,13 +4,12 @@ import { Appbar } from 'react-native-paper';
 import { GiftedChat } from 'react-native-gifted-chat';
 import { Dialogflow_V2 } from 'react-native-dialogflow';
 import CustomIcon from 'react-native-vector-icons/Feather';
-import { dialogflowConfig } from '../../../env';
 import Colors from '../../utils/Color';
 import Loader from '../../components/Loader';
 
 const BOT_USER = {
 	_id: 2,
-	name: 'Padhai Bot',
+	name: 'Edufit Bot',
 	avatar: 'https://ui-avatars.com/api/?background=0D8ABC&color=fff&name=YB'
 };
 
@@ -19,7 +18,7 @@ export class MainChatBot extends Component {
 		messages: [
 			{
 				_id: 1,
-				text: `Hi! I am the Padai Bot 🤖 from padhai planet.\n\nHow may I help you with today?`,
+				text: `Hi! I am the Padai Bot 🤖 from Edufit planet.\n\nHow may I help you with today?`,
 				createdAt: new Date(),
 				user: BOT_USER
 			}
@@ -30,10 +29,10 @@ export class MainChatBot extends Component {
 	componentDidMount() {
 		this.state.loading = true
 		Dialogflow_V2.setConfiguration(
-			dialogflowConfig.client_email,
-			dialogflowConfig.private_key,
+			"anime-f5c79",
+			"AIzaSyC2gOkmTLJ_T9SHheURr2Vq4f9h4pVylcQ",
 			Dialogflow_V2.LANG_ENGLISH_US,
-			dialogflowConfig.project_id
+			"671250213885-5h4ev1v3s9nt34q6ml0gipv07kqsc0jq.apps.googleusercontent.com"
 		);
 		this.state.loading = false
 	}
@@ -92,7 +91,7 @@ export class MainChatBot extends Component {
 						}} 
 					/>
 					<Appbar.Content 
-						title={'Padhai Bot'} 
+						title={'Edufit Bot'} 
 						titleStyle={[styles.mainTitle, {backgroundColor: Colors.headerBlue(), color: Colors.headerFontColor()}]}
 					/>
 				</Appbar.Header>

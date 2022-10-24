@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "2D02E47A1E0B4A5D006451C7"
-               BuildableName = "Padhai-tvOS.app"
-               BlueprintName = "Padhai-tvOS"
-               ReferencedContainer = "container:Padhai.xcodeproj">
+               BuildableName = "Edufit-tvOS.app"
+               BlueprintName = "Edufit-tvOS"
+               ReferencedContainer = "container:Edufit.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "2D02E48F1E0B4A5D006451C7"
-               BuildableName = "Padhai-tvOSTests.xctest"
-               BlueprintName = "Padhai-tvOSTests"
-               ReferencedContainer = "container:Padhai.xcodeproj">
+               BuildableName = "Edufit-tvOSTests.xctest"
+               BlueprintName = "Edufit-tvOSTests"
+               ReferencedContainer = "container:Edufit.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -55,9 +55,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "2D02E47A1E0B4A5D006451C7"
-            BuildableName = "Padhai-tvOS.app"
-            BlueprintName = "Padhai-tvOS"
-            ReferencedContainer = "container:Padhai.xcodeproj">
+            BuildableName = "Edufit-tvOS.app"
+            BlueprintName = "Edufit-tvOS"
+            ReferencedContainer = "container:Edufit.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -72,9 +72,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "2D02E47A1E0B4A5D006451C7"
-            BuildableName = "Padhai-tvOS.app"
-            BlueprintName = "Padhai-tvOS"
-            ReferencedContainer = "container:Padhai.xcodeproj">
+            BuildableName = "Edufit-tvOS.app"
+            BlueprintName = "Edufit-tvOS"
+            ReferencedContainer = "container:Edufit.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

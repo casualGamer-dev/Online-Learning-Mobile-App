@@ -24,7 +24,7 @@ export const StudentLiveClass = ({route, navigation}: any) => {
       const url = `https://meet.jit.si/${video_id}`;
       const userInfo = {
         displayName: 'User',
-        email: 'info@padhai.com',
+        email: 'info@Edufit.com',
         avatar: 'https:/gravatar.com/avatar/abc123',
       };
       JitsiMeet.call(url, userInfo);

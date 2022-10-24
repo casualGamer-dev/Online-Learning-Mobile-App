@@ -15,7 +15,7 @@ export const IntroScreen = ({navigation}: any) => {
             style={ styles.IntroImage }
           />
           <Text style={ styles.MainHeading }>
-            Padhai
+            Edufit
           </Text>
           <Button 
             style={ styles.btn } 

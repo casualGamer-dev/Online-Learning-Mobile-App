@@ -35,12 +35,12 @@ android_library(
 
 android_build_config(
     name = "build_config",
-    package = "com.padhai",
+    package = "com.Edufit",
 )
 
 android_resource(
     name = "res",
-    package = "com.padhai",
+    package = "com.Edufit",
     res = "src/main/res",
 )
 
